@@ -1,3 +1,7 @@
+"use client";
+
+import ScrollReveal from "./ScrollReveal";
+
 export default function Footer() {
   const links = [
     { label: "Início", href: "#inicio" },
@@ -11,27 +15,33 @@ export default function Footer() {
       {/* CTA Section */}
       <div className="py-12 sm:py-10 px-4 md:px-6 border-b border-gray-800">
         <div className="max-w-5xl mx-auto text-center">
-          <h3 className="text-lg sm:text-lg md:text-xl font-light mb-3 sm:mb-3">
-            Seu imóvel pode fazer parte da nossa <span className="font-bodoni text-primary">seleção exclusiva</span>?
-          </h3>
-          <p className="text-gray-400 mb-6 sm:mb-5 max-w-lg mx-auto text-sm sm:text-sm">
-            Descubra se seu imóvel se encaixa no nosso portfólio e como podemos vender mais rápido, por mais valor.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-3 justify-center">
-            <button className="group px-6 sm:px-8 py-3 sm:py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-all duration-300 overflow-hidden text-sm sm:text-sm">
-              <span className="relative block overflow-hidden h-5">
-                <span className="block transition-transform duration-300 ease-out group-hover:-translate-y-full">
-                  Quero vender meu imóvel
+          <ScrollReveal>
+            <h3 className="text-lg sm:text-lg md:text-xl font-light mb-3 sm:mb-3">
+              Seu imóvel pode fazer parte da nossa <span className="font-bodoni text-primary">seleção exclusiva</span>?
+            </h3>
+          </ScrollReveal>
+          <ScrollReveal delay={100}>
+            <p className="text-gray-400 mb-6 sm:mb-5 max-w-lg mx-auto text-sm sm:text-sm">
+              Descubra se seu imóvel se encaixa no nosso portfólio e como podemos vender mais rápido, por mais valor.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={200}>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-3 justify-center">
+              <button className="group px-6 sm:px-8 py-3 sm:py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-all duration-300 overflow-hidden text-sm sm:text-sm">
+                <span className="relative block overflow-hidden h-5">
+                  <span className="block transition-transform duration-300 ease-out group-hover:-translate-y-full">
+                    Quero vender meu imóvel
+                  </span>
+                  <span className="absolute top-full left-0 block transition-transform duration-300 ease-out group-hover:-translate-y-full">
+                    Quero vender meu imóvel
+                  </span>
                 </span>
-                <span className="absolute top-full left-0 block transition-transform duration-300 ease-out group-hover:-translate-y-full">
-                  Quero vender meu imóvel
-                </span>
-              </span>
-            </button>
-            <button className="group px-6 sm:px-8 py-3 sm:py-3 bg-transparent border border-gray-600 text-white font-medium rounded-lg hover:border-primary hover:text-primary transition-all duration-300 text-sm sm:text-sm">
-              Avaliação gratuita
-            </button>
-          </div>
+              </button>
+              <button className="group px-6 sm:px-8 py-3 sm:py-3 bg-transparent border border-gray-600 text-white font-medium rounded-lg hover:border-primary hover:text-primary transition-all duration-300 text-sm sm:text-sm">
+                Avaliação gratuita
+              </button>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
 
@@ -40,7 +50,7 @@ export default function Footer() {
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 items-center text-center md:text-left">
             {/* Logo */}
-            <div className="flex flex-col items-center md:items-start">
+            <ScrollReveal className="flex flex-col items-center md:items-start">
               <div className="mb-3">
                 <img
                   src="/Logo 1 Horizontal.svg"
@@ -50,10 +60,10 @@ export default function Footer() {
               </div>
               <p className="text-gray-400 text-sm">Imobiliária Boutique</p>
               <p className="text-gray-500 text-sm mt-1.5">Brasília, DF - Brasil</p>
-            </div>
+            </ScrollReveal>
 
             {/* Links */}
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-5">
+            <ScrollReveal delay={100} className="flex flex-wrap justify-center gap-4 sm:gap-5">
               {links.map((link, index) => (
                 <a
                   key={index}
@@ -63,10 +73,10 @@ export default function Footer() {
                   {link.label}
                 </a>
               ))}
-            </div>
+            </ScrollReveal>
 
             {/* Social / Contact */}
-            <div className="flex flex-col items-center md:items-end">
+            <ScrollReveal delay={200} className="flex flex-col items-center md:items-end">
               <p className="text-gray-400 text-sm mb-2">Siga-nos</p>
               <div className="flex gap-3">
                 <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300">
@@ -76,7 +86,7 @@ export default function Footer() {
                   <span className="text-sm">ig</span>
                 </a>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </div>

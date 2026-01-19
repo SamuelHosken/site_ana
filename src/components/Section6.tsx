@@ -1,9 +1,13 @@
+"use client";
+
+import ScrollReveal from "./ScrollReveal";
+
 export default function Section6() {
   return (
     <section className="py-14 sm:py-12 md:py-16 px-4 md:px-6 bg-gradient-to-b from-stone-50 to-white">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8 sm:mb-8 md:mb-10">
+        <ScrollReveal className="text-center mb-8 sm:mb-8 md:mb-10">
           <div className="group inline-block">
             <span className="inline-block text-primary text-xs font-medium tracking-widest uppercase mb-3">
               Expansão Global
@@ -20,10 +24,10 @@ export default function Section6() {
           <p className="text-gray-600 text-sm sm:text-sm mt-5 sm:mt-5 max-w-xl mx-auto">
             Vendeu seu imóvel? Transforme o capital em uma oportunidade global.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Mapa */}
-        <div className="relative max-w-4xl mx-auto mb-8 sm:mb-8 md:mb-10">
+        <ScrollReveal animation="reveal-scale" className="relative max-w-4xl mx-auto mb-8 sm:mb-8 md:mb-10">
           <div className="relative rounded-xl sm:rounded-xl overflow-hidden">
             <img
               src="/mapa.svg"
@@ -31,24 +35,28 @@ export default function Section6() {
               className="w-full h-auto"
             />
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Texto final */}
-        <div className="text-center max-w-2xl mx-auto">
+        <ScrollReveal delay={200} className="text-center max-w-2xl mx-auto">
           <p className="text-gray-600 text-sm sm:text-sm leading-relaxed mb-4 sm:mb-4">
             Viabilizamos a compra de imóveis em Dubai e EUA com condições privilegiadas de investimento:
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-4 text-left max-w-xl mx-auto">
-            <div className="flex-1 p-4 bg-white rounded-xl border border-stone-200">
-              <p className="text-gray-800 font-medium text-sm sm:text-sm">Rentabilidade superior</p>
-              <p className="text-gray-600 text-xs sm:text-xs mt-1">Rendimentos acima de 1% ao mês antes da entrega</p>
-            </div>
-            <div className="flex-1 p-4 bg-white rounded-xl border border-stone-200">
-              <p className="text-gray-800 font-medium text-sm sm:text-sm">Moeda forte</p>
-              <p className="text-gray-600 text-xs sm:text-xs mt-1">Dolarize seu patrimônio e proteja seu futuro</p>
-            </div>
+            <ScrollReveal delay={300} className="flex-1">
+              <div className="p-4 bg-white rounded-xl border border-stone-200 h-full">
+                <p className="text-gray-800 font-medium text-sm sm:text-sm">Rentabilidade superior</p>
+                <p className="text-gray-600 text-xs sm:text-xs mt-1">Rendimentos acima de 1% ao mês antes da entrega</p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={400} className="flex-1">
+              <div className="p-4 bg-white rounded-xl border border-stone-200 h-full">
+                <p className="text-gray-800 font-medium text-sm sm:text-sm">Moeda forte</p>
+                <p className="text-gray-600 text-xs sm:text-xs mt-1">Dolarize seu patrimônio e proteja seu futuro</p>
+              </div>
+            </ScrollReveal>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

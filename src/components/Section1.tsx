@@ -1,3 +1,7 @@
+"use client";
+
+import ScrollReveal from "./ScrollReveal";
+
 export default function Section1() {
   const featuresLeft = [
     {
@@ -29,7 +33,7 @@ export default function Section1() {
     <section id="sobre" className="py-14 sm:py-12 md:py-16 px-4 md:px-6 bg-white">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start mb-8 sm:mb-10 md:mb-12 gap-3">
+        <ScrollReveal className="flex flex-col sm:flex-row justify-between items-start mb-8 sm:mb-10 md:mb-12 gap-3">
           <div className="group">
             {/* Badge */}
             <span className="inline-block text-primary text-xs font-medium tracking-widest uppercase mb-3">
@@ -54,59 +58,59 @@ export default function Section1() {
               className="h-4 w-auto ml-auto brightness-0 opacity-30"
             />
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Content Grid */}
         <div className="grid md:grid-cols-2 gap-x-5 lg:gap-x-10 gap-y-5 sm:gap-y-4">
           {/* Coluna Esquerda */}
           <div className="space-y-5 sm:space-y-4">
             {featuresLeft.map((feature, index) => (
-              <div
-                key={index}
-                className="group p-4 sm:p-4 rounded-lg transition-all duration-300 hover:bg-gray-50 hover:shadow-lg hover:-translate-y-1 cursor-default"
-              >
-                <div className="relative">
-                  <h3 className="text-primary text-sm sm:text-sm font-medium tracking-wide mb-2 uppercase">
-                    <span className="text-primary/60">/</span> {feature.title}
-                  </h3>
-                  {/* Linha animada */}
-                  <div className="h-[2px] bg-primary/20 mb-3 rounded-full overflow-hidden">
-                    <div className="h-full w-0 bg-primary transition-all duration-500 ease-out group-hover:w-full" />
+              <ScrollReveal key={index} delay={(index + 1) * 100}>
+                <div className="group p-4 sm:p-4 rounded-lg transition-all duration-300 hover:bg-gray-50 hover:shadow-lg hover:-translate-y-1 cursor-default">
+                  <div className="relative">
+                    <h3 className="text-primary text-sm sm:text-sm font-medium tracking-wide mb-2 uppercase">
+                      <span className="text-primary/60">/</span> {feature.title}
+                    </h3>
+                    {/* Linha animada */}
+                    <div className="h-[2px] bg-primary/20 mb-3 rounded-full overflow-hidden">
+                      <div className="h-full w-0 bg-primary transition-all duration-500 ease-out group-hover:w-full" />
+                    </div>
+                    <p className="text-gray-600 leading-relaxed text-sm sm:text-sm">{feature.description}</p>
                   </div>
-                  <p className="text-gray-600 leading-relaxed text-sm sm:text-sm">{feature.description}</p>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
 
           {/* Coluna Direita */}
           <div className="space-y-5 sm:space-y-3">
             {/* Primeiro item - Estratégias */}
-            <div className="group p-4 sm:p-4 rounded-lg transition-all duration-300 hover:bg-gray-50 hover:shadow-lg hover:-translate-y-1 cursor-default">
-              <div className="relative">
-                <h3 className="text-primary text-sm sm:text-sm font-medium tracking-wide mb-2 uppercase">
-                  <span className="text-primary/60">/ </span>
-                  {featuresRight[0].title}
-                </h3>
-                <div className="h-[2px] bg-primary/20 mb-3 rounded-full overflow-hidden">
-                  <div className="h-full w-0 bg-primary transition-all duration-500 ease-out group-hover:w-full" />
+            <ScrollReveal delay={100}>
+              <div className="group p-4 sm:p-4 rounded-lg transition-all duration-300 hover:bg-gray-50 hover:shadow-lg hover:-translate-y-1 cursor-default">
+                <div className="relative">
+                  <h3 className="text-primary text-sm sm:text-sm font-medium tracking-wide mb-2 uppercase">
+                    <span className="text-primary/60">/ </span>
+                    {featuresRight[0].title}
+                  </h3>
+                  <div className="h-[2px] bg-primary/20 mb-3 rounded-full overflow-hidden">
+                    <div className="h-full w-0 bg-primary transition-all duration-500 ease-out group-hover:w-full" />
+                  </div>
+                  <p className="text-gray-600 leading-relaxed text-sm sm:text-sm">{featuresRight[0].description}</p>
                 </div>
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-sm">{featuresRight[0].description}</p>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Cards destacados - Home staging e Open house */}
             <div className="grid gap-4 sm:gap-2">
               {featuresRight.slice(1).map((feature, index) => (
-                <div
-                  key={index}
-                  className="group p-4 sm:p-3 bg-stone-50 border border-stone-200 rounded-lg transition-all duration-300 hover:bg-stone-100 hover:border-primary/30 hover:shadow-md cursor-default"
-                >
-                  <h3 className="text-primary font-medium text-base sm:text-base mb-1.5">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm sm:text-sm leading-relaxed">{feature.description}</p>
-                </div>
+                <ScrollReveal key={index} delay={(index + 2) * 100}>
+                  <div className="group p-4 sm:p-3 bg-stone-50 border border-stone-200 rounded-lg transition-all duration-300 hover:bg-stone-100 hover:border-primary/30 hover:shadow-md cursor-default">
+                    <h3 className="text-primary font-medium text-base sm:text-base mb-1.5">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm sm:text-sm leading-relaxed">{feature.description}</p>
+                  </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
