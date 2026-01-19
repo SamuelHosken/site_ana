@@ -33,8 +33,8 @@ export default function Hero() {
   return (
     <section id="inicio" className="bg-white pt-16">
       {/* ========== MOBILE VERSION - Full image with centered text ========== */}
-      <div className="md:hidden px-3 py-4">
-        <div ref={heroRef} className="relative h-[320px] sm:h-[360px] rounded-[16px] overflow-hidden">
+      <div className="md:hidden px-4 py-5">
+        <div ref={heroRef} className="relative h-[400px] sm:h-[420px] rounded-[20px] overflow-hidden">
           {/* Full screen image */}
           <div className="absolute inset-0">
             <div
@@ -42,27 +42,27 @@ export default function Hero() {
               style={{ backgroundImage: "url('/hero.png')" }}
             />
             {/* Dark overlay - mais escuro para legibilidade */}
-            <div className="absolute inset-0 bg-black/60" />
+            <div className="absolute inset-0 bg-black/55" />
           </div>
 
           {/* Centered content */}
-          <div className="relative h-full flex flex-col items-center justify-center text-center px-5">
+          <div className="relative h-full flex flex-col items-center justify-center text-center px-6">
             {/* Logo */}
             <img
               src="/Tipografia com R.svg"
               alt="Later Nobilis"
-              className="h-4 w-auto mb-4 brightness-0 invert"
+              className="h-5 w-auto mb-5 brightness-0 invert"
             />
 
             {/* Title */}
-            <h2 className="text-xl sm:text-2xl font-normal text-white leading-tight mb-6">
+            <h2 className="text-2xl sm:text-3xl font-normal text-white leading-tight mb-8">
               CONHEÇA A MELHOR{" "}
               <span className="font-semibold">IMOBILIÁRIA BOUTIQUE</span>{" "}
               DE BRASÍLIA
             </h2>
 
             {/* Button */}
-            <button className="group px-8 py-3 bg-white text-gray-900 text-sm tracking-wider hover:bg-gray-100 transition-colors rounded-lg">
+            <button className="group px-10 py-3.5 bg-white text-gray-900 text-sm font-medium tracking-wider hover:bg-gray-100 transition-colors rounded-lg">
               Ler Mais
             </button>
 

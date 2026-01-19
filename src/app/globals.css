@@ -27,3 +27,8 @@ body {
   font-family: "Bodoni 72 Oldstyle", "Bodoni MT", "Libre Bodoni", Georgia, serif;
   font-style: italic;
 }
+
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}

@@ -90,40 +90,40 @@ export default function Section4() {
       className="relative bg-gradient-to-br from-stone-100 to-stone-200"
       style={{ height: `${(features.length + 1) * 100}vh` }}
     >
-      <div className="sticky top-0 h-screen overflow-hidden flex items-start pt-16 sm:pt-20 md:pt-24">
+      <div className="sticky top-0 h-screen overflow-hidden flex items-start pt-20 sm:pt-20 md:pt-24">
         <div className="max-w-5xl mx-auto px-4 md:px-6 w-full">
           {/* Header */}
-          <div className="group mb-3 sm:mb-4 md:mb-6">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-2 sm:mb-3">
+          <div className="group mb-5 sm:mb-4 md:mb-6">
+            <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl mb-2 sm:mb-3">
               <span className="font-bodoni text-primary">O resultado?</span>
             </h2>
-            <div className="h-[2px] w-16 sm:w-20 bg-primary/20 rounded-full overflow-hidden">
+            <div className="h-[2px] w-20 sm:w-20 bg-primary/20 rounded-full overflow-hidden">
               <div className="h-full w-0 bg-primary transition-all duration-700 ease-out group-hover:w-full" />
             </div>
           </div>
 
-          <p className="text-gray-700 text-xs sm:text-sm mb-4 sm:mb-6 md:mb-8 max-w-xl leading-relaxed">
+          <p className="text-gray-700 text-sm sm:text-sm mb-6 sm:mb-6 md:mb-8 max-w-xl leading-relaxed">
             Seu imóvel ganha destaque imediato, atrai compradores certos e vende pelo valor que merece.
           </p>
 
           {/* Content Grid */}
-          <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-start lg:items-center">
+          <div className="grid lg:grid-cols-2 gap-5 sm:gap-6 md:gap-8 items-start lg:items-center">
             {/* Features List */}
-            <div className="space-y-2 sm:space-y-3">
+            <div className="space-y-4 sm:space-y-3">
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className={`p-3 sm:p-4 rounded-lg sm:rounded-xl transition-all duration-500 cursor-pointer ${
+                  className={`p-4 sm:p-4 rounded-xl sm:rounded-xl transition-all duration-500 cursor-pointer ${
                     activeIndex === index
                       ? "bg-white shadow-xl scale-[1.02]"
                       : "bg-white/50 hover:bg-white/70"
                   }`}
                   onClick={() => scrollToFeature(index)}
                 >
-                  <div className="flex items-start gap-2 sm:gap-3">
+                  <div className="flex items-start gap-3 sm:gap-3">
                     {/* Número */}
                     <span
-                      className={`flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold transition-all duration-500 ${
+                      className={`flex-shrink-0 w-8 h-8 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-xs font-bold transition-all duration-500 ${
                         activeIndex === index
                           ? "bg-primary text-white"
                           : "bg-stone-200 text-stone-500"
@@ -134,7 +134,7 @@ export default function Section4() {
 
                     <div className="flex-1">
                       <h3
-                        className={`text-sm sm:text-base font-semibold mb-1 transition-colors duration-500 ${
+                        className={`text-base sm:text-base font-semibold mb-1 transition-colors duration-500 ${
                           activeIndex === index ? "text-primary" : "text-gray-800"
                         }`}
                       >
@@ -147,13 +147,13 @@ export default function Section4() {
                           activeIndex === index ? "max-h-24 opacity-100" : "max-h-0 opacity-0"
                         }`}
                       >
-                        <p className="text-gray-600 leading-relaxed text-xs sm:text-sm">{feature.description}</p>
+                        <p className="text-gray-600 leading-relaxed text-sm sm:text-sm">{feature.description}</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Progress bar */}
-                  <div className="mt-2 sm:mt-3 h-1 bg-stone-200 rounded-full overflow-hidden">
+                  <div className="mt-3 sm:mt-3 h-1 bg-stone-200 rounded-full overflow-hidden">
                     <div
                       className={`h-full bg-primary transition-all duration-700 ease-out ${
                         activeIndex === index ? "w-full" : "w-0"

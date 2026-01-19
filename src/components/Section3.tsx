@@ -31,37 +31,37 @@ export default function Section3() {
   ];
 
   return (
-    <section id="servicos" className="py-10 sm:py-12 md:py-16 px-4 md:px-6 bg-stone-50">
+    <section id="servicos" className="py-16 sm:py-12 md:py-16 px-4 md:px-6 bg-stone-50">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className="group mb-8 sm:mb-10 md:mb-12 text-center max-w-3xl mx-auto">
-          <span className="inline-block text-primary text-[11px] font-medium tracking-widest uppercase mb-2">
+        <div className="group mb-10 sm:mb-10 md:mb-12 text-center max-w-3xl mx-auto">
+          <span className="inline-block text-primary text-xs font-medium tracking-widest uppercase mb-3">
             Nossos Serviços
           </span>
-          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-800 tracking-tight mb-2">
+          <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl text-gray-800 tracking-tight mb-2">
             Como <span className="font-bodoni text-primary">transformar seu imóvel</span> em uma oportunidade{" "}
             <span className="font-bodoni text-primary">única de valor</span>
           </h2>
-          <p className="text-gray-600 text-xs sm:text-sm mt-3">
+          <p className="text-gray-600 text-sm sm:text-sm mt-4">
             Cada detalhe é pensado para uma coisa: fazer seu imóvel se destacar e vender mais rápido, pelo melhor valor.
           </p>
-          <div className="h-[2px] w-16 sm:w-20 bg-primary/20 rounded-full overflow-hidden mx-auto mt-3">
+          <div className="h-[2px] w-20 sm:w-20 bg-primary/20 rounded-full overflow-hidden mx-auto mt-4">
             <div className="h-full w-0 bg-primary transition-all duration-700 ease-out group-hover:w-full" />
           </div>
         </div>
 
         {/* Services - Alternating Layout */}
-        <div className="space-y-8 sm:space-y-10 md:space-y-12">
+        <div className="space-y-12 sm:space-y-10 md:space-y-12">
           {services.map((service, index) => (
             <div
               key={index}
-              className={`group grid lg:grid-cols-2 gap-5 sm:gap-6 lg:gap-10 items-center ${
+              className={`group grid lg:grid-cols-2 gap-6 sm:gap-6 lg:gap-10 items-center ${
                 index % 2 === 1 ? "lg:direction-rtl" : ""
               }`}
             >
               {/* Imagem */}
               <div className={`relative ${index % 2 === 1 ? "lg:order-2" : ""}`}>
-                <div className="relative h-[180px] sm:h-[220px] md:h-[260px] bg-gradient-to-br from-stone-200 to-stone-300 rounded-lg sm:rounded-xl overflow-hidden">
+                <div className="relative h-[240px] sm:h-[220px] md:h-[260px] bg-gradient-to-br from-stone-200 to-stone-300 rounded-xl sm:rounded-xl overflow-hidden">
                   {service.imageSrc ? (
                     <img
                       src={service.imageSrc}
@@ -85,12 +85,12 @@ export default function Section3() {
               {/* Conteúdo */}
               <div className={`relative ${index % 2 === 1 ? "lg:order-1" : ""}`}>
                 {/* Número decorativo */}
-                <span className="absolute -top-2 sm:-top-4 -left-1 sm:-left-2 text-5xl sm:text-6xl md:text-7xl font-bold text-stone-200/50 select-none">
+                <span className="absolute -top-3 sm:-top-4 -left-1 sm:-left-2 text-6xl sm:text-6xl md:text-7xl font-bold text-stone-200/50 select-none">
                   {service.number}
                 </span>
 
                 <div className="relative z-10">
-                  <h3 className="text-primary text-base sm:text-lg font-medium tracking-wide mb-2">
+                  <h3 className="text-primary text-lg sm:text-lg font-medium tracking-wide mb-2">
                     <span className="text-primary/50">/</span> {service.title}
                   </h3>
 
@@ -99,10 +99,10 @@ export default function Section3() {
                     <div className="h-full w-0 bg-primary transition-all duration-700 ease-out group-hover:w-full" />
                   </div>
 
-                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">{service.description}</p>
+                  <p className="text-gray-600 text-sm sm:text-sm leading-relaxed">{service.description}</p>
 
                   {/* Botão sutil */}
-                  <button className="mt-3 sm:mt-4 text-primary font-medium flex items-center gap-1.5 group/btn text-xs sm:text-sm">
+                  <button className="mt-4 sm:mt-4 text-primary font-medium flex items-center gap-2 group/btn text-sm sm:text-sm">
                     <span>Saiba mais</span>
                     <span className="transition-transform duration-300 group-hover/btn:translate-x-1">→</span>
                   </button>
