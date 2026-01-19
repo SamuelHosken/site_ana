@@ -90,40 +90,40 @@ export default function Section4() {
       className="relative bg-gradient-to-br from-stone-100 to-stone-200"
       style={{ height: `${(features.length + 1) * 100}vh` }}
     >
-      <div className="sticky top-0 h-screen overflow-hidden flex items-start pt-20 sm:pt-24 md:pt-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full">
+      <div className="sticky top-0 h-screen overflow-hidden flex items-start pt-16 sm:pt-20 md:pt-24">
+        <div className="max-w-5xl mx-auto px-4 md:px-6 w-full">
           {/* Header */}
-          <div className="group mb-4 sm:mb-6 md:mb-8">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 sm:mb-4">
+          <div className="group mb-3 sm:mb-4 md:mb-6">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-2 sm:mb-3">
               <span className="font-bodoni text-primary">O resultado?</span>
             </h2>
-            <div className="h-[3px] w-20 sm:w-24 bg-primary/20 rounded-full overflow-hidden">
+            <div className="h-[2px] w-16 sm:w-20 bg-primary/20 rounded-full overflow-hidden">
               <div className="h-full w-0 bg-primary transition-all duration-700 ease-out group-hover:w-full" />
             </div>
           </div>
 
-          <p className="text-gray-700 text-base sm:text-lg mb-6 sm:mb-8 md:mb-12 max-w-2xl leading-relaxed">
+          <p className="text-gray-700 text-xs sm:text-sm mb-4 sm:mb-6 md:mb-8 max-w-xl leading-relaxed">
             Seu imóvel ganha destaque imediato, atrai compradores certos e vende pelo valor que merece.
           </p>
 
           {/* Content Grid */}
-          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-start lg:items-center">
+          <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-start lg:items-center">
             {/* Features List */}
-            <div className="space-y-3 sm:space-y-4">
+            <div className="space-y-2 sm:space-y-3">
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className={`p-4 sm:p-6 rounded-xl sm:rounded-2xl transition-all duration-500 cursor-pointer ${
+                  className={`p-3 sm:p-4 rounded-lg sm:rounded-xl transition-all duration-500 cursor-pointer ${
                     activeIndex === index
                       ? "bg-white shadow-xl scale-[1.02]"
                       : "bg-white/50 hover:bg-white/70"
                   }`}
                   onClick={() => scrollToFeature(index)}
                 >
-                  <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="flex items-start gap-2 sm:gap-3">
                     {/* Número */}
                     <span
-                      className={`flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold transition-all duration-500 ${
+                      className={`flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold transition-all duration-500 ${
                         activeIndex === index
                           ? "bg-primary text-white"
                           : "bg-stone-200 text-stone-500"
@@ -134,7 +134,7 @@ export default function Section4() {
 
                     <div className="flex-1">
                       <h3
-                        className={`text-base sm:text-lg font-semibold mb-1 sm:mb-2 transition-colors duration-500 ${
+                        className={`text-sm sm:text-base font-semibold mb-1 transition-colors duration-500 ${
                           activeIndex === index ? "text-primary" : "text-gray-800"
                         }`}
                       >
@@ -144,16 +144,16 @@ export default function Section4() {
                       {/* Descrição com animação */}
                       <div
                         className={`overflow-hidden transition-all duration-500 ${
-                          activeIndex === index ? "max-h-32 opacity-100" : "max-h-0 opacity-0"
+                          activeIndex === index ? "max-h-24 opacity-100" : "max-h-0 opacity-0"
                         }`}
                       >
-                        <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{feature.description}</p>
+                        <p className="text-gray-600 leading-relaxed text-xs sm:text-sm">{feature.description}</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Progress bar */}
-                  <div className="mt-3 sm:mt-4 h-1 bg-stone-200 rounded-full overflow-hidden">
+                  <div className="mt-2 sm:mt-3 h-1 bg-stone-200 rounded-full overflow-hidden">
                     <div
                       className={`h-full bg-primary transition-all duration-700 ease-out ${
                         activeIndex === index ? "w-full" : "w-0"
@@ -165,46 +165,46 @@ export default function Section4() {
             </div>
 
             {/* Imagem que muda - hidden on mobile */}
-            <div className="relative h-[300px] sm:h-[400px] md:h-[550px] hidden lg:block">
+            <div className="relative h-[220px] sm:h-[280px] md:h-[380px] hidden lg:block">
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className={`absolute inset-0 rounded-2xl overflow-hidden transition-all duration-700 ${
+                  className={`absolute inset-0 rounded-xl overflow-hidden transition-all duration-700 ${
                     activeIndex === index
                       ? "opacity-100 scale-100 translate-y-0 z-10"
                       : "opacity-0 scale-95 translate-y-4 z-0"
                   }`}
                 >
                   <div className="w-full h-full bg-gradient-to-br from-stone-300 to-stone-400 flex items-center justify-center">
-                    <span className="text-stone-600 text-xl font-medium">[ {feature.image} ]</span>
+                    <span className="text-stone-600 text-base font-medium">[ {feature.image} ]</span>
                   </div>
                 </div>
               ))}
 
               {/* Indicador de imagem atual */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
                 {features.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => scrollToFeature(index)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      activeIndex === index ? "w-8 bg-primary" : "w-2 bg-white/50"
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      activeIndex === index ? "w-6 bg-primary" : "w-1.5 bg-white/50"
                     }`}
                   />
                 ))}
               </div>
 
               {/* Elementos decorativos */}
-              <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-primary/30 rounded-2xl -z-10" />
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/10 rounded-2xl -z-10" />
+              <div className="absolute -top-3 -left-3 w-20 h-20 border-2 border-primary/30 rounded-xl -z-10" />
+              <div className="absolute -bottom-3 -right-3 w-24 h-24 bg-primary/10 rounded-xl -z-10" />
             </div>
           </div>
 
           {/* Scroll indicator - hidden on mobile */}
-          <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-stone-500">
-            <span className="text-xs uppercase tracking-widest">Role para continuar</span>
-            <div className="w-6 h-10 border-2 border-stone-400 rounded-full flex justify-center pt-2">
-              <div className="w-1.5 h-3 bg-stone-400 rounded-full animate-bounce" />
+          <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-1.5 text-stone-500">
+            <span className="text-[10px] uppercase tracking-widest">Role para continuar</span>
+            <div className="w-5 h-8 border-2 border-stone-400 rounded-full flex justify-center pt-1.5">
+              <div className="w-1 h-2.5 bg-stone-400 rounded-full animate-bounce" />
             </div>
           </div>
         </div>

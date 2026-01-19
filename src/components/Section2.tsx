@@ -1,38 +1,38 @@
 export default function Section2() {
   return (
-    <section className="pt-8 sm:pt-12 pb-16 sm:pb-20 md:pb-28 px-4 sm:px-6 md:px-8 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="pt-6 sm:pt-8 pb-10 sm:pb-12 md:pb-16 px-4 md:px-6 bg-white">
+      <div className="max-w-5xl mx-auto">
         {/* Content Grid */}
-        <div className="flex flex-col md:flex-row gap-8 sm:gap-10 md:gap-12 items-center">
+        <div className="flex flex-col md:flex-row gap-6 sm:gap-8 md:gap-10 items-center">
           {/* Texto */}
           <div className="md:w-[45%]">
             {/* Header */}
-            <div className="group mb-4 sm:mb-6">
-              <span className="inline-block text-primary text-xs sm:text-sm font-medium tracking-widest uppercase mb-2 sm:mb-3">
+            <div className="group mb-3 sm:mb-4">
+              <span className="inline-block text-primary text-[11px] font-medium tracking-widest uppercase mb-1.5 sm:mb-2">
                 Nossa Filosofia
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-800 tracking-tight mb-2 sm:mb-3">
+              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-800 tracking-tight mb-1.5 sm:mb-2">
                 Entre o <span className="font-bodoni text-primary">valor justo</span> e à boa negociação
               </h2>
-              <div className="h-[3px] w-24 sm:w-32 bg-primary/20 rounded-full overflow-hidden">
+              <div className="h-[2px] w-16 sm:w-20 bg-primary/20 rounded-full overflow-hidden">
                 <div className="h-full w-0 bg-primary transition-all duration-700 ease-out group-hover:w-full" />
               </div>
             </div>
 
-            <div className="space-y-3 sm:space-y-4">
-              <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
+            <div className="space-y-2 sm:space-y-3">
+              <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
                 Quem vende quer o máximo valor. Quem compra quer o melhor negócio. Talvez você já tenha ouvido:
               </p>
 
               {/* Citação destacada */}
-              <div className="relative pl-4 sm:pl-6 border-l-4 border-primary/30 py-3 sm:py-4 group/quote hover:border-primary transition-colors duration-300">
-                <p className="text-gray-700 text-lg sm:text-xl font-bodoni italic leading-relaxed">
+              <div className="relative pl-3 sm:pl-4 border-l-3 border-primary/30 py-2 sm:py-3 group/quote hover:border-primary transition-colors duration-300">
+                <p className="text-gray-700 text-sm sm:text-base font-bodoni italic leading-relaxed">
                   &quot;Quem vende sempre acha que vendeu barato, e quem paga, que pagou muito&quot;
                 </p>
-                <div className="absolute bottom-0 left-0 h-full w-1 bg-primary scale-y-0 group-hover/quote:scale-y-100 transition-transform duration-500 origin-bottom" />
+                <div className="absolute bottom-0 left-0 h-full w-0.5 bg-primary scale-y-0 group-hover/quote:scale-y-100 transition-transform duration-500 origin-bottom" />
               </div>
 
-              <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
+              <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
                 Nossa missão é demonstrar o <strong className="text-gray-800">real valor</strong> do seu imóvel, para que comprador e vendedor se encontrem em um terreno comum, satisfeitos com o resultado.
               </p>
             </div>
@@ -40,7 +40,7 @@ export default function Section2() {
 
           {/* Imagem */}
           <div className="relative group/img w-full md:w-[55%]">
-            <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden">
+            <div className="relative h-[220px] sm:h-[280px] md:h-[340px] rounded-xl overflow-hidden">
               <img
                 src="/foto_ana.png"
                 alt="Ana - Later Nobilis"
@@ -49,8 +49,8 @@ export default function Section2() {
             </div>
 
             {/* Elemento decorativo - hidden on mobile */}
-            <div className="hidden sm:block absolute -bottom-4 -right-4 w-32 h-32 border-2 border-primary/20 rounded-2xl -z-10" />
-            <div className="hidden sm:block absolute -top-4 -left-4 w-24 h-24 bg-primary/10 rounded-full -z-10" />
+            <div className="hidden sm:block absolute -bottom-3 -right-3 w-24 h-24 border-2 border-primary/20 rounded-xl -z-10" />
+            <div className="hidden sm:block absolute -top-3 -left-3 w-16 h-16 bg-primary/10 rounded-full -z-10" />
           </div>
         </div>
       </div>

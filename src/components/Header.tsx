@@ -23,7 +23,7 @@ export default function Header() {
     const element = document.getElementById(targetId);
 
     if (element) {
-      const headerHeight = 80;
+      const headerHeight = 56;
       const elementPosition = element.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - headerHeight;
 
@@ -48,11 +48,11 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "bg-white/90 backdrop-blur-md shadow-sm py-4"
-            : "bg-transparent py-6"
+            ? "bg-white/90 backdrop-blur-md shadow-sm py-2.5"
+            : "bg-transparent py-3"
         }`}
       >
-        <nav className="max-w-[100rem] mx-auto px-4 flex justify-between items-center">
+        <nav className="max-w-5xl mx-auto px-4 flex justify-between items-center">
           {/* Logo */}
           <a
             href="#inicio"
@@ -62,22 +62,22 @@ export default function Header() {
             <img
               src="/Logo horizontal com cor.svg?v=2"
               alt="Later Nobilis"
-              className="h-6 md:h-7 w-auto transition-all duration-300 group-hover:opacity-80"
+              className="h-4 md:h-5 w-auto transition-all duration-300 group-hover:opacity-80"
             />
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-5">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
                 onClick={(e) => scrollToSection(e, item.href)}
-                className="relative text-sm tracking-wide transition-colors duration-300 group/link text-gray-600 hover:text-primary"
+                className="relative text-xs tracking-wide transition-colors duration-300 group/link text-gray-600 hover:text-primary"
               >
                 {item.label}
                 {/* Linha animada no hover */}
-                <span className="absolute -bottom-1 left-0 h-[2px] w-0 group-hover/link:w-full transition-all duration-300 bg-primary" />
+                <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 group-hover/link:w-full transition-all duration-300 bg-primary" />
               </a>
             ))}
 
@@ -85,14 +85,14 @@ export default function Header() {
             <a
               href="#contato"
               onClick={(e) => scrollToSection(e, "#contato")}
-              className="relative px-5 py-2.5 text-sm font-medium tracking-wide rounded-lg overflow-hidden transition-all duration-300 group/btn border-2 border-primary text-primary hover:text-white"
+              className="relative px-3.5 py-1.5 text-xs font-medium tracking-wide rounded-md overflow-hidden transition-all duration-300 group/btn border-2 border-primary text-primary hover:text-white"
             >
               {/* Background fill on hover */}
               <span className="absolute inset-0 w-0 group-hover/btn:w-full transition-all duration-300 ease-out bg-primary" />
-              <span className="relative flex items-center gap-2">
+              <span className="relative flex items-center gap-1.5">
                 Agendar
                 <svg
-                  className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1"
+                  className="w-3 h-3 transition-transform duration-300 group-hover/btn:translate-x-1"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -111,22 +111,22 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden relative w-10 h-10 flex flex-col justify-center items-center gap-1.5"
+            className="md:hidden relative w-8 h-8 flex flex-col justify-center items-center gap-1"
             aria-label="Menu"
           >
             <span
-              className={`w-6 h-0.5 bg-gray-800 transition-all duration-300 ${
-                isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
+              className={`w-4.5 h-0.5 bg-gray-800 transition-all duration-300 ${
+                isMobileMenuOpen ? "rotate-45 translate-y-1.5" : ""
               }`}
             />
             <span
-              className={`w-6 h-0.5 bg-gray-800 transition-all duration-300 ${
+              className={`w-4.5 h-0.5 bg-gray-800 transition-all duration-300 ${
                 isMobileMenuOpen ? "opacity-0" : ""
               }`}
             />
             <span
-              className={`w-6 h-0.5 bg-gray-800 transition-all duration-300 ${
-                isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+              className={`w-4.5 h-0.5 bg-gray-800 transition-all duration-300 ${
+                isMobileMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
               }`}
             />
           </button>
@@ -149,25 +149,25 @@ export default function Header() {
 
         {/* Menu Panel */}
         <div
-          className={`absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl transition-transform duration-500 ${
+          className={`absolute top-0 right-0 h-full w-64 max-w-[80vw] bg-white shadow-2xl transition-transform duration-500 ${
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="flex flex-col h-full pt-24 pb-8 px-8">
+          <div className="flex flex-col h-full pt-16 pb-5 px-5">
             {/* Nav Items */}
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col gap-1">
               {navItems.map((item, index) => (
                 <a
                   key={item.label}
                   href={item.href}
                   onClick={(e) => scrollToSection(e, item.href)}
-                  className="group py-4 border-b border-stone-100 transition-all duration-300"
+                  className="group py-2.5 border-b border-stone-100 transition-all duration-300"
                   style={{ transitionDelay: `${index * 50}ms` }}
                 >
-                  <span className="flex items-center justify-between text-gray-800 text-lg">
+                  <span className="flex items-center justify-between text-gray-800 text-sm">
                     {item.label}
                     <svg
-                      className="w-5 h-5 text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+                      className="w-3.5 h-3.5 text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -189,11 +189,11 @@ export default function Header() {
               <a
                 href="#contato"
                 onClick={(e) => scrollToSection(e, "#contato")}
-                className="flex items-center justify-center gap-2 w-full py-4 bg-primary text-white rounded-xl font-medium transition-all duration-300 hover:bg-primary/90"
+                className="flex items-center justify-center gap-1.5 w-full py-2.5 bg-primary text-white rounded-md font-medium transition-all duration-300 hover:bg-primary/90 text-xs"
               >
                 Agendar Avaliação
                 <svg
-                  className="w-5 h-5"
+                  className="w-3.5 h-3.5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -208,13 +208,13 @@ export default function Header() {
               </a>
 
               {/* Brand footer */}
-              <div className="mt-8 pt-6 border-t border-stone-100 text-center">
+              <div className="mt-5 pt-3 border-t border-stone-100 text-center">
                 <img
                   src="/Tipografia Logo.svg"
                   alt="Later Nobilis"
-                  className="h-5 w-auto mx-auto brightness-0 opacity-40"
+                  className="h-3.5 w-auto mx-auto brightness-0 opacity-40"
                 />
-                <p className="text-gray-400 text-xs mt-2">
+                <p className="text-gray-400 text-[10px] mt-1">
                   Imobiliária Boutique
                 </p>
               </div>

@@ -26,23 +26,23 @@ export default function Section1() {
   ];
 
   return (
-    <section id="sobre" className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 md:px-8 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section id="sobre" className="py-10 sm:py-12 md:py-16 px-4 md:px-6 bg-white">
+      <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start mb-10 sm:mb-16 md:mb-20 gap-4">
+        <div className="flex flex-col sm:flex-row justify-between items-start mb-6 sm:mb-10 md:mb-12 gap-3">
           <div className="group">
             {/* Badge */}
-            <span className="inline-block text-primary text-xs sm:text-sm font-medium tracking-widest uppercase mb-3 sm:mb-4">
+            <span className="inline-block text-primary text-[11px] font-medium tracking-widest uppercase mb-2">
               Nossa Essência
             </span>
 
             {/* Título */}
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-800 tracking-tight mb-3 sm:mb-4">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-800 tracking-tight mb-2">
               O que é uma <span className="font-bodoni text-primary">Imobiliária Boutique?</span>
             </h2>
 
             {/* Linha decorativa animada */}
-            <div className="h-[3px] w-24 sm:w-32 bg-primary/20 rounded-full overflow-hidden">
+            <div className="h-[2px] w-16 sm:w-20 bg-primary/20 rounded-full overflow-hidden">
               <div className="h-full w-0 bg-primary transition-all duration-700 ease-out group-hover:w-full" />
             </div>
           </div>
@@ -51,61 +51,61 @@ export default function Section1() {
             <img
               src="/Tipografia Logo.svg"
               alt="Later Nobilis"
-              className="h-6 w-auto ml-auto brightness-0 opacity-30"
+              className="h-4 w-auto ml-auto brightness-0 opacity-30"
             />
           </div>
         </div>
 
         {/* Content Grid */}
-        <div className="grid md:grid-cols-2 gap-x-8 lg:gap-x-20 gap-y-4 sm:gap-y-6 md:gap-y-8">
+        <div className="grid md:grid-cols-2 gap-x-5 lg:gap-x-10 gap-y-3 sm:gap-y-4">
           {/* Coluna Esquerda */}
-          <div className="space-y-4 sm:space-y-6 md:space-y-8">
+          <div className="space-y-3 sm:space-y-4">
             {featuresLeft.map((feature, index) => (
               <div
                 key={index}
-                className="group p-4 sm:p-6 rounded-xl transition-all duration-300 hover:bg-gray-50 hover:shadow-lg hover:-translate-y-1 cursor-default"
+                className="group p-3 sm:p-4 rounded-lg transition-all duration-300 hover:bg-gray-50 hover:shadow-lg hover:-translate-y-1 cursor-default"
               >
                 <div className="relative">
-                  <h3 className="text-primary text-base sm:text-lg font-medium tracking-wide mb-2 sm:mb-3 uppercase">
+                  <h3 className="text-primary text-xs sm:text-sm font-medium tracking-wide mb-1.5 uppercase">
                     <span className="text-primary/60">/</span> {feature.title}
                   </h3>
                   {/* Linha animada */}
-                  <div className="h-[2px] bg-primary/20 mb-3 sm:mb-4 rounded-full overflow-hidden">
+                  <div className="h-[2px] bg-primary/20 mb-2 rounded-full overflow-hidden">
                     <div className="h-full w-0 bg-primary transition-all duration-500 ease-out group-hover:w-full" />
                   </div>
-                  <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{feature.description}</p>
+                  <p className="text-gray-600 leading-relaxed text-xs sm:text-sm">{feature.description}</p>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Coluna Direita */}
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-3">
             {/* Primeiro item - Estratégias */}
-            <div className="group p-4 sm:p-6 rounded-xl transition-all duration-300 hover:bg-gray-50 hover:shadow-lg hover:-translate-y-1 cursor-default">
+            <div className="group p-3 sm:p-4 rounded-lg transition-all duration-300 hover:bg-gray-50 hover:shadow-lg hover:-translate-y-1 cursor-default">
               <div className="relative">
-                <h3 className="text-primary text-base sm:text-lg font-medium tracking-wide mb-2 uppercase">
+                <h3 className="text-primary text-xs sm:text-sm font-medium tracking-wide mb-1.5 uppercase">
                   <span className="text-primary/60">/ </span>
                   {featuresRight[0].title}
                 </h3>
-                <div className="h-[2px] bg-primary/20 mb-3 rounded-full overflow-hidden">
+                <div className="h-[2px] bg-primary/20 mb-2 rounded-full overflow-hidden">
                   <div className="h-full w-0 bg-primary transition-all duration-500 ease-out group-hover:w-full" />
                 </div>
-                <p className="text-gray-600 leading-relaxed text-sm">{featuresRight[0].description}</p>
+                <p className="text-gray-600 leading-relaxed text-xs sm:text-sm">{featuresRight[0].description}</p>
               </div>
             </div>
 
             {/* Cards destacados - Home staging e Open house */}
-            <div className="grid gap-3 sm:gap-4">
+            <div className="grid gap-2">
               {featuresRight.slice(1).map((feature, index) => (
                 <div
                   key={index}
-                  className="group p-4 sm:p-5 bg-stone-50 border border-stone-200 rounded-xl transition-all duration-300 hover:bg-stone-100 hover:border-primary/30 hover:shadow-md cursor-default"
+                  className="group p-3 bg-stone-50 border border-stone-200 rounded-lg transition-all duration-300 hover:bg-stone-100 hover:border-primary/30 hover:shadow-md cursor-default"
                 >
-                  <h3 className="text-primary font-medium text-lg sm:text-xl mb-2 sm:mb-3">
+                  <h3 className="text-primary font-medium text-sm sm:text-base mb-1">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 text-base sm:text-lg leading-relaxed">{feature.description}</p>
+                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">{feature.description}</p>
                 </div>
               ))}
             </div>
