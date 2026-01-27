@@ -31,9 +31,9 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="inicio" className="bg-white pt-16">
+    <section id="inicio" className="relative z-10 bg-white pt-16">
       {/* ========== MOBILE VERSION - Full image with centered text ========== */}
-      <div className="md:hidden px-4 py-5">
+      <div className="md:hidden px-4 pt-5 pb-0">
         <div ref={heroRef} className="relative h-[400px] sm:h-[420px] rounded-[20px] overflow-hidden">
           {/* Full screen image */}
           <div className="absolute inset-0">
@@ -62,8 +62,24 @@ export default function Hero() {
             </h2>
 
             {/* Button */}
-            <button className="group px-10 py-3.5 bg-white text-gray-900 text-sm font-medium tracking-wider hover:bg-gray-100 transition-colors rounded-lg">
-              Ler Mais
+            <button
+              onClick={() => {
+                const element = document.getElementById("sobre");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              className="group flex items-center gap-3 px-8 py-3.5 bg-white/95 backdrop-blur-sm text-gray-900 text-sm font-medium tracking-widest uppercase hover:bg-white transition-all duration-300 rounded-full"
+            >
+              Explorar
+              <svg
+                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </button>
 
           </div>
@@ -71,7 +87,7 @@ export default function Hero() {
       </div>
 
       {/* ========== DESKTOP VERSION - Original layout ========== */}
-      <div className="hidden md:block max-w-7xl mx-auto px-4 py-8 pb-16">
+      <div className="hidden md:block max-w-7xl mx-auto px-4 pt-12 pb-0">
         <div className="relative h-[380px] lg:h-[450px]">
           {/* Container da imagem com overflow hidden */}
           <div
@@ -126,15 +142,24 @@ export default function Hero() {
 
         {/* Botão - fora do container principal */}
         <div className="relative -mt-5 ml-[8%] lg:ml-[calc((100%-72rem)/2+1.5rem)]">
-          <button className="group px-16 py-3 bg-gray-900 text-white text-sm tracking-wider hover:bg-gray-800 transition-colors rounded-lg overflow-hidden">
-            <span className="relative block overflow-hidden h-4">
-              <span className="block transition-transform duration-300 ease-out group-hover:-translate-y-full">
-                Ler Mais
-              </span>
-              <span className="absolute top-full left-0 block transition-transform duration-300 ease-out group-hover:-translate-y-full">
-                Ler Mais
-              </span>
-            </span>
+          <button
+            onClick={() => {
+              const element = document.getElementById("sobre");
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            className="group flex items-center gap-3 px-10 py-3.5 bg-gray-900 text-white text-sm tracking-widest uppercase hover:bg-gray-800 transition-all duration-300 rounded-full"
+          >
+            Explorar
+            <svg
+              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </button>
         </div>
       </div>

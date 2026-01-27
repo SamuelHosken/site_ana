@@ -6,31 +6,39 @@ export default function Section3() {
   const services = [
     {
       number: "01",
-      title: "Visualização 3D do potencial",
-      description: "O comprador não compra o que é, compra o que pode ser. Criamos renderizações que mostram seu imóvel reformado, ajudando o cliente a visualizar o futuro e acelerar a decisão.",
-      image: "Render 3D",
-      imageSrc: "/visualização_3D_o_potencial.png"
+      title: "Concierge imobiliário",
+      description: "Seu patrimônio é tratado com atenção e exclusividade: conheça o método único de concierge em Brasília. Do preparo à venda, cuidamos de cada detalhe para que seu imóvel seja apresentado para maximizar o apelo visual e emocional para acelerar os resultados pelo maior valor agregado.",
+      image: "Concierge",
+      imageSrc: "/ana_blur.png",
+      buttonText: "Descubra mais",
+      buttonLink: "#contato"
     },
     {
       number: "02",
-      title: "Fotos e vídeos que vendem",
-      description: "Fotógrafos e filmmakers especializados em arquitetura capturam cada detalhe. Seus anúncios não vão parecer mais um. Vão parecer capa de revista.",
-      image: "Fotografia",
-      imageSrc: "/ana_blur.png"
+      title: "International Flip",
+      description: "Transforme o capital da venda do seu imóvel em uma oportunidade global. Viabilizamos a compra de imóveis em Dubai e EUA com condições privilegiadas de investimento, rentabilidade superior e proteção patrimonial em moeda forte.",
+      image: "International",
+      imageSrc: "/Dubai Miami Sunset.png",
+      buttonText: "Descubra mais",
+      buttonLink: "/international-flip"
     },
     {
       number: "03",
-      title: "Anúncios que atraem compradores certos",
-      description: "Textos persuasivos + design premium + impulsionamento estratégico. Seu imóvel aparece para quem realmente pode comprar, não para curiosos.",
-      image: "Anúncios",
-      imageSrc: "/anúncios_que_atraem.png"
+      title: "Home staging profissional",
+      description: "Imóveis preparados vendem até 50% mais rápido e podem alcançar valores até 20% superiores. Transformamos o seu imóvel em um cenário irresistível para o comprador certo.",
+      image: "Home Staging",
+      imageSrc: "/home_staging.png",
+      buttonText: "Descubra mais",
+      buttonLink: "/home-staging"
     },
     {
       number: "04",
-      title: "Home staging completo",
-      description: "Mobiliário selecionado transforma seu imóvel em um cenário de desejo. O comprador se imagina morando ali, e isso acelera a venda em até 50%.",
-      image: "Home Staging",
-      imageSrc: "/home_staging.png"
+      title: "Open house exclusivo",
+      description: "Eventos privados que criam desejo, urgência e competição entre compradores qualificados, aumentando suas chances de fechar o melhor negócio.",
+      image: "Open House",
+      imageSrc: "/visualização_3D_o_potencial.png",
+      buttonText: "Descubra mais",
+      buttonLink: "/open-house"
     }
   ];
 
@@ -47,7 +55,7 @@ export default function Section3() {
             <span className="font-bodoni text-primary">única de valor</span>
           </h2>
           <p className="text-gray-600 text-sm sm:text-sm mt-4">
-            Cada detalhe é pensado para uma coisa: fazer seu imóvel se destacar e vender mais rápido, pelo melhor valor.
+            Cada detalhe é pensado para uma coisa: fazer seu imóvel se destacar, <strong>vender e alugar</strong> mais rápido, pelo melhor valor.
           </p>
           <div className="h-[2px] w-20 sm:w-20 bg-primary/20 rounded-full overflow-hidden mx-auto mt-4">
             <div className="h-full w-0 bg-primary transition-all duration-700 ease-out group-hover:w-full" />
@@ -112,11 +120,14 @@ export default function Section3() {
 
                   <p className="text-gray-600 text-sm sm:text-sm leading-relaxed">{service.description}</p>
 
-                  {/* Botão sutil */}
-                  <button className="mt-4 sm:mt-4 text-primary font-medium flex items-center gap-2 group/btn text-sm sm:text-sm">
-                    <span>Saiba mais</span>
+                  {/* Botão */}
+                  <a
+                    href={service.buttonLink || "#"}
+                    className="mt-4 sm:mt-4 text-primary font-medium flex items-center gap-2 group/btn text-sm sm:text-sm hover:underline"
+                  >
+                    <span>{service.buttonText || "Saiba mais"}</span>
                     <span className="transition-transform duration-300 group-hover/btn:translate-x-1">→</span>
-                  </button>
+                  </a>
                 </div>
               </ScrollReveal>
             </div>

@@ -8,24 +8,24 @@ export default function Section4() {
 
   const features = [
     {
-      title: "Mais visibilidade desde o dia 1",
-      description: "Com R$10.000 investidos em marketing, seu imóvel aparece para milhares de compradores qualificados nas primeiras semanas.",
-      image: "Visibilidade"
+      title: "Visualização 3D do potencial",
+      description: "Utilizamos estratégias validadas de escrita persuasiva, como o storytelling, para capturar a atenção de verdade dessas pessoas e aumentar o valor percebido.",
+      image: "3D Render"
+    },
+    {
+      title: "Fotos e vídeos que vendem",
+      description: "Fotógrafos e filmmakers especializados em arquitetura capturam cada detalhe. Seus anúncios não vão parecer mais um. Vão parecer capa de revista.",
+      image: "Fotografia"
+    },
+    {
+      title: "Investimento relevante em tráfego pago",
+      description: "Captar a atenção das pessoas onde elas estão, onde passam mais tempo. Assim convertemos em visitas e ofertas qualificadas.",
+      image: "Tráfego Pago"
     },
     {
       title: "Anúncios que se destacam",
-      description: "Fotos profissionais, vídeos cinematográficos e textos persuasivos. Seu imóvel não vai ser mais um. Vai ser O imóvel.",
-      image: "Anúncios Premium"
-    },
-    {
-      title: "Compradores qualificados",
-      description: "Chega de curiosos. Nossa estratégia atrai apenas quem realmente tem interesse e capacidade de comprar.",
-      image: "Público Certo"
-    },
-    {
-      title: "Venda mais rápida e por mais valor",
-      description: "O resultado de tudo isso: imóveis que vendem em menos tempo, por preços que reconhecem seu real valor.",
-      image: "Resultado"
+      description: "Maior alcance e performance, essa é a fórmula que realmente gera resultados. Visitas se tornam em ofertas mais rápidas e reduz o tempo do seu imóvel parado.",
+      image: "Destaque"
     }
   ];
 
@@ -94,8 +94,9 @@ export default function Section4() {
         <div className="max-w-5xl mx-auto px-4 md:px-6 w-full">
           {/* Header */}
           <div className="group mb-5 sm:mb-4 md:mb-6">
-            <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl mb-2 sm:mb-3">
-              <span className="font-bodoni text-primary">O resultado?</span>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl mb-2 sm:mb-3 text-gray-800">
+              O que você só encontra nos anúncios de uma{" "}
+              <span className="font-bodoni text-primary">Imobiliária Boutique?</span>
             </h2>
             <div className="h-[2px] w-20 sm:w-20 bg-primary/20 rounded-full overflow-hidden">
               <div className="h-full w-0 bg-primary transition-all duration-700 ease-out group-hover:w-full" />
@@ -103,7 +104,7 @@ export default function Section4() {
           </div>
 
           <p className="text-gray-700 text-sm sm:text-sm mb-6 sm:mb-6 md:mb-8 max-w-xl leading-relaxed">
-            Seu imóvel ganha destaque imediato, atrai compradores certos e vende pelo valor que merece.
+            Seu imóvel ganha destaque imediato, atrai compradores certos e <strong>vende ou aluga</strong> pelo valor que merece. Estamos investindo com intencionalidade e estratégia no impulsionamento do anúncio do seu imóvel.
           </p>
 
           {/* Content Grid */}
@@ -198,6 +199,21 @@ export default function Section4() {
               <div className="absolute -top-3 -left-3 w-20 h-20 border-2 border-primary/30 rounded-xl -z-10" />
               <div className="absolute -bottom-3 -right-3 w-24 h-24 bg-primary/10 rounded-xl -z-10" />
             </div>
+          </div>
+
+          {/* Footer text */}
+          <div className="mt-8 sm:mt-10 text-center max-w-2xl mx-auto">
+            <p className="text-gray-700 text-sm sm:text-sm leading-relaxed mb-4">
+              Na <strong className="text-primary">Later Nobilis Boutique</strong>, sabemos exatamente as expectativas de quem vende e quem compra um imóvel. Quem coloca um bem à venda quer propostas que reconheçam seu real valor, enquanto quem busca adquirir deseja sentir que fez um excelente negócio.
+            </p>
+            <button className="group px-6 py-3 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-all duration-300">
+              <span className="flex items-center gap-2">
+                Quero impulsionar meu imóvel
+                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </button>
           </div>
 
           {/* Scroll indicator - hidden on mobile */}

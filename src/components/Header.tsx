@@ -36,10 +36,21 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
+  const [isInovacaoOpen, setIsInovacaoOpen] = useState(false);
+
   const navItems = [
-    { label: "Início", href: "#inicio" },
-    { label: "Sobre", href: "#sobre" },
-    { label: "Serviços", href: "#servicos" },
+    { label: "Home", href: "/" },
+    { label: "Sobre nós", href: "/quem-somos" },
+    {
+      label: "Inovação Imobiliária",
+      href: "#servicos",
+      hasDropdown: true,
+      dropdownItems: [
+        { label: "Home Staging", href: "/home-staging" },
+        { label: "Open House", href: "/open-house" },
+      ]
+    },
+    { label: "Internacionalização", href: "/international-flip" },
     { label: "Contato", href: "#contato" },
   ];
 
@@ -55,8 +66,7 @@ export default function Header() {
         <nav className="max-w-5xl mx-auto px-4 flex justify-between items-center">
           {/* Logo */}
           <a
-            href="#inicio"
-            onClick={(e) => scrollToSection(e, "#inicio")}
+            href="/"
             className="group relative"
           >
             <img
@@ -69,22 +79,65 @@ export default function Header() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-5">
             {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={(e) => scrollToSection(e, item.href)}
-                className="relative text-xs tracking-wide transition-colors duration-300 group/link text-gray-600 hover:text-primary"
-              >
-                {item.label}
-                {/* Linha animada no hover */}
-                <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 group-hover/link:w-full transition-all duration-300 bg-primary" />
-              </a>
+              item.hasDropdown ? (
+                <div
+                  key={item.label}
+                  className="relative"
+                  onMouseEnter={() => setIsInovacaoOpen(true)}
+                  onMouseLeave={() => setIsInovacaoOpen(false)}
+                >
+                  <button
+                    className="relative text-xs tracking-wide transition-colors duration-300 group/link text-gray-600 hover:text-primary flex items-center gap-1"
+                  >
+                    {item.label}
+                    <svg
+                      className={`w-3 h-3 transition-transform duration-200 ${isInovacaoOpen ? 'rotate-180' : ''}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                    <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 group-hover/link:w-full transition-all duration-300 bg-primary" />
+                  </button>
+                  {/* Dropdown */}
+                  <div
+                    className={`absolute top-full left-0 mt-2 bg-white rounded-lg shadow-lg border border-stone-100 py-2 min-w-[160px] transition-all duration-200 ${
+                      isInovacaoOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                    }`}
+                  >
+                    {item.dropdownItems?.map((dropItem) => (
+                      <a
+                        key={dropItem.label}
+                        href={dropItem.href}
+                        onClick={() => setIsInovacaoOpen(false)}
+                        className="block px-4 py-2 text-xs text-gray-600 hover:text-primary hover:bg-stone-50 transition-colors"
+                      >
+                        {dropItem.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={(e) => {
+                    if (item.href.startsWith("#")) {
+                      scrollToSection(e, item.href);
+                    }
+                  }}
+                  className="relative text-xs tracking-wide transition-colors duration-300 group/link text-gray-600 hover:text-primary"
+                >
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 group-hover/link:w-full transition-all duration-300 bg-primary" />
+                </a>
+              )
             ))}
 
             {/* CTA Button */}
             <a
-              href="#contato"
-              onClick={(e) => scrollToSection(e, "#contato")}
+              href="/#contato"
               className="relative px-3.5 py-1.5 text-xs font-medium tracking-wide rounded-md overflow-hidden transition-all duration-300 group/btn border-2 border-primary text-primary hover:text-white"
             >
               {/* Background fill on hover */}
@@ -157,38 +210,73 @@ export default function Header() {
             {/* Nav Items */}
             <nav className="flex flex-col gap-1">
               {navItems.map((item, index) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={(e) => scrollToSection(e, item.href)}
-                  className="group py-2.5 border-b border-stone-100 transition-all duration-300"
-                  style={{ transitionDelay: `${index * 50}ms` }}
-                >
-                  <span className="flex items-center justify-between text-gray-800 text-sm">
-                    {item.label}
-                    <svg
-                      className="w-3.5 h-3.5 text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                item.hasDropdown ? (
+                  <div key={item.label} className="border-b border-stone-100">
+                    <button
+                      onClick={() => setIsInovacaoOpen(!isInovacaoOpen)}
+                      className="w-full py-2.5 transition-all duration-300"
+                      style={{ transitionDelay: `${index * 50}ms` }}
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </span>
-                </a>
+                      <span className="flex items-center justify-between text-gray-800 text-sm">
+                        {item.label}
+                        <svg
+                          className={`w-3.5 h-3.5 text-primary transition-transform duration-300 ${isInovacaoOpen ? 'rotate-180' : ''}`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </span>
+                    </button>
+                    <div className={`overflow-hidden transition-all duration-300 ${isInovacaoOpen ? 'max-h-40' : 'max-h-0'}`}>
+                      {item.dropdownItems?.map((dropItem) => (
+                        <a
+                          key={dropItem.label}
+                          href={dropItem.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="block py-2 pl-4 text-sm text-gray-600 hover:text-primary transition-colors"
+                        >
+                          {dropItem.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    onClick={(e) => {
+                      if (item.href.startsWith("#")) {
+                        scrollToSection(e, item.href);
+                      } else {
+                        setIsMobileMenuOpen(false);
+                      }
+                    }}
+                    className="group py-2.5 border-b border-stone-100 transition-all duration-300"
+                    style={{ transitionDelay: `${index * 50}ms` }}
+                  >
+                    <span className="flex items-center justify-between text-gray-800 text-sm">
+                      {item.label}
+                      <svg
+                        className="w-3.5 h-3.5 text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  </a>
+                )
               ))}
             </nav>
 
             {/* CTA */}
             <div className="mt-auto">
               <a
-                href="#contato"
-                onClick={(e) => scrollToSection(e, "#contato")}
+                href="/#contato"
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="flex items-center justify-center gap-1.5 w-full py-2.5 bg-primary text-white rounded-md font-medium transition-all duration-300 hover:bg-primary/90 text-xs"
               >
                 Agendar Avaliação

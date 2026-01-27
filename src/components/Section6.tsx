@@ -4,7 +4,7 @@ import ScrollReveal from "./ScrollReveal";
 
 export default function Section6() {
   return (
-    <section className="py-14 sm:py-12 md:py-16 px-4 md:px-6 bg-gradient-to-b from-stone-50 to-white">
+    <section id="internacional" className="py-14 sm:py-12 md:py-16 px-4 md:px-6 bg-gradient-to-b from-stone-50 to-white">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <ScrollReveal className="text-center mb-8 sm:mb-8 md:mb-10">
@@ -42,11 +42,11 @@ export default function Section6() {
           <p className="text-gray-600 text-sm sm:text-sm leading-relaxed mb-4 sm:mb-4">
             Viabilizamos a compra de imóveis em Dubai e EUA com condições privilegiadas de investimento:
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-4 text-left max-w-xl mx-auto">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-4 text-left max-w-xl mx-auto mb-6">
             <ScrollReveal delay={300} className="flex-1">
               <div className="p-4 bg-white rounded-xl border border-stone-200 h-full">
-                <p className="text-gray-800 font-medium text-sm sm:text-sm">Rentabilidade superior</p>
-                <p className="text-gray-600 text-xs sm:text-xs mt-1">Rendimentos acima de 1% ao mês antes da entrega</p>
+                <p className="text-gray-800 font-medium text-sm sm:text-sm">Valorização Superior</p>
+                <p className="text-gray-600 text-xs sm:text-xs mt-1">Invista em mercados que só crescem com rendimentos livres de impostos</p>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={400} className="flex-1">
@@ -56,6 +56,18 @@ export default function Section6() {
               </div>
             </ScrollReveal>
           </div>
+
+          {/* Botão */}
+          <ScrollReveal delay={500}>
+            <a href="/international-flip" className="group inline-flex px-6 py-3 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-all duration-300">
+              <span className="flex items-center gap-2">
+                Quero conhecer
+                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </a>
+          </ScrollReveal>
         </ScrollReveal>
       </div>
     </section>

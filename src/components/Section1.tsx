@@ -3,46 +3,39 @@
 import ScrollReveal from "./ScrollReveal";
 
 export default function Section1() {
-  const featuresLeft = [
+  const features = [
     {
-      title: "Investimento real em marketing",
-      description: "Aplicamos até R$ 10.000 em campanhas digitais segmentadas para o seu imóvel. Enquanto outras imobiliárias apenas listam, nós impulsionamos, garantindo visibilidade máxima desde o primeiro dia."
+      title: "Investimento real em impulsionamento",
+      description: "Contratualmente, nos comprometemos a destinar até R$ 10.000,00 em divulgação online exclusiva para o seu imóvel. Campanhas digitais segmentadas de anúncios online no Google, nas redes sociais e nos portais imobiliários. Esse investimento acelera o interesse qualificado e garante visibilidade direcionada desde o lançamento."
     },
     {
-      title: "Atendimento ultra exclusivo",
-      description: "Cada consultor gerencia no máximo 3 imóveis simultaneamente. Isso significa foco total, estratégia personalizada e atenção exclusiva ao seu patrimônio. Nem todo imóvel se encaixa no nosso portfólio."
-    }
-  ];
-
-  const featuresRight = [
-    {
-      title: "Estratégias de Nova York e Dubai",
-      description: "Técnicas que vendem imóveis de luxo no mundo inteiro, agora em Brasília."
+      title: "Atendimento dedicado e intencional",
+      description: "Cada consultor gerencia no máximo três imóveis simultaneamente. Isso garante foco total, estratégia personalizada e atenção dedicada ao seu patrimônio. Nem todo imóvel se encaixa no nosso portfólio e isso é parte da nossa essência."
     },
     {
-      title: "Home staging profissional",
-      description: "Imóveis preparados vendem até 50% mais rápido e por valores até 20% maiores. Transformamos seu espaço em um cenário irresistível."
+      title: "Estratégias Internacionais de Venda",
+      description: "Aplicamos técnicas como home staging e open house utilizadas nos principais mercados imobiliários do mundo, agora adaptadas para o mercado de alto padrão em Brasília."
     },
     {
-      title: "Open house exclusivo",
-      description: "Eventos reservados que criam desejo, urgência e competição entre compradores qualificados."
+      title: "Ecossistema integrado",
+      description: "Possuímos uma estrutura interna integrada com jurídico, contabilidade e equipe de projeto de arquitetura e gestão de obras para garantir mais segurança e praticidade. Cuidamos de tudo: do preparo à divulgação, da negociação à assinatura."
     }
   ];
 
   return (
-    <section id="sobre" className="py-14 sm:py-12 md:py-16 px-4 md:px-6 bg-white">
+    <section className="relative z-10 -mt-[40vh] pt-20 pb-14 sm:pt-16 sm:pb-12 md:pt-20 md:pb-16 px-4 md:px-6 bg-stone-50">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <ScrollReveal className="flex flex-col sm:flex-row justify-between items-start mb-8 sm:mb-10 md:mb-12 gap-3">
           <div className="group">
             {/* Badge */}
             <span className="inline-block text-primary text-xs font-medium tracking-widest uppercase mb-3">
-              Nossa Essência
+              Nossa Abordagem em Vendas Imobiliárias
             </span>
 
             {/* Título */}
             <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl text-gray-800 tracking-tight mb-2">
-              O que é uma <span className="font-bodoni text-primary">Imobiliária Boutique?</span>
+              Por que vendemos o seu imóvel mais <span className="font-bodoni text-primary">rápido?</span>
             </h2>
 
             {/* Linha decorativa animada */}
@@ -60,61 +53,34 @@ export default function Section1() {
           </div>
         </ScrollReveal>
 
-        {/* Content Grid */}
-        <div className="grid md:grid-cols-2 gap-x-5 lg:gap-x-10 gap-y-5 sm:gap-y-4">
-          {/* Coluna Esquerda */}
-          <div className="space-y-5 sm:space-y-4">
-            {featuresLeft.map((feature, index) => (
-              <ScrollReveal key={index} delay={(index + 1) * 100}>
-                <div className="group p-4 sm:p-4 rounded-lg transition-all duration-300 hover:bg-gray-50 hover:shadow-lg hover:-translate-y-1 cursor-default">
-                  <div className="relative">
-                    <h3 className="text-primary text-sm sm:text-sm font-medium tracking-wide mb-2 uppercase">
-                      <span className="text-primary/60">/</span> {feature.title}
-                    </h3>
-                    {/* Linha animada */}
-                    <div className="h-[2px] bg-primary/20 mb-3 rounded-full overflow-hidden">
-                      <div className="h-full w-0 bg-primary transition-all duration-500 ease-out group-hover:w-full" />
-                    </div>
-                    <p className="text-gray-600 leading-relaxed text-sm sm:text-sm">{feature.description}</p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          {/* Coluna Direita */}
-          <div className="space-y-5 sm:space-y-3">
-            {/* Primeiro item - Estratégias */}
-            <ScrollReveal delay={100}>
-              <div className="group p-4 sm:p-4 rounded-lg transition-all duration-300 hover:bg-gray-50 hover:shadow-lg hover:-translate-y-1 cursor-default">
+        {/* Content Grid - 2x2 */}
+        <div className="grid md:grid-cols-2 gap-5 lg:gap-6">
+          {features.map((feature, index) => (
+            <ScrollReveal key={index} delay={(index + 1) * 100}>
+              <div className="group p-5 sm:p-5 bg-white rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-default h-full">
                 <div className="relative">
                   <h3 className="text-primary text-sm sm:text-sm font-medium tracking-wide mb-2 uppercase">
-                    <span className="text-primary/60">/ </span>
-                    {featuresRight[0].title}
+                    <span className="text-primary/60">/</span> {feature.title}
                   </h3>
+                  {/* Linha animada */}
                   <div className="h-[2px] bg-primary/20 mb-3 rounded-full overflow-hidden">
                     <div className="h-full w-0 bg-primary transition-all duration-500 ease-out group-hover:w-full" />
                   </div>
-                  <p className="text-gray-600 leading-relaxed text-sm sm:text-sm">{featuresRight[0].description}</p>
+                  <p className="text-gray-600 leading-relaxed text-sm sm:text-sm">{feature.description}</p>
                 </div>
               </div>
             </ScrollReveal>
-
-            {/* Cards destacados - Home staging e Open house */}
-            <div className="grid gap-4 sm:gap-2">
-              {featuresRight.slice(1).map((feature, index) => (
-                <ScrollReveal key={index} delay={(index + 2) * 100}>
-                  <div className="group p-4 sm:p-3 bg-stone-50 border border-stone-200 rounded-lg transition-all duration-300 hover:bg-stone-100 hover:border-primary/30 hover:shadow-md cursor-default">
-                    <h3 className="text-primary font-medium text-base sm:text-base mb-1.5">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm sm:text-sm leading-relaxed">{feature.description}</p>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
+
+        {/* Footer text */}
+        <ScrollReveal delay={500} className="mt-10 text-center">
+          <p className="text-gray-700 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
+            <span className="font-bodoni text-primary text-lg">O resultado?</span>{" "}
+            A percepção de valor cresce, o imóvel ganha destaque imediato e comprador e vendedor se encontram em um terreno comum, pois conseguimos demonstrar o{" "}
+            <strong className="text-gray-800">real valor do seu bem</strong>.
+          </p>
+        </ScrollReveal>
       </div>
     </section>
   );
