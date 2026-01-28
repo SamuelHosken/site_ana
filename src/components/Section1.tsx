@@ -1,9 +1,26 @@
 "use client";
 
+import { ReactNode } from "react";
 import ScrollReveal from "./ScrollReveal";
 
+// Componente de Tooltip reutilizável
+function Tooltip({ term, explanation }: { term: string; explanation: string }) {
+  return (
+    <span className="relative inline-block group/tooltip">
+      <span className="text-gray-800 border-b-2 border-primary/40 cursor-help transition-colors group-hover/tooltip:border-primary">
+        {term}
+      </span>
+      <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-3 bg-white rounded-xl shadow-xl border border-stone-100 w-64 opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-300 transform group-hover/tooltip:-translate-y-0 translate-y-2 z-50 pointer-events-none">
+        <span className="block text-primary text-xs font-semibold mb-1">{term}</span>
+        <span className="block text-gray-600 text-xs leading-relaxed">{explanation}</span>
+        <span className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-white" />
+      </span>
+    </span>
+  );
+}
+
 export default function Section1() {
-  const features = [
+  const features: { title: string; description: ReactNode }[] = [
     {
       title: "Investimento real em impulsionamento",
       description: "Contratualmente, nos comprometemos a destinar até R$ 10.000,00 em divulgação online exclusiva para o seu imóvel. Campanhas digitais segmentadas de anúncios online no Google, nas redes sociais e nos portais imobiliários. Esse investimento acelera o interesse qualificado e garante visibilidade direcionada desde o lançamento."
@@ -14,7 +31,21 @@ export default function Section1() {
     },
     {
       title: "Estratégias Internacionais de Venda",
-      description: "Aplicamos técnicas como home staging e open house utilizadas nos principais mercados imobiliários do mundo, agora adaptadas para o mercado de alto padrão em Brasília."
+      description: (
+        <>
+          Aplicamos técnicas como{" "}
+          <Tooltip
+            term="home staging"
+            explanation="Técnica de preparação visual do imóvel para venda, com decoração e ambientação estratégica que valoriza os espaços."
+          />{" "}
+          e{" "}
+          <Tooltip
+            term="open house"
+            explanation="Evento de visitação aberta onde o imóvel é apresentado a potenciais compradores em um ambiente preparado e acolhedor."
+          />{" "}
+          utilizadas nos principais mercados imobiliários do mundo, agora adaptadas para o mercado de alto padrão em Brasília.
+        </>
+      )
     },
     {
       title: "Ecossistema integrado",

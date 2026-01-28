@@ -1,9 +1,26 @@
 "use client";
 
+import { ReactNode } from "react";
 import ScrollReveal from "./ScrollReveal";
 
+// Componente de Tooltip reutilizável
+function Tooltip({ term, explanation }: { term: string; explanation: string }) {
+  return (
+    <span className="relative inline-block group/tip">
+      <strong className="text-gray-800 border-b-2 border-primary/40 cursor-help transition-colors group-hover/tip:border-primary">
+        {term}
+      </strong>
+      <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-3 bg-white rounded-xl shadow-xl border border-stone-100 w-64 opacity-0 invisible group-hover/tip:opacity-100 group-hover/tip:visible transition-all duration-300 transform group-hover/tip:-translate-y-0 translate-y-2 z-50 pointer-events-none">
+        <span className="block text-primary text-xs font-semibold mb-1">{term}</span>
+        <span className="block text-gray-600 text-xs leading-relaxed">{explanation}</span>
+        <span className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-white" />
+      </span>
+    </span>
+  );
+}
+
 export default function Section5() {
-  const reasons = [
+  const reasons: { number: string; title: string; description: ReactNode }[] = [
     {
       number: "01",
       title: "R$ 10.000 investidos no seu imóvel",
@@ -17,7 +34,19 @@ export default function Section5() {
     {
       number: "03",
       title: "Técnicas que vendem no mundo inteiro",
-      description: "Home staging, open house exclusivo, fotografia arquitetônica. O que funciona em Nova York e Dubai, agora funciona para o seu imóvel em Brasília."
+      description: (
+        <>
+          <Tooltip
+            term="Home staging"
+            explanation="Técnica de preparação visual do imóvel para venda, com decoração e ambientação estratégica que valoriza os espaços."
+          />,{" "}
+          <Tooltip
+            term="open house"
+            explanation="Evento de visitação aberta onde o imóvel é apresentado a potenciais compradores em um ambiente preparado e acolhedor."
+          />{" "}
+          exclusivo, fotografia arquitetônica. O que funciona em Nova York e Dubai, agora funciona para o seu imóvel em Brasília.
+        </>
+      )
     }
   ];
 
