@@ -672,7 +672,7 @@ export default function RentalsSection() {
   ];
 
   return (
-    <section className="py-14 sm:py-12 md:py-16 px-4 md:px-6 bg-white">
+    <section className="py-16 px-4 md:px-6 bg-white">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <ScrollReveal className="mb-10 sm:mb-12 md:mb-14">
@@ -734,8 +734,8 @@ export default function RentalsSection() {
                 delay={index * 50 + 100}
                 className={index % 2 === 1 ? "lg:order-1" : ""}
               >
-                <div className="relative bg-gradient-to-br from-stone-50 to-white rounded-xl border border-stone-100 p-4 sm:p-5 transition-all duration-300 group-hover:border-primary/20 group-hover:shadow-lg group-hover:shadow-primary/5">
-                  <div className="h-[140px] sm:h-[160px]">{feature.chart}</div>
+                <div className="relative bg-gradient-to-br from-stone-50 to-white rounded-xl border border-stone-100 p-5 transition-all duration-300 group-hover:border-primary/20 group-hover:shadow-lg group-hover:shadow-primary/5">
+                  <div className="h-[150px] md:h-[160px]">{feature.chart}</div>
 
                   {/* Subtle corner accent */}
                   <div

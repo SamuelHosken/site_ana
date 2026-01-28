@@ -27,9 +27,9 @@ export default function StrategySection() {
   ];
 
   return (
-    <section className="py-14 sm:py-12 md:py-16 px-4 md:px-6 bg-white">
+    <section className="py-16 px-4 md:px-6 bg-white">
       <div className="max-w-5xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-stretch">
           {/* Conteúdo à esquerda */}
           <div className="flex flex-col justify-center">
             {/* Header */}
@@ -73,21 +73,22 @@ export default function StrategySection() {
             </div>
 
             {/* CTA */}
-            <ScrollReveal delay={400} className="mt-6">
-              <button className="group px-5 py-2.5 bg-primary text-white text-xs font-medium rounded-lg hover:bg-primary/90 transition-all duration-300">
-                <span className="flex items-center gap-2">
-                  Descubra se seu imóvel é elegível
-                  <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </span>
-              </button>
+            <ScrollReveal delay={400} className="mt-8">
+              <a
+                href="/#contato"
+                className="group inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-all duration-300"
+              >
+                Descubra se seu imóvel é elegível
+                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
             </ScrollReveal>
           </div>
 
           {/* Imagem à direita */}
           <ScrollReveal animation="reveal-right" delay={100} className="h-full">
-            <div className="relative h-full min-h-[300px] bg-gradient-to-br from-stone-200 to-stone-300 rounded-xl overflow-hidden">
+            <div className="relative h-[280px] lg:h-full lg:min-h-[380px] bg-gradient-to-br from-stone-200 to-stone-300 rounded-xl overflow-hidden">
               <img
                 src="/strategy.jpg"
                 alt="Estratégia imobiliária"

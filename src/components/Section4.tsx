@@ -1,33 +1,165 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import ScrollReveal from "./ScrollReveal";
 
-export default function Section4() {
+const features = [
+  {
+    title: "Visualização 3D do potencial",
+    description: "Utilizamos estratégias validadas de escrita persuasiva, como o storytelling, para capturar a atenção de verdade dessas pessoas e aumentar o valor percebido.",
+    image: "3D Render"
+  },
+  {
+    title: "Fotos e vídeos que vendem",
+    description: "Fotógrafos e filmmakers especializados em arquitetura capturam cada detalhe. Seus anúncios não vão parecer mais um. Vão parecer capa de revista.",
+    image: "Fotografia"
+  },
+  {
+    title: "Investimento relevante em tráfego pago",
+    description: "Captar a atenção das pessoas onde elas estão, onde passam mais tempo. Assim convertemos em visitas e ofertas qualificadas.",
+    image: "Tráfego Pago"
+  },
+  {
+    title: "Anúncios que se destacam",
+    description: "Maior alcance e performance, essa é a fórmula que realmente gera resultados. Visitas se tornam em ofertas mais rápidas e reduz o tempo do seu imóvel parado.",
+    image: "Destaque"
+  }
+];
+
+// Ícones SVG para mobile
+const featureIcons = [
+  // 3D Render
+  <svg key="3d" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+  </svg>,
+  // Fotografia
+  <svg key="foto" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
+  </svg>,
+  // Tráfego
+  <svg key="trafego" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+  </svg>,
+  // Destaque
+  <svg key="destaque" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+  </svg>
+];
+
+// Componente Mobile - Accordion sem sticky scroll
+function Section4Mobile() {
+  const [openIndex, setOpenIndex] = useState(0);
+
+  return (
+    <section className="py-16 px-4 bg-gradient-to-br from-stone-100 to-stone-200 lg:hidden">
+      <div className="max-w-lg mx-auto">
+        {/* Header */}
+        <ScrollReveal>
+          <div className="text-center mb-8">
+            <h2 className="text-xl text-gray-800 mb-3 leading-tight">
+              O que você só encontra nos anúncios de uma{" "}
+              <span className="font-bodoni text-primary">Imobiliária Boutique?</span>
+            </h2>
+            <div className="h-[2px] w-20 bg-primary/30 mx-auto rounded-full" />
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={100}>
+          <p className="text-gray-600 text-sm mb-8 text-center leading-relaxed">
+            Seu imóvel ganha destaque imediato, atrai compradores certos e <strong className="text-gray-800">vende ou aluga</strong> pelo valor que merece.
+          </p>
+        </ScrollReveal>
+
+        {/* Accordion Features */}
+        <div className="space-y-3">
+          {features.map((feature, index) => (
+            <ScrollReveal key={index} delay={index * 80}>
+              <div
+                className={`bg-white rounded-xl overflow-hidden transition-all duration-300 ${
+                  openIndex === index ? "shadow-lg" : "shadow-sm"
+                }`}
+              >
+                {/* Header do accordion */}
+                <button
+                  onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
+                  className="w-full p-4 flex items-center gap-3 text-left"
+                >
+                  {/* Ícone */}
+                  <span
+                    className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 ${
+                      openIndex === index
+                        ? "bg-primary text-white"
+                        : "bg-stone-100 text-primary"
+                    }`}
+                  >
+                    {featureIcons[index]}
+                  </span>
+
+                  {/* Título */}
+                  <span
+                    className={`flex-1 text-sm font-semibold transition-colors duration-300 ${
+                      openIndex === index ? "text-primary" : "text-gray-800"
+                    }`}
+                  >
+                    {feature.title}
+                  </span>
+
+                  {/* Seta */}
+                  <svg
+                    className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${
+                      openIndex === index ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {/* Conteúdo expandido */}
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    openIndex === index ? "max-h-48" : "max-h-0"
+                  }`}
+                >
+                  <div className="px-4 pb-4">
+                    {/* Imagem placeholder */}
+                    <div className="h-24 bg-gradient-to-br from-stone-200 to-stone-300 rounded-lg mb-3 flex items-center justify-center">
+                      <span className="text-stone-500 text-xs">[ {feature.image} ]</span>
+                    </div>
+                    <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <ScrollReveal delay={400}>
+          <div className="mt-8 text-center">
+            <a
+              href="/#contato"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-all duration-300"
+            >
+              Quero impulsionar meu imóvel
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
+// Componente Desktop - Mantém a experiência original com sticky scroll
+function Section4Desktop() {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
-
-  const features = [
-    {
-      title: "Visualização 3D do potencial",
-      description: "Utilizamos estratégias validadas de escrita persuasiva, como o storytelling, para capturar a atenção de verdade dessas pessoas e aumentar o valor percebido.",
-      image: "3D Render"
-    },
-    {
-      title: "Fotos e vídeos que vendem",
-      description: "Fotógrafos e filmmakers especializados em arquitetura capturam cada detalhe. Seus anúncios não vão parecer mais um. Vão parecer capa de revista.",
-      image: "Fotografia"
-    },
-    {
-      title: "Investimento relevante em tráfego pago",
-      description: "Captar a atenção das pessoas onde elas estão, onde passam mais tempo. Assim convertemos em visitas e ofertas qualificadas.",
-      image: "Tráfego Pago"
-    },
-    {
-      title: "Anúncios que se destacam",
-      description: "Maior alcance e performance, essa é a fórmula que realmente gera resultados. Visitas se tornam em ofertas mais rápidas e reduz o tempo do seu imóvel parado.",
-      image: "Destaque"
-    }
-  ];
 
   const scrollToFeature = (index: number) => {
     if (!sectionRef.current) return;
@@ -87,10 +219,10 @@ export default function Section4() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-gradient-to-br from-stone-100 to-stone-200"
+      className="relative bg-gradient-to-br from-stone-100 to-stone-200 hidden lg:block"
       style={{ height: `${(features.length + 1) * 100}vh` }}
     >
-      <div className="sticky top-0 h-screen overflow-hidden flex items-start pt-20 sm:pt-20 md:pt-24">
+      <div className="sticky top-0 h-screen overflow-hidden flex items-start pt-24">
         <div className="max-w-5xl mx-auto px-4 md:px-6 w-full">
           {/* Header */}
           <div className="group mb-5 sm:mb-4 md:mb-6">
@@ -216,8 +348,8 @@ export default function Section4() {
             </button>
           </div>
 
-          {/* Scroll indicator - hidden on mobile */}
-          <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-1.5 text-stone-500">
+          {/* Scroll indicator */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-stone-500">
             <span className="text-[10px] uppercase tracking-widest">Role para continuar</span>
             <div className="w-5 h-8 border-2 border-stone-400 rounded-full flex justify-center pt-1.5">
               <div className="w-1 h-2.5 bg-stone-400 rounded-full animate-bounce" />
@@ -226,5 +358,15 @@ export default function Section4() {
         </div>
       </div>
     </section>
+  );
+}
+
+// Componente principal que renderiza a versão correta
+export default function Section4() {
+  return (
+    <>
+      <Section4Mobile />
+      <Section4Desktop />
+    </>
   );
 }

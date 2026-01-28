@@ -126,19 +126,19 @@ export default function InternationalFlip() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 px-4 md:px-6 bg-gradient-to-br from-slate-50 via-blue-50/50 to-white overflow-hidden">
+      <section className="relative pt-20 md:pt-24 pb-10 md:pb-16 px-4 md:px-6 bg-gradient-to-br from-slate-50 via-blue-50/50 to-white overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl hidden md:block" />
+          <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl hidden md:block" />
         </div>
 
         <div className="relative max-w-6xl mx-auto w-full">
           {/* Header content */}
           <ScrollReveal>
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-full mb-4">
-                <svg className="w-3.5 h-3.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="text-center mb-6 md:mb-8">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-full mb-3">
+                <svg className="w-3 h-3 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <span className="text-primary text-[10px] font-medium tracking-widest uppercase">
@@ -146,46 +146,45 @@ export default function InternationalFlip() {
                 </span>
               </div>
 
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-light leading-tight mb-3">
+              <h1 className="text-xl md:text-3xl lg:text-4xl font-light leading-tight mb-2">
                 <span className="font-bodoni text-primary">International Flip</span>
               </h1>
 
-              <p className="text-sm text-gray-600 mb-2">
+              <p className="text-xs md:text-sm text-gray-600 mb-2">
                 Imóveis como investimentos globais
               </p>
 
-              <div className="h-[2px] w-16 bg-primary/30 mx-auto mb-4" />
+              <div className="h-[2px] w-14 md:w-16 bg-primary/30 mx-auto mb-3" />
 
-              <p className="text-gray-500 text-xs max-w-lg mx-auto leading-relaxed">
-                Vendeu seu imóvel? Transforme o capital em uma oportunidade global.
-                Viabilizamos a compra de imóveis em mercados internacionais.
+              <p className="text-gray-500 text-xs max-w-md mx-auto leading-relaxed">
+                Transforme seu capital em uma oportunidade global.
               </p>
             </div>
           </ScrollReveal>
 
           {/* Stats */}
           <ScrollReveal delay={100}>
-            <div className="flex justify-center gap-8 md:gap-12 mb-10">
+            <div className="flex justify-center gap-6 md:gap-12 mb-6 md:mb-10">
               <div className="text-center">
-                <p className="text-xl md:text-2xl font-bold text-primary">3+</p>
-                <p className="text-[10px] text-gray-500 uppercase tracking-wider mt-0.5">Países</p>
+                <p className="text-lg md:text-2xl font-bold text-primary">3+</p>
+                <p className="text-[9px] md:text-[10px] text-gray-500 uppercase tracking-wider mt-0.5">Países</p>
               </div>
               <div className="text-center">
-                <p className="text-xl md:text-2xl font-bold text-primary">20%</p>
-                <p className="text-[10px] text-gray-500 uppercase tracking-wider mt-0.5">Valorização</p>
+                <p className="text-lg md:text-2xl font-bold text-primary">20%</p>
+                <p className="text-[9px] md:text-[10px] text-gray-500 uppercase tracking-wider mt-0.5">Valorização</p>
               </div>
               <div className="text-center">
-                <p className="text-xl md:text-2xl font-bold text-primary">0%</p>
-                <p className="text-[10px] text-gray-500 uppercase tracking-wider mt-0.5">Imposto Dubai</p>
+                <p className="text-lg md:text-2xl font-bold text-primary">0%</p>
+                <p className="text-[9px] md:text-[10px] text-gray-500 uppercase tracking-wider mt-0.5">Imposto Dubai</p>
               </div>
             </div>
           </ScrollReveal>
 
-          {/* Map visual - Enlarged */}
+          {/* Map visual */}
           <ScrollReveal animation="reveal-scale" delay={150}>
-            <div className="relative max-w-5xl mx-auto">
-              {/* Glow effect behind map */}
-              <div className="absolute inset-0 bg-blue-100/50 blur-3xl rounded-full scale-90" />
+            <div className="relative max-w-3xl md:max-w-5xl mx-auto">
+              {/* Glow effect behind map - desktop only */}
+              <div className="absolute inset-0 bg-blue-100/50 blur-3xl rounded-full scale-90 hidden md:block" />
 
               <div className="relative">
                 <img
@@ -199,12 +198,12 @@ export default function InternationalFlip() {
 
           {/* CTA */}
           <ScrollReveal delay={200}>
-            <div className="text-center mt-10">
+            <div className="text-center mt-6 md:mt-10">
               <a
                 href="/#contato"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-xs font-medium rounded-full hover:bg-primary/90 transition-all duration-300 group"
+                className="inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 bg-primary text-white text-xs font-medium rounded-full hover:bg-primary/90 transition-all duration-300 group"
               >
-                Quero diversificar meu patrimônio
+                Diversificar patrimônio
                 <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -215,27 +214,27 @@ export default function InternationalFlip() {
       </section>
 
       {/* Vantagens */}
-      <section className="py-16 px-4 md:px-6 bg-white">
+      <section className="py-12 md:py-16 px-4 md:px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="text-xl sm:text-2xl text-gray-800 mb-2">
+            <div className="text-center mb-8">
+              <h2 className="text-lg md:text-2xl text-gray-800 mb-2">
                 Por que investir{" "}
                 <span className="font-bodoni text-primary">no exterior</span>?
               </h2>
-              <div className="h-[2px] w-20 bg-primary/20 mx-auto" />
+              <div className="h-[2px] w-16 bg-primary/20 mx-auto" />
             </div>
           </ScrollReveal>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
             {vantagens.map((item, index) => (
-              <ScrollReveal key={index} delay={index * 80}>
-                <div className="group text-center p-6 bg-stone-50 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary group-hover:bg-primary group-hover:text-white transition-all">
+              <ScrollReveal key={index} delay={index * 60}>
+                <div className="group text-center p-4 md:p-6 bg-stone-50 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 h-full">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 text-primary group-hover:bg-primary group-hover:text-white transition-all">
                     {item.icon}
                   </div>
-                  <h3 className="text-gray-800 text-sm font-semibold mb-2">{item.titulo}</h3>
-                  <p className="text-gray-600 text-xs leading-relaxed">{item.descricao}</p>
+                  <h3 className="text-gray-800 text-xs md:text-sm font-semibold mb-1 md:mb-2">{item.titulo}</h3>
+                  <p className="text-gray-600 text-[10px] md:text-xs leading-relaxed line-clamp-3 md:line-clamp-none">{item.descricao}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -243,8 +242,96 @@ export default function InternationalFlip() {
         </div>
       </section>
 
-      {/* Países - Sticky Scroll Section */}
-      <section className="relative bg-gradient-to-b from-white to-stone-50" style={{ height: `${paises.length * 100}vh` }}>
+      {/* Países - Mobile Version */}
+      <section className="py-12 px-4 bg-gradient-to-b from-white to-stone-50 lg:hidden">
+        <div className="max-w-5xl mx-auto">
+          <ScrollReveal>
+            <div className="text-center mb-6">
+              <h2 className="text-lg text-gray-800 mb-2">
+                Onde <span className="font-bodoni text-primary">investir</span>
+              </h2>
+              <div className="h-[2px] w-12 bg-primary/20 mx-auto" />
+            </div>
+          </ScrollReveal>
+
+          {/* Tabs para selecionar país */}
+          <div className="flex justify-center gap-2 mb-6">
+            {paises.map((pais, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveCountry(index)}
+                className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 ${
+                  activeCountry === index
+                    ? "bg-primary text-white"
+                    : "bg-stone-100 text-gray-600"
+                }`}
+              >
+                {pais.nome}
+              </button>
+            ))}
+          </div>
+
+          {/* Card do país ativo */}
+          {paises.map((pais, index) => (
+            <div
+              key={index}
+              className={`transition-all duration-500 ${
+                activeCountry === index ? "block" : "hidden"
+              }`}
+            >
+              <ScrollReveal>
+                <div className="bg-white rounded-xl p-5 shadow-sm">
+                  {/* Header com SVG */}
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-16 h-16 flex-shrink-0">
+                      <img
+                        src={pais.svg}
+                        alt={pais.nome}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-light text-gray-800">{pais.nome}</h3>
+                      <p className="text-primary text-xs font-medium">{pais.destaque}</p>
+                    </div>
+                  </div>
+
+                  <p className="text-gray-500 text-xs leading-relaxed mb-4">
+                    {pais.descricao}
+                  </p>
+
+                  {/* Benefícios */}
+                  <ul className="space-y-2 mb-4">
+                    {pais.beneficios.slice(0, 3).map((beneficio, i) => (
+                      <li key={i} className="flex items-center gap-2 text-xs text-gray-600">
+                        <span className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-2.5 h-2.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                        </span>
+                        {beneficio}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href="/#contato"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white text-xs font-medium rounded-full hover:bg-primary/90 transition-all group"
+                  >
+                    Investir em {pais.nome}
+                    <svg className="w-3 h-3 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </a>
+                </div>
+              </ScrollReveal>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Países - Desktop Sticky Scroll Section */}
+      <section className="relative bg-gradient-to-b from-white to-stone-50 hidden lg:block" style={{ height: `${paises.length * 100}vh` }}>
         <div ref={stickyRef} className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
           <div className="max-w-5xl mx-auto px-4 md:px-6 w-full -translate-y-12">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
@@ -368,27 +455,27 @@ export default function InternationalFlip() {
       </section>
 
       {/* Como funciona */}
-      <section className="py-20 px-4 md:px-6 bg-stone-100 overflow-hidden">
+      <section className="py-12 md:py-20 px-4 md:px-6 bg-stone-100 overflow-hidden">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
-            <div className="text-center mb-16">
-              <span className="inline-block text-primary text-[10px] font-medium tracking-widest uppercase mb-3">
+            <div className="text-center mb-8 md:mb-16">
+              <span className="inline-block text-primary text-[10px] font-medium tracking-widest uppercase mb-2">
                 Processo
               </span>
-              <h2 className="text-xl sm:text-2xl text-gray-800">
+              <h2 className="text-lg md:text-2xl text-gray-800">
                 Como <span className="font-bodoni text-primary">funciona</span>?
               </h2>
             </div>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-3 gap-2 md:gap-6">
             {[
               {
                 step: "01",
                 title: "Venda seu imóvel",
-                desc: "Vendemos seu imóvel no Brasil com nossa metodologia exclusiva, garantindo o melhor valor.",
+                desc: "Vendemos seu imóvel no Brasil com nossa metodologia exclusiva.",
                 icon: (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                   </svg>
                 )
@@ -396,9 +483,9 @@ export default function InternationalFlip() {
               {
                 step: "02",
                 title: "Planejamento",
-                desc: "Analisamos seu perfil e objetivos para definir o melhor destino e tipo de investimento.",
+                desc: "Analisamos seu perfil para definir o melhor destino.",
                 icon: (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                   </svg>
                 )
@@ -406,26 +493,26 @@ export default function InternationalFlip() {
               {
                 step: "03",
                 title: "Aquisição",
-                desc: "Viabilizamos a compra do imóvel no exterior com todo suporte jurídico e operacional.",
+                desc: "Viabilizamos a compra com suporte completo.",
                 icon: (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                   </svg>
                 )
               },
             ].map((item, index) => (
-              <ScrollReveal key={index} delay={index * 100}>
-                <div className="group bg-white rounded-2xl p-6 shadow-sm border border-stone-100 hover:shadow-lg hover:border-primary/20 transition-all duration-300 h-full">
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+              <ScrollReveal key={index} delay={index * 80}>
+                <div className="group bg-white rounded-xl md:rounded-2xl p-3 md:p-6 shadow-sm border border-stone-100 hover:shadow-lg hover:border-primary/20 transition-all duration-300 h-full">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3 md:mb-5">
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-primary/10 rounded-lg md:rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 mb-2 md:mb-0">
                       {item.icon}
                     </div>
-                    <span className="text-3xl font-bold text-stone-200 group-hover:text-primary/20 transition-colors">
+                    <span className="text-xl md:text-3xl font-bold text-stone-200 group-hover:text-primary/20 transition-colors hidden md:block">
                       {item.step}
                     </span>
                   </div>
-                  <h3 className="text-gray-800 text-sm font-semibold mb-2">{item.title}</h3>
-                  <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
+                  <h3 className="text-gray-800 text-[11px] md:text-sm font-semibold mb-1 md:mb-2">{item.title}</h3>
+                  <p className="text-gray-500 text-[10px] md:text-xs leading-relaxed line-clamp-2 md:line-clamp-none">{item.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -434,49 +521,48 @@ export default function InternationalFlip() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-4 md:px-6 bg-stone-50 relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/[0.02] rounded-full blur-3xl pointer-events-none" />
+      <section className="py-12 md:py-16 px-4 md:px-6 bg-stone-50 relative overflow-hidden">
+        {/* Decorative elements - desktop only */}
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent hidden md:block" />
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent hidden md:block" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/[0.02] rounded-full blur-3xl pointer-events-none hidden md:block" />
 
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <ScrollReveal>
-            <div className="flex items-center justify-center gap-3 mb-5">
-              <div className="h-px w-10 bg-primary/30" />
-              <span className="text-primary text-[10px] font-medium tracking-[0.2em] uppercase">
+            <div className="flex items-center justify-center gap-2 md:gap-3 mb-4 md:mb-5">
+              <div className="h-px w-8 md:w-10 bg-primary/30" />
+              <span className="text-primary text-[9px] md:text-[10px] font-medium tracking-[0.2em] uppercase">
                 Próximo passo
               </span>
-              <div className="h-px w-10 bg-primary/30" />
+              <div className="h-px w-8 md:w-10 bg-primary/30" />
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={100}>
-            <h2 className="text-lg sm:text-xl md:text-2xl text-gray-800 font-light leading-tight mb-4">
+            <h2 className="text-lg md:text-2xl text-gray-800 font-light leading-tight mb-3">
               Pronto para{" "}
               <span className="font-bodoni text-primary">globalizar</span> seu patrimônio?
             </h2>
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
-            <div className="group flex justify-center mb-5">
-              <div className="h-[2px] w-16 bg-primary/20 rounded-full" />
+            <div className="group flex justify-center mb-4">
+              <div className="h-[2px] w-12 md:w-16 bg-primary/20 rounded-full" />
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={300}>
-            <p className="text-gray-500 text-sm max-w-md mx-auto leading-relaxed mb-6">
-              Agende uma conversa com nossos especialistas e descubra as{" "}
-              <span className="text-gray-700 font-medium">melhores oportunidades</span> de investimento internacional.
+            <p className="text-gray-500 text-xs md:text-sm max-w-md mx-auto leading-relaxed mb-5">
+              Descubra as <span className="text-gray-700 font-medium">melhores oportunidades</span> de investimento internacional.
             </p>
           </ScrollReveal>
 
           <ScrollReveal delay={400}>
             <a
               href="/#contato"
-              className="group relative inline-block px-6 py-3 bg-primary text-white text-sm font-medium rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+              className="group relative inline-block px-5 py-2.5 md:px-6 md:py-3 bg-primary text-white text-xs md:text-sm font-medium rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
             >
-              <span className="relative z-10">Quero conhecer as oportunidades</span>
+              <span className="relative z-10">Conhecer oportunidades</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </a>
           </ScrollReveal>

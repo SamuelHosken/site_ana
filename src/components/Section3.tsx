@@ -43,27 +43,67 @@ export default function Section3() {
   ];
 
   return (
-    <section id="servicos" className="py-16 sm:py-12 md:py-16 px-4 md:px-6 bg-stone-50">
+    <section id="servicos" className="py-16 px-4 md:px-6 bg-stone-50">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <ScrollReveal className="group mb-10 sm:mb-10 md:mb-12 text-center max-w-3xl mx-auto">
+        <ScrollReveal className="group mb-10 text-center max-w-3xl mx-auto">
           <span className="inline-block text-primary text-xs font-medium tracking-widest uppercase mb-3">
             Nossos Serviços
           </span>
-          <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl text-gray-800 tracking-tight mb-2">
+          <h2 className="text-xl md:text-2xl lg:text-3xl text-gray-800 tracking-tight mb-2">
             Como <span className="font-bodoni text-primary">transformar seu imóvel</span> em uma oportunidade{" "}
             <span className="font-bodoni text-primary">única de valor</span>
           </h2>
-          <p className="text-gray-600 text-sm sm:text-sm mt-4">
+          <p className="text-gray-600 text-sm mt-4 hidden md:block">
             Cada detalhe é pensado para uma coisa: fazer seu imóvel se destacar, <strong>vender e alugar</strong> mais rápido, pelo melhor valor.
           </p>
-          <div className="h-[2px] w-20 sm:w-20 bg-primary/20 rounded-full overflow-hidden mx-auto mt-4">
+          <div className="h-[2px] w-20 bg-primary/20 rounded-full overflow-hidden mx-auto mt-4">
             <div className="h-full w-0 bg-primary transition-all duration-700 ease-out group-hover:w-full" />
           </div>
         </ScrollReveal>
 
-        {/* Services - Alternating Layout */}
-        <div className="space-y-12 sm:space-y-10 md:space-y-12">
+        {/* Mobile: Grid de cards compactos */}
+        <div className="grid grid-cols-2 gap-3 md:hidden">
+          {services.map((service, index) => (
+            <ScrollReveal key={index} delay={index * 80}>
+              <a
+                href={service.buttonLink || "#"}
+                className="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
+              >
+                {/* Imagem */}
+                <div className="relative h-28 bg-gradient-to-br from-stone-200 to-stone-300">
+                  {service.imageSrc && (
+                    <img
+                      src={service.imageSrc}
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <span className="absolute top-2 left-2 w-6 h-6 bg-white/90 rounded-full flex items-center justify-center text-[10px] font-bold text-primary">
+                    {service.number}
+                  </span>
+                </div>
+
+                {/* Conteúdo */}
+                <div className="p-3">
+                  <h3 className="text-gray-800 text-xs font-semibold mb-1 line-clamp-2 group-hover:text-primary transition-colors">
+                    {service.title}
+                  </h3>
+                  <span className="text-primary text-[10px] font-medium flex items-center gap-1">
+                    Saiba mais
+                    <svg className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            </ScrollReveal>
+          ))}
+        </div>
+
+        {/* Desktop: Alternating Layout */}
+        <div className="hidden md:block space-y-12">
           {services.map((service, index) => (
             <div
               key={index}

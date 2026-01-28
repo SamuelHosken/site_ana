@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import ScrollReveal from "./ScrollReveal";
 
 // Definição dos cômodos com suas áreas e informações
 const rooms = [
@@ -15,7 +16,117 @@ const rooms = [
   { id: "wc-suite", name: "Banheiro Suíte", area: "6m²", x: 305, y: 265, width: 65, height: 65 },
 ];
 
-export default function IntroSection() {
+// Componente Mobile - Layout estático e simples
+function IntroSectionMobile() {
+  return (
+    <section id="sobre" className="py-16 px-4 bg-white lg:hidden">
+      <div className="max-w-lg mx-auto">
+        {/* Título */}
+        <ScrollReveal>
+          <div className="text-center mb-8">
+            <span className="inline-block text-primary text-xs font-medium tracking-widest uppercase mb-3">
+              Nossa Essência
+            </span>
+            <h2 className="text-2xl text-gray-800 leading-tight mb-3">
+              O que é uma{" "}
+              <span className="font-bodoni text-primary italic">Imobiliária Boutique</span>?
+            </h2>
+            <div className="h-[2px] w-20 bg-primary/30 mx-auto rounded-full" />
+          </div>
+        </ScrollReveal>
+
+        {/* Textos */}
+        <div className="space-y-5 mb-10">
+          <ScrollReveal delay={100}>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Tratamos <strong className="text-gray-800">cada imóvel</strong> como um{" "}
+              <strong className="text-gray-800">ativo estratégico</strong>. Mais do que anunciar, fazemos um{" "}
+              <strong className="text-gray-800">estudo do mercado</strong>, definimos o{" "}
+              <strong className="text-gray-800">público ideal</strong> e criamos uma{" "}
+              <strong className="text-gray-800">estratégia de divulgação personalizada</strong>.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={200}>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Aqui, cada imóvel recebe um{" "}
+              <strong className="text-gray-800">investimento próprio, relevante e exclusivo</strong> em
+              impulsionamento da estratégia,{" "}
+              <strong className="text-gray-800">aplicado contratualmente</strong> apenas ao seu imóvel.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={300}>
+            <div className="relative pl-4 border-l-2 border-primary py-2 bg-stone-50 rounded-r-lg pr-4">
+              <p className="text-gray-700 text-sm leading-relaxed">
+                Somos uma empresa que{" "}
+                <span className="text-primary font-semibold">toma o seu partido</span>. Nosso compromisso é{" "}
+                <strong className="text-gray-800">defender os seus interesses</strong> e conseguir para você o{" "}
+                <strong className="text-gray-800">melhor negócio possível</strong>.
+              </p>
+              <p className="text-primary font-bodoni text-lg mt-2">
+                E isso muda tudo.
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+
+        {/* Cards de diferenciais - substitui a planta complexa */}
+        <ScrollReveal delay={400}>
+          <div className="grid grid-cols-2 gap-3">
+            {/* Card 1 - Estudo de Mercado */}
+            <div className="bg-stone-50 rounded-xl p-4 text-center hover:bg-primary/5 transition-colors group">
+              <div className="w-10 h-10 mx-auto mb-3 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <h4 className="text-gray-800 text-xs font-semibold mb-1">Estudo de Mercado</h4>
+              <p className="text-gray-500 text-[10px]">Análise estratégica</p>
+            </div>
+
+            {/* Card 2 - Público Ideal */}
+            <div className="bg-stone-50 rounded-xl p-4 text-center hover:bg-primary/5 transition-colors group">
+              <div className="w-10 h-10 mx-auto mb-3 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <h4 className="text-gray-800 text-xs font-semibold mb-1">Público Ideal</h4>
+              <p className="text-gray-500 text-[10px]">Segmentação precisa</p>
+            </div>
+
+            {/* Card 3 - Investimento */}
+            <div className="bg-stone-50 rounded-xl p-4 text-center hover:bg-primary/5 transition-colors group">
+              <div className="w-10 h-10 mx-auto mb-3 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h4 className="text-gray-800 text-xs font-semibold mb-1">Investimento</h4>
+              <p className="text-gray-500 text-[10px]">Até R$10.000/imóvel</p>
+            </div>
+
+            {/* Card 4 - Dedicação Total */}
+            <div className="bg-stone-50 rounded-xl p-4 text-center hover:bg-primary/5 transition-colors group">
+              <div className="w-10 h-10 mx-auto mb-3 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              </div>
+              <h4 className="text-gray-800 text-xs font-semibold mb-1">Dedicação Total</h4>
+              <p className="text-gray-500 text-[10px]">Máx. 3 imóveis/consultor</p>
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
+// Componente Desktop - Mantém a experiência original com sticky scroll
+function IntroSectionDesktop() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [textProgress, setTextProgress] = useState(0);
   const [plantProgress, setPlantProgress] = useState(0);
@@ -35,14 +146,15 @@ export default function IntroSection() {
       // Começa mais cedo para a animação iniciar antes
       const textStart = windowHeight * 1.3;
       const textEnd = windowHeight * 0.5;
-      const newTextProgress = Math.max(0, Math.min(1, (textStart - rect.top) / (textStart - textEnd)));
+      const textDiff = textStart - textEnd;
+      const newTextProgress = textDiff > 0 ? Math.max(0, Math.min(1, (textStart - rect.top) / textDiff)) : 0;
       setTextProgress(newTextProgress);
 
       // Fase 2: Planta desenha baseado no scroll global
       // Completa antes do scroll soltar
       const scrollY = window.scrollY;
       const maxScroll = sectionHeight * 0.6;
-      const newPlantProgress = Math.max(0, Math.min(1, scrollY / maxScroll));
+      const newPlantProgress = maxScroll > 0 ? Math.max(0, Math.min(1, scrollY / maxScroll)) : 0;
       setPlantProgress(newPlantProgress);
     };
 
@@ -70,8 +182,7 @@ export default function IntroSection() {
   return (
     <section
       ref={sectionRef}
-      id="sobre"
-      className="relative bg-white"
+      className="relative bg-white hidden lg:block"
       style={{ height: "200vh" }}
     >
       <div className="sticky top-0 h-screen flex items-start pt-16 z-0">
@@ -623,5 +734,15 @@ export default function IntroSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+// Componente principal que renderiza a versão correta
+export default function IntroSection() {
+  return (
+    <>
+      <IntroSectionMobile />
+      <IntroSectionDesktop />
+    </>
   );
 }

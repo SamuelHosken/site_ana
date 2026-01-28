@@ -34,32 +34,37 @@ export default function Hero() {
     <section id="inicio" className="relative z-10 bg-white pt-16">
       {/* ========== MOBILE VERSION - Full image with centered text ========== */}
       <div className="md:hidden px-4 pt-5 pb-0">
-        <div ref={heroRef} className="relative h-[400px] sm:h-[420px] rounded-[20px] overflow-hidden">
+        <div ref={heroRef} className="relative h-[420px] rounded-[20px] overflow-hidden">
           {/* Full screen image */}
           <div className="absolute inset-0">
             <div
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
               style={{ backgroundImage: "url('/hero.png')" }}
             />
-            {/* Dark overlay - mais escuro para legibilidade */}
-            <div className="absolute inset-0 bg-black/55" />
+            {/* Dark overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/30" />
           </div>
 
           {/* Centered content */}
-          <div className="relative h-full flex flex-col items-center justify-center text-center px-6">
+          <div className="relative h-full flex flex-col items-center justify-center text-center px-5">
             {/* Logo */}
             <img
               src="/Tipografia com R.svg"
               alt="Later Nobilis"
-              className="h-5 w-auto mb-5 brightness-0 invert"
+              className="h-4 w-auto mb-4 brightness-0 invert opacity-90"
             />
 
             {/* Title */}
-            <h2 className="text-2xl sm:text-3xl font-normal text-white leading-tight mb-8">
+            <h2 className="text-[22px] leading-[1.3] font-normal text-white mb-3">
               CONHEÇA A MELHOR{" "}
               <span className="font-semibold">IMOBILIÁRIA BOUTIQUE</span>{" "}
               DE BRASÍLIA
             </h2>
+
+            {/* Tagline */}
+            <p className="text-white/70 text-xs mb-6 max-w-[280px]">
+              Exclusividade e estratégia para valorizar seu patrimônio
+            </p>
 
             {/* Button */}
             <button
@@ -69,11 +74,11 @@ export default function Hero() {
                   element.scrollIntoView({ behavior: "smooth" });
                 }
               }}
-              className="group flex items-center gap-3 px-8 py-3.5 bg-white/95 backdrop-blur-sm text-gray-900 text-sm font-medium tracking-widest uppercase hover:bg-white transition-all duration-300 rounded-full"
+              className="group flex items-center gap-2 px-6 py-3 bg-white text-gray-900 text-xs font-semibold tracking-wider uppercase hover:bg-white/90 transition-all duration-300 rounded-full shadow-lg"
             >
               Explorar
               <svg
-                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -82,6 +87,12 @@ export default function Hero() {
               </svg>
             </button>
 
+            {/* Scroll indicator */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5">
+              <div className="w-5 h-7 border border-white/40 rounded-full flex justify-center pt-1.5">
+                <div className="w-0.5 h-2 bg-white/60 rounded-full animate-bounce" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
