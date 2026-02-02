@@ -51,7 +51,7 @@ export default function OpenHouse() {
           <ScrollReveal animation="reveal-scale">
             <div className="relative h-[220px] md:h-[400px] rounded-xl md:rounded-2xl overflow-hidden">
               <img
-                src="/open_house.jpg"
+                src="/Fotos Site/open-house-exclusivo.png"
                 alt="Open House Exclusivo"
                 className="w-full h-full object-cover"
               />

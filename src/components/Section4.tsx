@@ -7,22 +7,36 @@ const features = [
   {
     title: "Visualização 3D do potencial",
     description: "Utilizamos estratégias validadas de escrita persuasiva, como o storytelling, para capturar a atenção de verdade dessas pessoas e aumentar o valor percebido.",
-    image: "3D Render"
+    image: "3D Render",
+    imageSrc: "/Fotos Site/visualizacao-3d-potencial.png",
+    imagePosition: "object-left",
+    imageHeight: "380px",
+    imageWidth: "120%"
   },
   {
     title: "Fotos e vídeos que vendem",
     description: "Fotógrafos e filmmakers especializados em arquitetura capturam cada detalhe. Seus anúncios não vão parecer mais um. Vão parecer capa de revista.",
-    image: "Fotografia"
+    image: "Fotografia",
+    imageSrc: "/Fotos Site/fotos-videos-que-vendem.jpg",
+    imagePosition: "object-center",
+    imageHeight: "380px",
+    imageWidth: "120%"
   },
   {
     title: "Investimento relevante em tráfego pago",
     description: "Captar a atenção das pessoas onde elas estão, onde passam mais tempo. Assim convertemos em visitas e ofertas qualificadas.",
-    image: "Tráfego Pago"
+    image: "Tráfego Pago",
+    imageSrc: "/Fotos Site/investimento-trafego-pago.jpg",
+    imagePosition: "object-center",
+    imageHeight: "520px"
   },
   {
     title: "Anúncios que se destacam",
     description: "Maior alcance e performance, essa é a fórmula que realmente gera resultados. Visitas se tornam em ofertas mais rápidas e reduz o tempo do seu imóvel parado.",
-    image: "Destaque"
+    image: "Destaque",
+    imageSrc: "/anuncios_que_atraem.png",
+    imagePosition: "object-center",
+    imageHeight: "380px"
   }
 ];
 
@@ -125,9 +139,19 @@ function Section4Mobile() {
                   }`}
                 >
                   <div className="px-4 pb-4">
-                    {/* Imagem placeholder */}
-                    <div className="h-24 bg-gradient-to-br from-stone-200 to-stone-300 rounded-lg mb-3 flex items-center justify-center">
-                      <span className="text-stone-500 text-xs">[ {feature.image} ]</span>
+                    {/* Imagem */}
+                    <div className="h-24 bg-gradient-to-br from-stone-200 to-stone-300 rounded-lg mb-3 overflow-hidden">
+                      {feature.imageSrc ? (
+                        <img
+                          src={feature.imageSrc}
+                          alt={feature.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <span className="text-stone-500 text-xs">[ {feature.image} ]</span>
+                        </div>
+                      )}
                     </div>
                     <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
                   </div>
@@ -298,7 +322,13 @@ function Section4Desktop() {
             </div>
 
             {/* Imagem que muda - hidden on mobile */}
-            <div className="relative h-[220px] sm:h-[280px] md:h-[380px] hidden lg:block">
+            <div
+              className="relative hidden lg:block transition-all duration-500"
+              style={{
+                height: features[activeIndex]?.imageHeight || "380px",
+                width: features[activeIndex]?.imageWidth || "100%"
+              }}
+            >
               {features.map((feature, index) => (
                 <div
                   key={index}
@@ -308,9 +338,17 @@ function Section4Desktop() {
                       : "opacity-0 scale-95 translate-y-4 z-0"
                   }`}
                 >
-                  <div className="w-full h-full bg-gradient-to-br from-stone-300 to-stone-400 flex items-center justify-center">
-                    <span className="text-stone-600 text-base font-medium">[ {feature.image} ]</span>
-                  </div>
+                  {feature.imageSrc ? (
+                    <img
+                      src={feature.imageSrc}
+                      alt={feature.title}
+                      className={`w-full h-full object-cover ${feature.imagePosition || "object-center"}`}
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-stone-300 to-stone-400 flex items-center justify-center">
+                      <span className="text-stone-600 text-base font-medium">[ {feature.image} ]</span>
+                    </div>
+                  )}
                 </div>
               ))}
 

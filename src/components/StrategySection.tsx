@@ -90,12 +90,9 @@ export default function StrategySection() {
           <ScrollReveal animation="reveal-right" delay={100} className="h-full">
             <div className="relative h-[280px] lg:h-full lg:min-h-[380px] bg-gradient-to-br from-stone-200 to-stone-300 rounded-xl overflow-hidden">
               <img
-                src="/strategy.jpg"
+                src="/Fotos Site/projeto-arquitetura-obras.png"
                 alt="Estratégia imobiliária"
                 className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                }}
               />
               {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />

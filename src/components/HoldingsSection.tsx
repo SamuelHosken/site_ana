@@ -11,12 +11,9 @@ export default function HoldingsSection() {
           <ScrollReveal animation="reveal-left" className="order-1">
             <div className="relative h-[220px] md:h-[320px] lg:h-[380px] bg-gradient-to-br from-stone-200 to-stone-300 rounded-xl overflow-hidden">
               <img
-                src="/holdings.jpg"
+                src="/Fotos Site/holdings-family-offices.jpg"
                 alt="Estruturas patrimoniais familiares"
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                }}
+                className="w-full h-full object-cover object-[center_-40px]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
             </div>
