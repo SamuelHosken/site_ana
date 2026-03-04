@@ -7,7 +7,7 @@
   --color-beige-dark: #EDE5DB;
 
   --font-serif: Georgia, "Times New Roman", serif;
-  --font-sans: Inter, system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
 }
 
 html {
@@ -84,3 +84,13 @@ body {
 .delay-300 { transition-delay: 300ms; }
 .delay-400 { transition-delay: 400ms; }
 .delay-500 { transition-delay: 500ms; }
+
+/* CTA line animation */
+@keyframes line-expand {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+.animate-line-expand {
+  animation: line-expand 1.5s ease-out forwards;
+  animation-delay: 0.5s;
+}

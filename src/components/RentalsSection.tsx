@@ -1,31 +1,45 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import ScrollReveal from "./ScrollReveal";
 
-// Hook to detect visibility
-function useOnScreen(ref: React.RefObject<HTMLElement | null>, threshold = 0.3) {
-  const [isVisible, setIsVisible] = useState(false);
+// Single observer for all chart visibility detection
+function useMultiOnScreen(count: number, threshold = 0.4) {
+  const refs = useRef<(HTMLDivElement | null)[]>(new Array(count).fill(null));
+  const [visible, setVisible] = useState<boolean[]>(new Array(count).fill(false));
+
+  const setRef = useCallback((index: number) => (el: HTMLDivElement | null) => {
+    refs.current[index] = el;
+  }, []);
 
   useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(element);
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = refs.current.indexOf(entry.target as HTMLDivElement);
+            if (index !== -1) {
+              setVisible((prev) => {
+                const next = [...prev];
+                next[index] = true;
+                return next;
+              });
+              observer.unobserve(entry.target);
+            }
+          }
+        });
       },
       { threshold }
     );
 
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, [ref, threshold]);
+    refs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
 
-  return isVisible;
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return { setRef, visible };
 }
 
 // Animated Line Chart - Valorização ao longo do tempo
@@ -626,48 +640,32 @@ function AnimatedShieldChart({ isVisible }: { isVisible: boolean }) {
 }
 
 export default function RentalsSection() {
-  const ref1 = useRef<HTMLDivElement>(null);
-  const ref2 = useRef<HTMLDivElement>(null);
-  const ref3 = useRef<HTMLDivElement>(null);
-  const ref4 = useRef<HTMLDivElement>(null);
-
-  const isVisible1 = useOnScreen(ref1, 0.4);
-  const isVisible2 = useOnScreen(ref2, 0.4);
-  const isVisible3 = useOnScreen(ref3, 0.4);
-  const isVisible4 = useOnScreen(ref4, 0.4);
+  const { setRef, visible } = useMultiOnScreen(4, 0.4);
 
   const features = [
     {
-      ref: ref1,
-      isVisible: isVisible1,
       title: "Gestão estratégica de rentabilidade",
       description:
         "Tratamos o seu imóvel como um ativo financeiro. Realizamos estudos periódicos do valor do metro quadrado e entregamos relatórios semestrais para que você acompanhe a valorização do seu patrimônio ao longo do tempo.",
-      chart: <AnimatedLineChart isVisible={isVisible1} />,
+      chart: <AnimatedLineChart isVisible={visible[0]} />,
     },
     {
-      ref: ref2,
-      isVisible: isVisible2,
       title: "Consultoria personalizada de investimento",
       description:
         "Analisamos o seu objetivo com o imóvel, seja geração de renda, reserva de valor ou valorização patrimonial. Definimos uma estratégia sob medida, estabelecendo valores e condições de locação que maximizem a rentabilidade do seu investimento.",
-      chart: <AnimatedBarChart isVisible={isVisible2} />,
+      chart: <AnimatedBarChart isVisible={visible[1]} />,
     },
     {
-      ref: ref3,
-      isVisible: isVisible3,
       title: "Estratégia de reajuste e valorização contratual",
       description:
         "Estruturamos contratos com cláusulas pensadas para proteger e potencializar o seu patrimônio, com definição estratégica de índices de reajuste e mecanismos que buscam sempre a melhor atualização possível do aluguel em seu favor.",
-      chart: <AnimatedContractChart isVisible={isVisible3} />,
+      chart: <AnimatedContractChart isVisible={visible[2]} />,
     },
     {
-      ref: ref4,
-      isVisible: isVisible4,
       title: "Jurídico especializado integrado",
       description:
         "Contamos, em nosso ecossistema, com um time jurídico dedicado exclusivamente à gestão de locações. Isso garante contratos mais seguros, proteção patrimonial e decisões sempre alinhadas aos seus interesses. Mais segurança e tranquilidade.",
-      chart: <AnimatedShieldChart isVisible={isVisible4} />,
+      chart: <AnimatedShieldChart isVisible={visible[3]} />,
     },
   ];
 
@@ -698,7 +696,7 @@ export default function RentalsSection() {
           {features.map((feature, index) => (
             <div
               key={index}
-              ref={feature.ref}
+              ref={setRef(index)}
               className={`group grid lg:grid-cols-2 gap-6 lg:gap-10 items-center`}
             >
               {/* Content */}

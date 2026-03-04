@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -72,10 +73,13 @@ export default function HomeStaging() {
           {/* Imagem principal */}
           <ScrollReveal animation="reveal-scale">
             <div className="relative h-[220px] md:h-[400px] rounded-xl md:rounded-2xl overflow-hidden">
-              <img
-                src="/home_staging.png"
+              <Image
+                src="/home_staging.jpg"
                 alt="Home Staging Profissional"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(min-width: 768px) 1200px, 100vw"
+                priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6">
@@ -121,13 +125,13 @@ export default function HomeStaging() {
 
             <ScrollReveal animation="reveal-right" delay={100}>
               <div className="relative h-[200px] md:h-[350px] bg-gradient-to-br from-stone-200 to-stone-300 rounded-xl overflow-hidden">
-                <img
+                <Image
                   src="/home_staging_2.jpg"
                   alt="Home Staging Exemplo"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                  }}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  loading="lazy"
                 />
               </div>
             </ScrollReveal>

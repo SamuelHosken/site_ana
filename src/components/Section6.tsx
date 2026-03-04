@@ -1,5 +1,4 @@
-"use client";
-
+import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 
 export default function Section6() {
@@ -29,10 +28,13 @@ export default function Section6() {
         {/* Mapa */}
         <ScrollReveal animation="reveal-scale" className="relative max-w-3xl mx-auto mb-8">
           <div className="relative rounded-xl overflow-hidden">
-            <img
+            <Image
               src="/mapa.svg"
               alt="Mapa de atuação internacional"
+              width={800}
+              height={400}
               className="w-full h-auto"
+              loading="lazy"
             />
           </div>
         </ScrollReveal>

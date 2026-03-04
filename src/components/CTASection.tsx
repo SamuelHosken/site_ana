@@ -1,5 +1,3 @@
-"use client";
-
 import ScrollReveal from "./ScrollReveal";
 
 export default function CTASection() {
@@ -60,17 +58,6 @@ export default function CTASection() {
           </a>
         </ScrollReveal>
       </div>
-
-      <style jsx>{`
-        @keyframes line-expand {
-          0% { width: 0; }
-          100% { width: 100%; }
-        }
-        .animate-line-expand {
-          animation: line-expand 1.5s ease-out forwards;
-          animation-delay: 0.5s;
-        }
-      `}</style>
     </section>
   );
 }

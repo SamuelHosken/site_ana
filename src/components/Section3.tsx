@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 
 export default function Section3() {
@@ -9,7 +10,7 @@ export default function Section3() {
       title: "Concierge imobiliário",
       description: "Seu patrimônio é tratado com atenção e exclusividade: conheça o método único de concierge em Brasília. Do preparo à venda, cuidamos de cada detalhe para que seu imóvel seja apresentado para maximizar o apelo visual e emocional para acelerar os resultados pelo maior valor agregado.",
       image: "Concierge",
-      imageSrc: "/ana_blur.png",
+      imageSrc: "/ana_blur.jpg",
       buttonText: "Descubra mais",
       buttonLink: "#contato"
     },
@@ -18,7 +19,7 @@ export default function Section3() {
       title: "International Flip",
       description: "Transforme o capital da venda do seu imóvel em uma oportunidade global. Viabilizamos a compra de imóveis em Dubai e EUA com condições privilegiadas de investimento, rentabilidade superior e proteção patrimonial em moeda forte.",
       image: "International",
-      imageSrc: "/Dubai Miami Sunset.png",
+      imageSrc: "/Dubai Miami Sunset.jpg",
       buttonText: "Descubra mais",
       buttonLink: "/international-flip"
     },
@@ -27,7 +28,7 @@ export default function Section3() {
       title: "Home staging profissional",
       description: "Imóveis preparados vendem até 50% mais rápido e podem alcançar valores até 20% superiores. Transformamos o seu imóvel em um cenário irresistível para o comprador certo.",
       image: "Home Staging",
-      imageSrc: "/home_staging.png",
+      imageSrc: "/home_staging.jpg",
       buttonText: "Descubra mais",
       buttonLink: "/home-staging"
     },
@@ -36,7 +37,7 @@ export default function Section3() {
       title: "Open house exclusivo",
       description: "Eventos privados que criam desejo, urgência e competição entre compradores qualificados, aumentando suas chances de fechar o melhor negócio.",
       image: "Open House",
-      imageSrc: "/visualização_3D_o_potencial.png",
+      imageSrc: "/visualização_3D_o_potencial.jpg",
       buttonText: "Descubra mais",
       buttonLink: "/open-house"
     }
@@ -73,10 +74,13 @@ export default function Section3() {
                 {/* Imagem */}
                 <div className="relative h-28 bg-gradient-to-br from-stone-200 to-stone-300">
                   {service.imageSrc && (
-                    <img
+                    <Image
                       src={service.imageSrc}
                       alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(min-width: 768px) 50vw, 50vw"
+                      loading="lazy"
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
@@ -118,10 +122,13 @@ export default function Section3() {
               >
                 <div className="relative h-[240px] sm:h-[220px] md:h-[260px] bg-gradient-to-br from-stone-200 to-stone-300 rounded-xl sm:rounded-xl overflow-hidden">
                   {service.imageSrc ? (
-                    <img
+                    <Image
                       src={service.imageSrc}
                       alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      loading="lazy"
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">

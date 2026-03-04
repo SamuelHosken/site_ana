@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -50,10 +51,13 @@ export default function OpenHouse() {
           {/* Imagem principal */}
           <ScrollReveal animation="reveal-scale">
             <div className="relative h-[220px] md:h-[400px] rounded-xl md:rounded-2xl overflow-hidden">
-              <img
-                src="/Fotos Site/open-house-exclusivo.png"
+              <Image
+                src="/Fotos Site/open-house-exclusivo.jpg"
                 alt="Open House Exclusivo"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(min-width: 768px) 1200px, 100vw"
+                priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6">

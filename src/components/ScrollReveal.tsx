@@ -10,6 +10,30 @@ interface ScrollRevealProps {
   threshold?: number;
 }
 
+// Singleton observer map: one observer per threshold value
+const observerMap = new Map<number, IntersectionObserver>();
+
+function getObserver(threshold: number): IntersectionObserver {
+  if (observerMap.has(threshold)) {
+    return observerMap.get(threshold)!;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold, rootMargin: "0px 0px -50px 0px" }
+  );
+
+  observerMap.set(threshold, observer);
+  return observer;
+}
+
 export default function ScrollReveal({
   children,
   className = "",
@@ -23,21 +47,12 @@ export default function ScrollReveal({
     const element = ref.current;
     if (!element) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold, rootMargin: "0px 0px -50px 0px" }
-    );
-
+    const observer = getObserver(threshold);
     observer.observe(element);
 
-    return () => observer.disconnect();
+    return () => {
+      observer.unobserve(element);
+    };
   }, [threshold]);
 
   const delayClass = delay > 0 ? `delay-${delay}` : "";

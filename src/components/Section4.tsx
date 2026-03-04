@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 
 const features = [
@@ -8,7 +9,7 @@ const features = [
     title: "Visualização 3D do potencial",
     description: "Utilizamos estratégias validadas de escrita persuasiva, como o storytelling, para capturar a atenção de verdade dessas pessoas e aumentar o valor percebido.",
     image: "3D Render",
-    imageSrc: "/Fotos Site/visualizacao-3d-potencial.png",
+    imageSrc: "/Fotos Site/visualizacao-3d-potencial.jpg",
     imagePosition: "object-left",
     imageHeight: "380px",
     imageWidth: "120%"
@@ -34,7 +35,7 @@ const features = [
     title: "Anúncios que se destacam",
     description: "Maior alcance e performance, essa é a fórmula que realmente gera resultados. Visitas se tornam em ofertas mais rápidas e reduz o tempo do seu imóvel parado.",
     image: "Destaque",
-    imageSrc: "/anuncios_que_atraem.png",
+    imageSrc: "/anuncios_que_atraem.jpg",
     imagePosition: "object-center",
     imageHeight: "380px"
   }
@@ -140,12 +141,15 @@ function Section4Mobile() {
                 >
                   <div className="px-4 pb-4">
                     {/* Imagem */}
-                    <div className="h-24 bg-gradient-to-br from-stone-200 to-stone-300 rounded-lg mb-3 overflow-hidden">
+                    <div className="relative h-24 bg-gradient-to-br from-stone-200 to-stone-300 rounded-lg mb-3 overflow-hidden">
                       {feature.imageSrc ? (
-                        <img
+                        <Image
                           src={feature.imageSrc}
                           alt={feature.title}
-                          className="w-full h-full object-cover"
+                          fill
+                          className="object-cover"
+                          sizes="(min-width: 768px) 50vw, 50vw"
+                          loading="lazy"
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
@@ -203,41 +207,44 @@ function Section4Desktop() {
     });
   };
 
+  const rafRef = useRef<number>(0);
+
   useEffect(() => {
     const handleScroll = () => {
-      if (!sectionRef.current) return;
+      if (rafRef.current) return;
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = 0;
+        if (!sectionRef.current) return;
 
-      const section = sectionRef.current;
-      const rect = section.getBoundingClientRect();
-      const sectionTop = rect.top;
-      const sectionHeight = section.offsetHeight;
-      const viewportHeight = window.innerHeight;
+        const section = sectionRef.current;
+        const rect = section.getBoundingClientRect();
+        const sectionTop = rect.top;
+        const sectionHeight = section.offsetHeight;
+        const viewportHeight = window.innerHeight;
 
-      // Só calcular quando a seção está visível
-      if (sectionTop > viewportHeight || sectionTop + sectionHeight < 0) return;
+        if (sectionTop > viewportHeight || sectionTop + sectionHeight < 0) return;
 
-      // Quanto já rolamos dentro da seção (de 0 a sectionHeight - viewportHeight)
-      const scrolledInSection = -sectionTop;
-      const maxScroll = sectionHeight - viewportHeight;
+        const scrolledInSection = -sectionTop;
+        const maxScroll = sectionHeight - viewportHeight;
+        const progress = Math.max(0, Math.min(1, scrolledInSection / maxScroll));
+        const newIndex = Math.min(
+          Math.floor(progress * features.length),
+          features.length - 1
+        );
 
-      // Progresso de 0 a 1
-      const progress = Math.max(0, Math.min(1, scrolledInSection / maxScroll));
-
-      // Divide o progresso entre as features
-      const newIndex = Math.min(
-        Math.floor(progress * features.length),
-        features.length - 1
-      );
-
-      if (newIndex !== activeIndex) {
-        setActiveIndex(newIndex);
-      }
+        if (newIndex !== activeIndex) {
+          setActiveIndex(newIndex);
+        }
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, [activeIndex, features.length]);
 
   return (
@@ -339,10 +346,13 @@ function Section4Desktop() {
                   }`}
                 >
                   {feature.imageSrc ? (
-                    <img
+                    <Image
                       src={feature.imageSrc}
                       alt={feature.title}
-                      className={`w-full h-full object-cover ${feature.imagePosition || "object-center"}`}
+                      fill
+                      className={`object-cover ${feature.imagePosition || "object-center"}`}
+                      sizes="50vw"
+                      loading="lazy"
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-stone-300 to-stone-400 flex items-center justify-center">

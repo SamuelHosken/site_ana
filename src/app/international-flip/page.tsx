@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -51,35 +52,42 @@ export default function InternationalFlip() {
     },
   ];
 
+  const rafRef = useRef<number>(0);
+
   useEffect(() => {
     const handleScroll = () => {
-      if (!stickyRef.current) return;
+      if (rafRef.current) return;
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = 0;
+        if (!stickyRef.current) return;
 
-      const section = stickyRef.current.parentElement;
-      if (!section) return;
+        const section = stickyRef.current.parentElement;
+        if (!section) return;
 
-      const rect = section.getBoundingClientRect();
-      const sectionHeight = section.offsetHeight;
-      const viewportHeight = window.innerHeight;
+        const rect = section.getBoundingClientRect();
+        const sectionHeight = section.offsetHeight;
+        const viewportHeight = window.innerHeight;
 
-      // Calculate scroll progress within the section
-      const scrolled = -rect.top;
-      const scrollableHeight = sectionHeight - viewportHeight;
-      const progress = Math.max(0, Math.min(1, scrolled / scrollableHeight));
+        const scrolled = -rect.top;
+        const scrollableHeight = sectionHeight - viewportHeight;
+        const progress = Math.max(0, Math.min(1, scrolled / scrollableHeight));
 
-      // Determine which country should be active
-      const countryIndex = Math.min(
-        paises.length - 1,
-        Math.floor(progress * paises.length)
-      );
+        const countryIndex = Math.min(
+          paises.length - 1,
+          Math.floor(progress * paises.length)
+        );
 
-      setActiveCountry(countryIndex);
+        setActiveCountry(countryIndex);
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, [paises.length]);
 
   const vantagens = [
@@ -187,10 +195,13 @@ export default function InternationalFlip() {
               <div className="absolute inset-0 bg-blue-100/50 blur-3xl rounded-full scale-90 hidden md:block" />
 
               <div className="relative">
-                <img
+                <Image
                   src="/mapa.svg"
                   alt="Mapa de atuação internacional"
+                  width={1000}
+                  height={500}
                   className="w-full h-auto drop-shadow-lg"
+                  priority
                 />
               </div>
             </div>
@@ -284,10 +295,13 @@ export default function InternationalFlip() {
                   {/* Header com SVG */}
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-16 h-16 flex-shrink-0">
-                      <img
+                      <Image
                         src={pais.svg}
                         alt={pais.nome}
+                        width={64}
+                        height={64}
                         className="w-full h-full object-contain"
+                        loading="lazy"
                       />
                     </div>
                     <div>
@@ -429,10 +443,13 @@ export default function InternationalFlip() {
                         : "opacity-0 scale-95 translate-y-8"
                     }`}
                   >
-                    <img
+                    <Image
                       src={pais.svg}
                       alt={pais.nome}
+                      width={400}
+                      height={400}
                       className="max-w-full max-h-full object-contain drop-shadow-2xl"
+                      loading="lazy"
                     />
                   </div>
                 ))}

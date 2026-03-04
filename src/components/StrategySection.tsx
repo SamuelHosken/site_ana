@@ -1,5 +1,4 @@
-"use client";
-
+import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 
 export default function StrategySection() {
@@ -89,10 +88,13 @@ export default function StrategySection() {
           {/* Imagem à direita */}
           <ScrollReveal animation="reveal-right" delay={100} className="h-full">
             <div className="relative h-[280px] lg:h-full lg:min-h-[380px] bg-gradient-to-br from-stone-200 to-stone-300 rounded-xl overflow-hidden">
-              <img
-                src="/Fotos Site/projeto-arquitetura-obras.png"
+              <Image
+                src="/Fotos Site/projeto-arquitetura-obras.jpg"
                 alt="Estratégia imobiliária"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                loading="lazy"
               />
               {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />

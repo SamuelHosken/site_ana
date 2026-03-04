@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -37,13 +38,13 @@ export default function QuemSomos() {
             <ScrollReveal animation="reveal-left">
               <div className="relative">
                 <div className="relative h-[280px] md:h-[400px] lg:h-[500px] bg-gradient-to-br from-stone-200 to-stone-300 rounded-xl md:rounded-2xl overflow-hidden">
-                  <img
-                    src="/ana_clara.jpg"
+                  <Image
+                    src="/Ana-107.jpg"
                     alt="Ana Clara - Later Nobilis"
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                    }}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    priority
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                 </div>

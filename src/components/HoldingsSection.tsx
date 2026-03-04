@@ -1,5 +1,4 @@
-"use client";
-
+import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 
 export default function HoldingsSection() {
@@ -10,10 +9,13 @@ export default function HoldingsSection() {
           {/* Imagem - esquerda no desktop */}
           <ScrollReveal animation="reveal-left" className="order-1">
             <div className="relative h-[220px] md:h-[320px] lg:h-[380px] bg-gradient-to-br from-stone-200 to-stone-300 rounded-xl overflow-hidden">
-              <img
+              <Image
                 src="/Fotos Site/holdings-family-offices.jpg"
                 alt="Estruturas patrimoniais familiares"
-                className="w-full h-full object-cover object-[center_-40px]"
+                fill
+                className="object-cover object-[center_-40px]"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
             </div>

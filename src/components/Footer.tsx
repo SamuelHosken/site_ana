@@ -1,5 +1,4 @@
-"use client";
-
+import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 
 export default function Footer() {
@@ -20,10 +19,13 @@ export default function Footer() {
             {/* Logo */}
             <ScrollReveal className="flex flex-col items-center md:items-start">
               <div className="mb-2">
-                <img
+                <Image
                   src="/Logo 1 Horizontal.svg"
                   alt="Later Nobilis"
+                  width={180}
+                  height={28}
                   className="h-6 md:h-7 w-auto"
+                  loading="lazy"
                 />
               </div>
               <p className="text-gray-400 text-xs">Imobiliária Boutique</p>

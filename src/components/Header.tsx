@@ -1,20 +1,29 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const rafRef = useRef<number>(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (rafRef.current) return;
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = 0;
+        setIsScrolled(window.scrollY > 50);
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -69,10 +78,13 @@ export default function Header() {
             href="/"
             className="group relative"
           >
-            <img
-              src="/Logo horizontal com cor.svg?v=2"
+            <Image
+              src="/Logo horizontal com cor.svg"
               alt="Later Nobilis"
+              width={160}
+              height={20}
               className="h-4 md:h-5 w-auto transition-all duration-300 group-hover:opacity-80"
+              priority
             />
           </a>
 
@@ -297,10 +309,13 @@ export default function Header() {
 
               {/* Brand footer */}
               <div className="mt-5 pt-3 border-t border-stone-100 text-center">
-                <img
+                <Image
                   src="/Tipografia Logo.svg"
                   alt="Later Nobilis"
+                  width={100}
+                  height={14}
                   className="h-3.5 w-auto mx-auto brightness-0 opacity-40"
+                  loading="lazy"
                 />
                 <p className="text-gray-400 text-[10px] mt-1">
                   Imobiliária Boutique

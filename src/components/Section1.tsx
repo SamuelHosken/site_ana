@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 
 // Componente de Tooltip reutilizável
@@ -76,10 +77,13 @@ export default function Section1() {
           </div>
 
           <div className="hidden md:block text-right">
-            <img
+            <Image
               src="/Tipografia Logo.svg"
               alt="Later Nobilis"
+              width={120}
+              height={16}
               className="h-4 w-auto ml-auto brightness-0 opacity-30"
+              loading="lazy"
             />
           </div>
         </ScrollReveal>

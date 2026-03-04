@@ -1,33 +1,37 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 
 export default function Hero() {
   const [parallaxY, setParallaxY] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number>(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!heroRef.current) return;
+      if (rafRef.current) return;
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = 0;
+        if (!heroRef.current) return;
 
-      const rect = heroRef.current.getBoundingClientRect();
-      const heroBottom = rect.bottom;
-
-      // Só aplica parallax enquanto o hero está visível
-      if (heroBottom > 0) {
-        // Limita o parallax a no máximo 50px para não cortar a imagem
-        const maxParallax = 50;
-        const newParallax = Math.min(window.scrollY * 0.1, maxParallax);
-        setParallaxY(newParallax);
-      } else {
-        // Reseta quando o hero sai da tela
-        setParallaxY(0);
-      }
+        const rect = heroRef.current.getBoundingClientRect();
+        if (rect.bottom > 0) {
+          const maxParallax = 50;
+          const newParallax = Math.min(window.scrollY * 0.1, maxParallax);
+          setParallaxY(newParallax);
+        } else {
+          setParallaxY(0);
+        }
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   return (
@@ -37,9 +41,13 @@ export default function Hero() {
         <div ref={heroRef} className="relative h-[420px] rounded-[20px] overflow-hidden">
           {/* Full screen image */}
           <div className="absolute inset-0">
-            <div
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
-              style={{ backgroundImage: "url('/hero.png')" }}
+            <Image
+              src="/hero.jpg"
+              alt="Later Nobilis Hero"
+              fill
+              priority
+              className="object-cover object-center scale-105"
+              sizes="100vw"
             />
             {/* Dark overlay gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/30" />
@@ -48,10 +56,13 @@ export default function Hero() {
           {/* Centered content */}
           <div className="relative h-full flex flex-col items-center justify-center text-center px-5">
             {/* Logo */}
-            <img
+            <Image
               src="/Tipografia com R.svg"
               alt="Later Nobilis"
+              width={120}
+              height={16}
               className="h-4 w-auto mb-4 brightness-0 invert opacity-90"
+              priority
             />
 
             {/* Title */}
@@ -113,12 +124,20 @@ export default function Hero() {
             >
               {/* Imagem com hover scale (com transição) */}
               <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 ease-out"
+                className="absolute inset-0 transition-transform duration-700 ease-out"
                 style={{
-                  backgroundImage: "url('/hero.png')",
                   transform: `scale(${isHovered ? 1.08 : 1.02})`
                 }}
-              />
+              >
+                <Image
+                  src="/hero.jpg"
+                  alt="Later Nobilis Hero"
+                  fill
+                  priority
+                  className="object-cover object-center"
+                  sizes="(min-width: 768px) 1280px, 100vw"
+                />
+              </div>
             </div>
           </div>
 
@@ -127,10 +146,13 @@ export default function Hero() {
             <div className="px-6">
               {/* Logo Tipografia */}
               <div className="mb-4">
-                <img
+                <Image
                   src="/Tipografia com R.svg"
                   alt="Later Nobilis"
+                  width={150}
+                  height={24}
                   className="h-5 lg:h-6 w-auto brightness-0"
+                  priority
                 />
               </div>
 
