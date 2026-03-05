@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
+import { useContactModal } from "@/contexts/ContactModalContext";
 
 const features = [
   {
@@ -65,6 +66,7 @@ const featureIcons = [
 // Componente Mobile - Accordion sem sticky scroll
 function Section4Mobile() {
   const [openIndex, setOpenIndex] = useState(0);
+  const { open: openContactModal } = useContactModal();
 
   return (
     <section className="py-16 px-4 bg-gradient-to-br from-stone-100 to-stone-200 lg:hidden">
@@ -168,15 +170,15 @@ function Section4Mobile() {
         {/* CTA */}
         <ScrollReveal delay={400}>
           <div className="mt-8 text-center">
-            <a
-              href="/#contato"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-all duration-300"
+            <button
+              onClick={openContactModal}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-all duration-300 cursor-pointer"
             >
               Quero impulsionar meu imóvel
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </a>
+            </button>
           </div>
         </ScrollReveal>
       </div>
@@ -188,6 +190,7 @@ function Section4Mobile() {
 function Section4Desktop() {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { open: openContactModal } = useContactModal();
 
   const scrollToFeature = (index: number) => {
     if (!sectionRef.current) return;
@@ -386,7 +389,7 @@ function Section4Desktop() {
             <p className="text-gray-700 text-sm sm:text-sm leading-relaxed mb-4">
               Na <strong className="text-primary">Later Nobilis Boutique</strong>, sabemos exatamente as expectativas de quem vende e quem compra um imóvel. Quem coloca um bem à venda quer propostas que reconheçam seu real valor, enquanto quem busca adquirir deseja sentir que fez um excelente negócio.
             </p>
-            <button className="group px-6 py-3 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-all duration-300">
+            <button onClick={openContactModal} className="group px-6 py-3 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-all duration-300 cursor-pointer">
               <span className="flex items-center gap-2">
                 Quero impulsionar meu imóvel
                 <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

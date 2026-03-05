@@ -4,8 +4,10 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import { useContactModal } from "@/contexts/ContactModalContext";
 
 export default function OpenHouse() {
+  const { open: openContactModal } = useContactModal();
   const comoFunciona = [
     {
       title: "Preparação visual profissional (Home Staging)",
@@ -177,15 +179,15 @@ export default function OpenHouse() {
               </blockquote>
 
               <div className="mt-6 md:mt-8">
-                <a
-                  href="/#contato"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded-full hover:bg-primary/90 transition-all duration-300"
+                <button
+                  onClick={openContactModal}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded-full hover:bg-primary/90 transition-all duration-300 cursor-pointer"
                 >
                   Agende um Open House
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </a>
+                </button>
               </div>
             </div>
           </ScrollReveal>

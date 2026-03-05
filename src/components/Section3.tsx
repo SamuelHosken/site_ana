@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
+import { useContactModal } from "@/contexts/ContactModalContext";
 
 export default function Section3() {
+  const { open: openContactModal } = useContactModal();
   const services = [
     {
       number: "01",
@@ -69,6 +71,12 @@ export default function Section3() {
             <ScrollReveal key={index} delay={index * 80}>
               <a
                 href={service.buttonLink || "#"}
+                onClick={(e) => {
+                  if (service.buttonLink === "#contato") {
+                    e.preventDefault();
+                    openContactModal();
+                  }
+                }}
                 className="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
               >
                 {/* Imagem */}
@@ -170,6 +178,12 @@ export default function Section3() {
                   {/* Botão */}
                   <a
                     href={service.buttonLink || "#"}
+                    onClick={(e) => {
+                      if (service.buttonLink === "#contato") {
+                        e.preventDefault();
+                        openContactModal();
+                      }
+                    }}
                     className="mt-4 sm:mt-4 text-primary font-medium flex items-center gap-2 group/btn text-sm sm:text-sm hover:underline"
                   >
                     <span>{service.buttonText || "Saiba mais"}</span>

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ContactModalProvider } from "@/contexts/ContactModalContext";
+import ContactModal from "@/components/ContactModal";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,7 +27,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={inter.variable}>
       <body className="antialiased">
-        {children}
+        <ContactModalProvider>
+          {children}
+          <ContactModal />
+        </ContactModalProvider>
       </body>
     </html>
   );

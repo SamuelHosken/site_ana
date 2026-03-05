@@ -5,10 +5,12 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import { useContactModal } from "@/contexts/ContactModalContext";
 
 export default function InternationalFlip() {
   const [activeCountry, setActiveCountry] = useState(0);
   const stickyRef = useRef<HTMLDivElement>(null);
+  const { open: openContactModal } = useContactModal();
 
   const paises = [
     {
@@ -210,15 +212,15 @@ export default function InternationalFlip() {
           {/* CTA */}
           <ScrollReveal delay={200}>
             <div className="text-center mt-6 md:mt-10">
-              <a
-                href="/#contato"
-                className="inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 bg-primary text-white text-xs font-medium rounded-full hover:bg-primary/90 transition-all duration-300 group"
+              <button
+                onClick={openContactModal}
+                className="inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 bg-primary text-white text-xs font-medium rounded-full hover:bg-primary/90 transition-all duration-300 group cursor-pointer"
               >
                 Diversificar patrimônio
                 <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </a>
+              </button>
             </div>
           </ScrollReveal>
         </div>
@@ -328,15 +330,15 @@ export default function InternationalFlip() {
                     ))}
                   </ul>
 
-                  <a
-                    href="/#contato"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white text-xs font-medium rounded-full hover:bg-primary/90 transition-all group"
+                  <button
+                    onClick={openContactModal}
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white text-xs font-medium rounded-full hover:bg-primary/90 transition-all group cursor-pointer"
                   >
                     Investir em {pais.nome}
                     <svg className="w-3 h-3 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
-                  </a>
+                  </button>
                 </div>
               </ScrollReveal>
             </div>
@@ -415,9 +417,9 @@ export default function InternationalFlip() {
                       ))}
                     </ul>
 
-                    <a
-                      href="/#contato"
-                      className={`inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white text-xs font-medium rounded-full hover:bg-primary/90 transition-all duration-700 delay-400 group ${
+                    <button
+                      onClick={openContactModal}
+                      className={`inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white text-xs font-medium rounded-full hover:bg-primary/90 transition-all duration-700 delay-400 group cursor-pointer ${
                         activeCountry === index ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"
                       }`}
                     >
@@ -425,7 +427,7 @@ export default function InternationalFlip() {
                       <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
-                    </a>
+                    </button>
                   </div>
                 ))}
               </div>
@@ -575,13 +577,13 @@ export default function InternationalFlip() {
           </ScrollReveal>
 
           <ScrollReveal delay={400}>
-            <a
-              href="/#contato"
-              className="group relative inline-block px-5 py-2.5 md:px-6 md:py-3 bg-primary text-white text-xs md:text-sm font-medium rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+            <button
+              onClick={openContactModal}
+              className="group relative inline-block px-5 py-2.5 md:px-6 md:py-3 bg-primary text-white text-xs md:text-sm font-medium rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 cursor-pointer"
             >
               <span className="relative z-10">Conhecer oportunidades</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </a>
+            </button>
           </ScrollReveal>
         </div>
       </section>

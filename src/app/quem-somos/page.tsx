@@ -4,8 +4,10 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import { useContactModal } from "@/contexts/ContactModalContext";
 
 export default function QuemSomos() {
+  const { open: openContactModal } = useContactModal();
   const diferenciais = [
     "Atendimento humano e consultivo, com foco total no cliente",
     "Unimos design, estratégia e inteligência imobiliária para gerar grandes resultados",
@@ -123,15 +125,15 @@ export default function QuemSomos() {
               <span className="font-bodoni text-primary">estética</span> e{" "}
               <span className="font-bodoni text-primary">performance</span>.
             </h2>
-            <a
-              href="/#contato"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded-full hover:bg-primary/90 transition-all duration-300"
+            <button
+              onClick={openContactModal}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded-full hover:bg-primary/90 transition-all duration-300 cursor-pointer"
             >
               Fale com um especialista
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </a>
+            </button>
           </ScrollReveal>
         </div>
       </section>

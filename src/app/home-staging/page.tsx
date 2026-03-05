@@ -4,8 +4,10 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import { useContactModal } from "@/contexts/ContactModalContext";
 
 export default function HomeStaging() {
+  const { open: openContactModal } = useContactModal();
   const etapas = [
     {
       number: "01",
@@ -207,15 +209,15 @@ export default function HomeStaging() {
             <p className="text-white/80 text-sm mb-6">
               Descubra como o home staging pode acelerar a venda.
             </p>
-            <a
-              href="/#contato"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary text-sm font-medium rounded-full hover:bg-gray-100 transition-all duration-300"
+            <button
+              onClick={openContactModal}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary text-sm font-medium rounded-full hover:bg-gray-100 transition-all duration-300 cursor-pointer"
             >
               Quero saber mais
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </a>
+            </button>
           </ScrollReveal>
         </div>
       </section>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
+import ContactModalTrigger from "./ContactModalTrigger";
 
 export default function Footer() {
   const links = [
@@ -36,15 +37,24 @@ export default function Footer() {
 
             {/* Links - grid on mobile */}
             <ScrollReveal delay={100} className="grid grid-cols-3 md:flex gap-3 md:gap-5">
-              {links.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  className="text-gray-400 hover:text-primary transition-colors duration-300 text-[11px] md:text-xs text-center md:text-right"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {links.map((link, index) =>
+                link.href === "#contato" ? (
+                  <ContactModalTrigger
+                    key={index}
+                    className="text-gray-400 hover:text-primary transition-colors duration-300 text-[11px] md:text-xs text-center md:text-right cursor-pointer"
+                  >
+                    {link.label}
+                  </ContactModalTrigger>
+                ) : (
+                  <a
+                    key={index}
+                    href={link.href}
+                    className="text-gray-400 hover:text-primary transition-colors duration-300 text-[11px] md:text-xs text-center md:text-right"
+                  >
+                    {link.label}
+                  </a>
+                )
+              )}
             </ScrollReveal>
           </div>
         </div>

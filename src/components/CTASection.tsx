@@ -1,4 +1,5 @@
 import ScrollReveal from "./ScrollReveal";
+import ContactModalTrigger from "./ContactModalTrigger";
 
 export default function CTASection() {
   return (
@@ -49,13 +50,12 @@ export default function CTASection() {
 
         {/* Button */}
         <ScrollReveal delay={400}>
-          <a
-            href="#contato"
-            className="group relative inline-block px-6 py-3 bg-primary text-white text-sm font-medium rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+          <ContactModalTrigger
+            className="group relative inline-block px-6 py-3 bg-primary text-white text-sm font-medium rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 cursor-pointer"
           >
             <span className="relative z-10">Quero vender meu imóvel</span>
             <div className="absolute inset-0 bg-gradient-to-r from-primary to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </a>
+          </ContactModalTrigger>
         </ScrollReveal>
       </div>
     </section>

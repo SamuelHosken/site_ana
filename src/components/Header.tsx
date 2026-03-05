@@ -2,11 +2,13 @@
 
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
+import { useContactModal } from "@/contexts/ContactModalContext";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const rafRef = useRef<number>(0);
+  const { open: openContactModal } = useContactModal();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -135,7 +137,10 @@ export default function Header() {
                   key={item.label}
                   href={item.href}
                   onClick={(e) => {
-                    if (item.href.startsWith("#")) {
+                    if (item.href === "#contato") {
+                      e.preventDefault();
+                      openContactModal();
+                    } else if (item.href.startsWith("#")) {
                       scrollToSection(e, item.href);
                     }
                   }}
@@ -148,9 +153,9 @@ export default function Header() {
             ))}
 
             {/* CTA Button */}
-            <a
-              href="/#contato"
-              className="relative px-3.5 py-1.5 text-xs font-medium tracking-wide rounded-md overflow-hidden transition-all duration-300 group/btn border-2 border-primary text-primary hover:text-white"
+            <button
+              onClick={openContactModal}
+              className="relative px-3.5 py-1.5 text-xs font-medium tracking-wide rounded-md overflow-hidden transition-all duration-300 group/btn border-2 border-primary text-primary hover:text-white cursor-pointer"
             >
               {/* Background fill on hover */}
               <span className="absolute inset-0 w-0 group-hover/btn:w-full transition-all duration-300 ease-out bg-primary" />
@@ -170,7 +175,7 @@ export default function Header() {
                   />
                 </svg>
               </span>
-            </a>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -259,7 +264,11 @@ export default function Header() {
                     key={item.label}
                     href={item.href}
                     onClick={(e) => {
-                      if (item.href.startsWith("#")) {
+                      if (item.href === "#contato") {
+                        e.preventDefault();
+                        setIsMobileMenuOpen(false);
+                        openContactModal();
+                      } else if (item.href.startsWith("#")) {
                         scrollToSection(e, item.href);
                       } else {
                         setIsMobileMenuOpen(false);
@@ -286,10 +295,9 @@ export default function Header() {
 
             {/* CTA */}
             <div className="mt-auto">
-              <a
-                href="/#contato"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-1.5 w-full py-2.5 bg-primary text-white rounded-md font-medium transition-all duration-300 hover:bg-primary/90 text-xs"
+              <button
+                onClick={() => { setIsMobileMenuOpen(false); openContactModal(); }}
+                className="flex items-center justify-center gap-1.5 w-full py-2.5 bg-primary text-white rounded-md font-medium transition-all duration-300 hover:bg-primary/90 text-xs cursor-pointer"
               >
                 Agendar Avaliação
                 <svg
@@ -305,7 +313,7 @@ export default function Header() {
                     d="M17 8l4 4m0 0l-4 4m4-4H3"
                   />
                 </svg>
-              </a>
+              </button>
 
               {/* Brand footer */}
               <div className="mt-5 pt-3 border-t border-stone-100 text-center">
