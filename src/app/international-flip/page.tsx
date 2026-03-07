@@ -136,7 +136,7 @@ export default function InternationalFlip() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-20 md:pt-24 pb-10 md:pb-16 px-4 md:px-6 bg-gradient-to-br from-slate-50 via-blue-50/50 to-white overflow-hidden">
+      <section className="relative pt-20 md:pt-24 pb-10 md:pb-16 px-5 md:px-6 bg-gradient-to-br from-slate-50 via-blue-50/50 to-white overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl hidden md:block" />
@@ -151,7 +151,7 @@ export default function InternationalFlip() {
                 <svg className="w-3 h-3 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span className="text-primary text-[10px] font-medium tracking-widest uppercase">
+                <span className="text-primary text-xs font-medium tracking-widest uppercase">
                   Expansão Global
                 </span>
               </div>
@@ -177,15 +177,15 @@ export default function InternationalFlip() {
             <div className="flex justify-center gap-6 md:gap-12 mb-6 md:mb-10">
               <div className="text-center">
                 <p className="text-lg md:text-2xl font-bold text-primary">3+</p>
-                <p className="text-[9px] md:text-[10px] text-gray-500 uppercase tracking-wider mt-0.5">Países</p>
+                <p className="text-xs text-gray-500 uppercase tracking-wider mt-0.5">Países</p>
               </div>
               <div className="text-center">
                 <p className="text-lg md:text-2xl font-bold text-primary">20%</p>
-                <p className="text-[9px] md:text-[10px] text-gray-500 uppercase tracking-wider mt-0.5">Valorização</p>
+                <p className="text-xs text-gray-500 uppercase tracking-wider mt-0.5">Valorização</p>
               </div>
               <div className="text-center">
                 <p className="text-lg md:text-2xl font-bold text-primary">0%</p>
-                <p className="text-[9px] md:text-[10px] text-gray-500 uppercase tracking-wider mt-0.5">Imposto Dubai</p>
+                <p className="text-xs text-gray-500 uppercase tracking-wider mt-0.5">Imposto Dubai</p>
               </div>
             </div>
           </ScrollReveal>
@@ -227,7 +227,7 @@ export default function InternationalFlip() {
       </section>
 
       {/* Vantagens */}
-      <section className="py-12 md:py-16 px-4 md:px-6 bg-white">
+      <section className="py-12 md:py-16 px-5 md:px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-8">
@@ -247,7 +247,7 @@ export default function InternationalFlip() {
                     {item.icon}
                   </div>
                   <h3 className="text-gray-800 text-xs md:text-sm font-semibold mb-1 md:mb-2">{item.titulo}</h3>
-                  <p className="text-gray-600 text-[10px] md:text-xs leading-relaxed line-clamp-3 md:line-clamp-none">{item.descricao}</p>
+                  <p className="text-gray-600 text-xs leading-relaxed line-clamp-3 md:line-clamp-none">{item.descricao}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -256,7 +256,7 @@ export default function InternationalFlip() {
       </section>
 
       {/* Países - Mobile Version */}
-      <section className="py-12 px-4 bg-gradient-to-b from-white to-stone-50 lg:hidden">
+      <section className="py-12 px-5 bg-gradient-to-b from-white to-stone-50 lg:hidden">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-6">
@@ -349,7 +349,7 @@ export default function InternationalFlip() {
       {/* Países - Desktop Sticky Scroll Section */}
       <section className="relative bg-gradient-to-b from-white to-stone-50 hidden lg:block" style={{ height: `${paises.length * 100}vh` }}>
         <div ref={stickyRef} className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
-          <div className="max-w-5xl mx-auto px-4 md:px-6 w-full -translate-y-12">
+          <div className="max-w-5xl mx-auto px-5 md:px-6 w-full -translate-y-12">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               {/* Left - Text content */}
               <div className="relative min-h-[350px]">
@@ -474,11 +474,11 @@ export default function InternationalFlip() {
       </section>
 
       {/* Como funciona */}
-      <section className="py-12 md:py-20 px-4 md:px-6 bg-stone-100 overflow-hidden">
+      <section className="py-12 md:py-20 px-5 md:px-6 bg-stone-100 overflow-hidden">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-8 md:mb-16">
-              <span className="inline-block text-primary text-[10px] font-medium tracking-widest uppercase mb-2">
+              <span className="inline-block text-primary text-xs font-medium tracking-widest uppercase mb-2">
                 Processo
               </span>
               <h2 className="text-lg md:text-2xl text-gray-800">
@@ -530,8 +530,8 @@ export default function InternationalFlip() {
                       {item.step}
                     </span>
                   </div>
-                  <h3 className="text-gray-800 text-[11px] md:text-sm font-semibold mb-1 md:mb-2">{item.title}</h3>
-                  <p className="text-gray-500 text-[10px] md:text-xs leading-relaxed line-clamp-2 md:line-clamp-none">{item.desc}</p>
+                  <h3 className="text-gray-800 text-xs md:text-sm font-semibold mb-1 md:mb-2">{item.title}</h3>
+                  <p className="text-gray-500 text-xs leading-relaxed line-clamp-2 md:line-clamp-none">{item.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -540,7 +540,7 @@ export default function InternationalFlip() {
       </section>
 
       {/* CTA */}
-      <section className="py-12 md:py-16 px-4 md:px-6 bg-stone-50 relative overflow-hidden">
+      <section className="py-12 md:py-16 px-5 md:px-6 bg-stone-50 relative overflow-hidden">
         {/* Decorative elements - desktop only */}
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent hidden md:block" />
         <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent hidden md:block" />
@@ -550,7 +550,7 @@ export default function InternationalFlip() {
           <ScrollReveal>
             <div className="flex items-center justify-center gap-2 md:gap-3 mb-4 md:mb-5">
               <div className="h-px w-8 md:w-10 bg-primary/30" />
-              <span className="text-primary text-[9px] md:text-[10px] font-medium tracking-[0.2em] uppercase">
+              <span className="text-primary text-xs font-medium tracking-[0.2em] uppercase">
                 Próximo passo
               </span>
               <div className="h-px w-8 md:w-10 bg-primary/30" />

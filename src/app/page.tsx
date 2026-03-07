@@ -1,16 +1,16 @@
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Section1 from "@/components/Section1";
+import ApproachSection from "@/components/ApproachSection";
 import Footer from "@/components/Footer";
 
 const IntroSection = dynamic(() => import("@/components/IntroSection"));
-const Section4 = dynamic(() => import("@/components/Section4"));
+const AdvertisingSection = dynamic(() => import("@/components/AdvertisingSection"));
 const RentalsSection = dynamic(() => import("@/components/RentalsSection"));
 const HoldingsSection = dynamic(() => import("@/components/HoldingsSection"));
 const StrategySection = dynamic(() => import("@/components/StrategySection"));
-const Section3 = dynamic(() => import("@/components/Section3"));
-const Section6 = dynamic(() => import("@/components/Section6"));
+const ServicesSection = dynamic(() => import("@/components/ServicesSection"));
+const InternationalPreviewSection = dynamic(() => import("@/components/InternationalPreviewSection"));
 const CTASection = dynamic(() => import("@/components/CTASection"));
 
 export default function Home() {
@@ -19,13 +19,13 @@ export default function Home() {
       <Header />
       <Hero />
       <IntroSection />
-      <Section1 />
-      <Section4 />
+      <ApproachSection />
+      <AdvertisingSection />
       <RentalsSection />
       <HoldingsSection />
       <StrategySection />
-      <Section3 />
-      <Section6 />
+      <ServicesSection />
+      <InternationalPreviewSection />
       <CTASection />
       <Footer />
     </main>

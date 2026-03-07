@@ -19,7 +19,7 @@ const rooms = [
 // Componente Mobile - Layout estático e simples
 function IntroSectionMobile() {
   return (
-    <section id="sobre" className="py-16 px-4 bg-white lg:hidden">
+    <section id="sobre" className="py-16 px-5 bg-white lg:hidden">
       <div className="max-w-lg mx-auto">
         {/* Título */}
         <ScrollReveal>
@@ -82,7 +82,7 @@ function IntroSectionMobile() {
                 </svg>
               </div>
               <h4 className="text-gray-800 text-xs font-semibold mb-1">Estudo de Mercado</h4>
-              <p className="text-gray-500 text-[10px]">Análise estratégica</p>
+              <p className="text-gray-500 text-xs">Análise estratégica</p>
             </div>
 
             {/* Card 2 - Público Ideal */}
@@ -94,7 +94,7 @@ function IntroSectionMobile() {
                 </svg>
               </div>
               <h4 className="text-gray-800 text-xs font-semibold mb-1">Público Ideal</h4>
-              <p className="text-gray-500 text-[10px]">Segmentação precisa</p>
+              <p className="text-gray-500 text-xs">Segmentação precisa</p>
             </div>
 
             {/* Card 3 - Investimento */}
@@ -105,7 +105,7 @@ function IntroSectionMobile() {
                 </svg>
               </div>
               <h4 className="text-gray-800 text-xs font-semibold mb-1">Investimento</h4>
-              <p className="text-gray-500 text-[10px]">Até R$10.000/imóvel</p>
+              <p className="text-gray-500 text-xs">Até R$10.000/imóvel</p>
             </div>
 
             {/* Card 4 - Dedicação Total */}
@@ -116,7 +116,7 @@ function IntroSectionMobile() {
                 </svg>
               </div>
               <h4 className="text-gray-800 text-xs font-semibold mb-1">Dedicação Total</h4>
-              <p className="text-gray-500 text-[10px]">Máx. 3 imóveis/consultor</p>
+              <p className="text-gray-500 text-xs">Máx. 3 imóveis/consultor</p>
             </div>
           </div>
         </ScrollReveal>
@@ -186,7 +186,7 @@ function IntroSectionDesktop() {
       style={{ height: "200vh" }}
     >
       <div className="sticky top-0 h-screen flex items-start pt-16 z-0">
-        <div className="w-full max-w-6xl mx-auto px-4 md:px-8 py-10">
+        <div className="w-full max-w-6xl mx-auto px-5 md:px-6 py-10">
           {/* Layout principal: Texto à esquerda, Planta à direita */}
           <div className="grid lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-12 items-center">
             {/* Coluna esquerda - Título + Texto */}
@@ -268,7 +268,7 @@ function IntroSectionDesktop() {
 
             {/* Coluna direita - Planta da casa sendo desenhada */}
             <div className="relative flex items-center justify-start lg:-mr-32">
-              <div className="relative w-[450px]">
+              <div className="relative w-full max-w-[450px]">
                 {/* SVG da planta baixa - apartamento completo e detalhado */}
                 <svg
                   viewBox="0 0 380 340"
@@ -724,7 +724,7 @@ function IntroSectionDesktop() {
             className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-stone-400 transition-opacity duration-300"
             style={{ opacity: svgProgress < 0.95 ? 1 : 0 }}
           >
-            <span className="text-[10px] uppercase tracking-widest">
+            <span className="text-xs uppercase tracking-widest">
               {textProgress < 1 ? "Role para ler" : "Role para desenhar"}
             </span>
             <div className="w-5 h-8 border-2 border-stone-300 rounded-full flex justify-center pt-1.5">

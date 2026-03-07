@@ -1,9 +1,9 @@
 import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 
-export default function Section6() {
+export default function InternationalPreviewSection() {
   return (
-    <section id="internacional" className="py-16 px-4 md:px-6 bg-gradient-to-b from-stone-50 to-white">
+    <section id="internacional" className="py-16 px-5 md:px-6 bg-gradient-to-b from-stone-50 to-white">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <ScrollReveal className="text-center mb-8">
@@ -41,17 +41,17 @@ export default function Section6() {
 
         {/* Features - Grid no mobile */}
         <ScrollReveal delay={200} className="text-center max-w-2xl mx-auto">
-          <p className="text-gray-600 text-sm leading-relaxed mb-5 hidden md:block">
+          <p className="text-gray-600 text-sm leading-relaxed mb-5">
             Viabilizamos a compra de imóveis em Dubai e EUA com condições privilegiadas:
           </p>
           <div className="grid grid-cols-2 gap-3 max-w-md mx-auto mb-6">
             <div className="p-3 md:p-4 bg-white rounded-xl border border-stone-200">
               <p className="text-gray-800 font-medium text-xs md:text-sm">Valorização Superior</p>
-              <p className="text-gray-500 text-[10px] md:text-xs mt-1">Rendimentos livres de impostos</p>
+              <p className="text-gray-500 text-xs mt-1">Rendimentos livres de impostos</p>
             </div>
             <div className="p-3 md:p-4 bg-white rounded-xl border border-stone-200">
               <p className="text-gray-800 font-medium text-xs md:text-sm">Moeda Forte</p>
-              <p className="text-gray-500 text-[10px] md:text-xs mt-1">Dolarize seu patrimônio</p>
+              <p className="text-gray-500 text-xs mt-1">Dolarize seu patrimônio</p>
             </div>
           </div>
 

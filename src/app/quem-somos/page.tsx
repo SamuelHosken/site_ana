@@ -20,7 +20,7 @@ export default function QuemSomos() {
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-20 md:pt-24 pb-12 md:pb-16 px-4 md:px-6 bg-stone-50">
+      <section className="pt-20 md:pt-24 pb-12 md:pb-16 px-5 md:px-6 bg-stone-50">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-8 md:mb-12">
@@ -83,7 +83,7 @@ export default function QuemSomos() {
       </section>
 
       {/* Diferenciais Section */}
-      <section className="py-12 md:py-16 px-4 md:px-6 bg-white">
+      <section className="py-12 md:py-16 px-5 md:px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-8">
@@ -115,7 +115,7 @@ export default function QuemSomos() {
       </section>
 
       {/* Statement Section */}
-      <section className="py-12 md:py-16 px-4 md:px-6 bg-gray-900 text-white">
+      <section className="py-12 md:py-16 px-5 md:px-6 bg-gray-900 text-white">
         <div className="max-w-2xl mx-auto text-center">
           <ScrollReveal>
             <p className="text-gray-400 text-xs md:text-sm mb-3">Não somos uma imobiliária tradicional.</p>

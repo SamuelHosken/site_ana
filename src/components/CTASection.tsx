@@ -1,9 +1,10 @@
 import ScrollReveal from "./ScrollReveal";
 import ContactModalTrigger from "./ContactModalTrigger";
+import SectionHeader from "./SectionHeader";
 
 export default function CTASection() {
   return (
-    <section id="contato" className="py-14 sm:py-16 md:py-20 px-4 md:px-6 bg-stone-50 relative overflow-hidden">
+    <section id="contato" className="py-14 sm:py-16 md:py-20 px-5 md:px-6 bg-stone-50 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
@@ -16,7 +17,7 @@ export default function CTASection() {
         <ScrollReveal>
           <div className="flex items-center justify-center gap-3 mb-5">
             <div className="h-px w-10 bg-primary/30" />
-            <span className="text-primary text-[10px] font-medium tracking-[0.2em] uppercase">
+            <span className="text-primary text-xs font-medium tracking-[0.2em] uppercase">
               Exclusividade
             </span>
             <div className="h-px w-10 bg-primary/30" />

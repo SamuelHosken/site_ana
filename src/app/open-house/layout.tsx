@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Open House Exclusivo | Later Nobilis",
     description: "Eventos imobiliários que transformam visitas em experiências de encantamento.",
+    images: [{ url: "/hero.jpg", width: 1200, height: 630, alt: "Open House — Later Nobilis" }],
   },
 };
 

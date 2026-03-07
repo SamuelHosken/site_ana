@@ -4,7 +4,7 @@ import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 import { useContactModal } from "@/contexts/ContactModalContext";
 
-export default function Section3() {
+export default function ServicesSection() {
   const { open: openContactModal } = useContactModal();
   const services = [
     {
@@ -46,7 +46,7 @@ export default function Section3() {
   ];
 
   return (
-    <section id="servicos" className="py-16 px-4 md:px-6 bg-stone-50">
+    <section id="servicos" className="py-16 px-5 md:px-6 bg-stone-50">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <ScrollReveal className="group mb-10 text-center max-w-3xl mx-auto">
@@ -57,7 +57,7 @@ export default function Section3() {
             Como <span className="font-bodoni text-primary">transformar seu imóvel</span> em uma oportunidade{" "}
             <span className="font-bodoni text-primary">única de valor</span>
           </h2>
-          <p className="text-gray-600 text-sm mt-4 hidden md:block">
+          <p className="text-gray-600 text-sm mt-4">
             Cada detalhe é pensado para uma coisa: fazer seu imóvel se destacar, <strong>vender e alugar</strong> mais rápido, pelo melhor valor.
           </p>
           <div className="h-[2px] w-20 bg-primary/20 rounded-full overflow-hidden mx-auto mt-4">
@@ -92,7 +92,7 @@ export default function Section3() {
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <span className="absolute top-2 left-2 w-6 h-6 bg-white/90 rounded-full flex items-center justify-center text-[10px] font-bold text-primary">
+                  <span className="absolute top-2 left-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center text-xs font-bold text-primary">
                     {service.number}
                   </span>
                 </div>
@@ -102,7 +102,7 @@ export default function Section3() {
                   <h3 className="text-gray-800 text-xs font-semibold mb-1 line-clamp-2 group-hover:text-primary transition-colors">
                     {service.title}
                   </h3>
-                  <span className="text-primary text-[10px] font-medium flex items-center gap-1">
+                  <span className="text-primary text-xs font-medium flex items-center gap-1">
                     Saiba mais
                     <svg className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

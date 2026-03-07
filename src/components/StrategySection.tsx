@@ -27,7 +27,7 @@ export default function StrategySection() {
   ];
 
   return (
-    <section className="py-16 px-4 md:px-6 bg-white">
+    <section className="py-16 px-5 md:px-6 bg-white">
       <div className="max-w-5xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-stretch">
           {/* Conteúdo à esquerda */}
@@ -57,7 +57,7 @@ export default function StrategySection() {
                 <ScrollReveal key={index} animation="reveal-left" delay={(index + 1) * 80}>
                   <div className="group relative pl-6 border-l border-stone-200 hover:border-primary transition-colors duration-300">
                     {/* Número */}
-                    <span className="absolute -left-3 top-0 w-6 h-6 bg-white border border-stone-200 group-hover:border-primary rounded-full flex items-center justify-center text-[10px] font-bold text-stone-400 group-hover:text-primary transition-colors duration-300">
+                    <span className="absolute -left-3 top-0 w-6 h-6 bg-white border border-stone-200 group-hover:border-primary rounded-full flex items-center justify-center text-xs font-bold text-stone-400 group-hover:text-primary transition-colors duration-300">
                       {step.number}
                     </span>
 

@@ -54,7 +54,7 @@ export default function HomeStaging() {
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-20 md:pt-24 pb-10 md:pb-16 px-4 md:px-6 bg-stone-50">
+      <section className="pt-20 md:pt-24 pb-10 md:pb-16 px-5 md:px-6 bg-stone-50">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-8">
@@ -95,7 +95,7 @@ export default function HomeStaging() {
       </section>
 
       {/* O que é Home Staging */}
-      <section className="py-12 md:py-16 px-4 md:px-6 bg-white">
+      <section className="py-12 md:py-16 px-5 md:px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <ScrollReveal animation="reveal-left">
@@ -112,7 +112,7 @@ export default function HomeStaging() {
                     atrativo e "desejável".
                   </p>
 
-                  <p className="text-gray-600 text-sm leading-relaxed hidden md:block">
+                  <p className="text-gray-600 text-sm leading-relaxed">
                     Fazemos parcerias com lojas de móveis que utilizam o espaço do imóvel para exibir seu
                     mobiliário — expandindo seu showroom.
                   </p>
@@ -142,7 +142,7 @@ export default function HomeStaging() {
       </section>
 
       {/* Como fazemos */}
-      <section className="py-12 md:py-16 px-4 md:px-6 bg-stone-50">
+      <section className="py-12 md:py-16 px-5 md:px-6 bg-stone-50">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-8">
@@ -161,7 +161,7 @@ export default function HomeStaging() {
                     {etapa.number}
                   </span>
                   <h3 className="text-primary text-xs md:text-sm font-semibold mt-1 mb-1 md:mt-2 md:mb-2 line-clamp-2">{etapa.title}</h3>
-                  <p className="text-gray-600 text-[10px] md:text-xs leading-relaxed line-clamp-3 md:line-clamp-none">{etapa.description}</p>
+                  <p className="text-gray-600 text-xs leading-relaxed line-clamp-3 md:line-clamp-none">{etapa.description}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -170,7 +170,7 @@ export default function HomeStaging() {
       </section>
 
       {/* Benefícios */}
-      <section className="py-12 md:py-16 px-4 md:px-6 bg-white">
+      <section className="py-12 md:py-16 px-5 md:px-6 bg-white">
         <div className="max-w-4xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-6 md:mb-10">
@@ -199,7 +199,7 @@ export default function HomeStaging() {
       </section>
 
       {/* CTA */}
-      <section className="py-12 md:py-16 px-4 md:px-6 bg-primary">
+      <section className="py-12 md:py-16 px-5 md:px-6 bg-primary">
         <div className="max-w-2xl mx-auto text-center">
           <ScrollReveal>
             <h2 className="text-lg md:text-2xl text-white font-normal mb-3">

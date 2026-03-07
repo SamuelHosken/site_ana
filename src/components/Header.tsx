@@ -1,32 +1,18 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useState, useCallback } from "react";
 import Image from "next/image";
 import { useContactModal } from "@/contexts/ContactModalContext";
+import { useScrollRAF } from "@/hooks/useScrollRAF";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const rafRef = useRef<number>(0);
   const { open: openContactModal } = useContactModal();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (rafRef.current) return;
-      rafRef.current = requestAnimationFrame(() => {
-        rafRef.current = 0;
-        setIsScrolled(window.scrollY > 50);
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
-  }, []);
+  useScrollRAF(useCallback(() => {
+    setIsScrolled(window.scrollY > 50);
+  }, []));
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -74,7 +60,7 @@ export default function Header() {
             : "bg-transparent py-3"
         }`}
       >
-        <nav className="max-w-5xl mx-auto px-4 flex justify-between items-center">
+        <nav className="max-w-5xl mx-auto px-5 flex justify-between items-center">
           {/* Logo */}
           <a
             href="/"
@@ -155,7 +141,7 @@ export default function Header() {
             {/* CTA Button */}
             <button
               onClick={openContactModal}
-              className="relative px-3.5 py-1.5 text-xs font-medium tracking-wide rounded-md overflow-hidden transition-all duration-300 group/btn border-2 border-primary text-primary hover:text-white cursor-pointer"
+              className="relative px-4 py-2 text-xs font-medium tracking-wide rounded-md overflow-hidden transition-all duration-300 group/btn border-2 border-primary text-primary hover:text-white cursor-pointer"
             >
               {/* Background fill on hover */}
               <span className="absolute inset-0 w-0 group-hover/btn:w-full transition-all duration-300 ease-out bg-primary" />
@@ -205,7 +191,7 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ${
+        className={`fixed inset-0 z-40 md:hidden transition-all duration-500 overflow-hidden ${
           isMobileMenuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -215,6 +201,7 @@ export default function Header() {
         <div
           className="absolute inset-0 bg-black/60 backdrop-blur-sm"
           onClick={() => setIsMobileMenuOpen(false)}
+          aria-hidden="true"
         />
 
         {/* Menu Panel */}
@@ -325,7 +312,7 @@ export default function Header() {
                   className="h-3.5 w-auto mx-auto brightness-0 opacity-40"
                   loading="lazy"
                 />
-                <p className="text-gray-400 text-[10px] mt-1">
+                <p className="text-gray-400 text-xs mt-1">
                   Imobiliária Boutique
                 </p>
               </div>

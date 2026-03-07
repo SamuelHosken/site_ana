@@ -32,7 +32,7 @@ export default function OpenHouse() {
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-20 md:pt-24 pb-10 md:pb-16 px-4 md:px-6 bg-stone-50">
+      <section className="pt-20 md:pt-24 pb-10 md:pb-16 px-5 md:px-6 bg-stone-50">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-8">
@@ -73,7 +73,7 @@ export default function OpenHouse() {
       </section>
 
       {/* O que é Open House */}
-      <section className="py-12 md:py-16 px-4 md:px-6 bg-white">
+      <section className="py-12 md:py-16 px-5 md:px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <ScrollReveal animation="reveal-left">
@@ -89,7 +89,7 @@ export default function OpenHouse() {
                     apresentar seu imóvel de forma estratégica e convidativa.
                   </p>
 
-                  <p className="text-gray-600 text-sm leading-relaxed hidden md:block">
+                  <p className="text-gray-600 text-sm leading-relaxed">
                     Diferente de uma visita comum, o Open House transforma o momento da apresentação em uma{" "}
                     <strong className="text-gray-800">experiência de encantamento</strong>, onde o imóvel é
                     preparado com cuidado e fica disponível para visitação durante um período específico.
@@ -124,7 +124,7 @@ export default function OpenHouse() {
       </section>
 
       {/* Como funciona no exterior */}
-      <section className="py-12 md:py-16 px-4 md:px-6 bg-stone-50">
+      <section className="py-12 md:py-16 px-5 md:px-6 bg-stone-50">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-8">
@@ -152,7 +152,7 @@ export default function OpenHouse() {
                       <h3 className="text-gray-800 text-xs md:text-sm font-semibold mb-1 md:mb-2 group-hover:text-primary transition-colors line-clamp-2">
                         {item.title}
                       </h3>
-                      <p className="text-gray-600 text-[10px] md:text-xs leading-relaxed line-clamp-3 md:line-clamp-none">{item.description}</p>
+                      <p className="text-gray-600 text-xs leading-relaxed line-clamp-3 md:line-clamp-none">{item.description}</p>
                     </div>
                   </div>
                 </div>
@@ -163,7 +163,7 @@ export default function OpenHouse() {
       </section>
 
       {/* Nossa abordagem */}
-      <section className="py-12 md:py-16 px-4 md:px-6 bg-white">
+      <section className="py-12 md:py-16 px-5 md:px-6 bg-white">
         <div className="max-w-4xl mx-auto">
           <ScrollReveal>
             <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl md:rounded-2xl p-6 md:p-12 text-center">

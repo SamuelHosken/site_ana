@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useContactModal } from "@/contexts/ContactModalContext";
+import { WHATSAPP_URL } from "@/config/contact";
 
 type FormData = {
   tipo: string;
@@ -18,6 +19,7 @@ export default function ContactModal() {
   const [step, setStep] = useState(1);
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [direction, setDirection] = useState<"forward" | "back">("forward");
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -38,6 +40,7 @@ export default function ContactModal() {
         setStep(1);
         setSuccess(false);
         setSending(false);
+        setErrorMessage("");
         setForm({ tipo: "", avaliacao: "", localizacao: "", mensagem: "", nome: "", email: "", telefone: "" });
       }, 300);
       return () => clearTimeout(timeout);
@@ -74,6 +77,7 @@ export default function ContactModal() {
 
   const handleSubmit = async () => {
     setSending(true);
+    setErrorMessage("");
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -82,10 +86,15 @@ export default function ContactModal() {
       });
       if (res.ok) {
         setSuccess(true);
-        setTimeout(close, 3000);
+        setTimeout(() => {
+          close();
+          window.open(WHATSAPP_URL, "_blank");
+        }, 2000);
+      } else {
+        setErrorMessage("Não foi possível enviar. Tente novamente.");
       }
     } catch {
-      // silently fail — user can retry
+      setErrorMessage("Erro de conexão. Verifique sua internet e tente novamente.");
     } finally {
       setSending(false);
     }
@@ -111,6 +120,9 @@ export default function ContactModal() {
       {/* Modal card */}
       <div
         ref={modalRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Formulário de contato"
         className={`relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 max-h-[90vh] flex flex-col ${
           isOpen ? "scale-100 translate-y-0" : "scale-95 translate-y-8"
         }`}
@@ -126,9 +138,10 @@ export default function ContactModal() {
         {/* Close button */}
         <button
           onClick={close}
-          className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-600 hover:bg-stone-100 transition-colors"
+          aria-label="Fechar"
+          className="absolute top-3 right-3 z-10 w-10 h-10 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-600 hover:bg-stone-100 transition-colors"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
@@ -171,15 +184,24 @@ export default function ContactModal() {
           )}
         </div>
 
+        {/* Error message */}
+        {errorMessage && (
+          <div className="flex-shrink-0 px-6 md:px-8">
+            <p className="text-red-600 text-sm bg-red-50 rounded-lg px-4 py-2 text-center">
+              {errorMessage}
+            </p>
+          </div>
+        )}
+
         {/* Footer buttons */}
         {!success && (
           <div className="flex-shrink-0 px-6 md:px-8 pb-6 md:pb-8 flex items-center justify-between gap-3">
             {step > 1 ? (
               <button
                 onClick={goBack}
-                className="text-sm text-gray-500 hover:text-gray-700 transition-colors flex items-center gap-1"
+                className="text-sm text-gray-500 hover:text-gray-700 transition-colors flex items-center gap-1 py-2 px-3"
               >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
                 Voltar
@@ -268,7 +290,7 @@ function Step1({
       </div>
 
       {/* Avaliacao */}
-      <p className="text-sm text-gray-700 mb-2">Ja fez avaliacao do imovel?</p>
+      <p className="text-sm text-gray-700 mb-2">Já fez avaliação do imóvel?</p>
       <div className="flex gap-2">
         {["Sim", "Nao"].map((v) => (
           <button
@@ -301,11 +323,11 @@ function Step2({
 }) {
   return (
     <div>
-      <h3 className="text-lg font-semibold text-gray-800 mb-1">Sobre o imovel</h3>
-      <p className="text-gray-500 text-sm mb-6">Informacoes basicas para entendermos melhor.</p>
+      <h3 className="text-lg font-semibold text-gray-800 mb-1">Sobre o imóvel</h3>
+      <p className="text-gray-500 text-sm mb-6">Informações básicas para entendermos melhor.</p>
 
       <label className="block mb-4">
-        <span className="text-sm text-gray-700 mb-1 block">Localizacao do imovel</span>
+        <span className="text-sm text-gray-700 mb-1 block">Localização do imóvel</span>
         <input
           type="text"
           value={localizacao}
@@ -323,7 +345,7 @@ function Step2({
           value={mensagem}
           onChange={(e) => setMensagem(e.target.value)}
           rows={3}
-          placeholder="Conte-nos mais sobre seu imovel ou duvida..."
+          placeholder="Conte-nos mais sobre seu imóvel ou dúvida..."
           className="w-full px-4 py-2.5 border border-stone-200 rounded-lg text-sm text-gray-800 placeholder:text-gray-400 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-colors resize-none"
         />
       </label>
@@ -349,37 +371,40 @@ function Step3({
   return (
     <div>
       <h3 className="text-lg font-semibold text-gray-800 mb-1">Seus dados</h3>
-      <p className="text-gray-500 text-sm mb-6">Para entrarmos em contato com voce.</p>
+      <p className="text-gray-500 text-sm mb-6">Para entrarmos em contato com você.</p>
 
       <label className="block mb-4">
-        <span className="text-sm text-gray-700 mb-1 block">Nome</span>
+        <span className="text-sm text-gray-700 mb-1 block">Nome <span className="text-primary">*</span></span>
         <input
           type="text"
           value={nome}
           onChange={(e) => setNome(e.target.value)}
           placeholder="Seu nome completo"
+          aria-required="true"
           className="w-full px-4 py-2.5 border border-stone-200 rounded-lg text-sm text-gray-800 placeholder:text-gray-400 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-colors"
         />
       </label>
 
       <label className="block mb-4">
-        <span className="text-sm text-gray-700 mb-1 block">E-mail</span>
+        <span className="text-sm text-gray-700 mb-1 block">E-mail <span className="text-primary">*</span></span>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="seu@email.com"
+          aria-required="true"
           className="w-full px-4 py-2.5 border border-stone-200 rounded-lg text-sm text-gray-800 placeholder:text-gray-400 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-colors"
         />
       </label>
 
       <label className="block">
-        <span className="text-sm text-gray-700 mb-1 block">Telefone</span>
+        <span className="text-sm text-gray-700 mb-1 block">Telefone <span className="text-primary">*</span></span>
         <input
           type="tel"
           value={telefone}
           onChange={(e) => setTelefone(e.target.value)}
           placeholder="(61) 99999-9999"
+          aria-required="true"
           className="w-full px-4 py-2.5 border border-stone-200 rounded-lg text-sm text-gray-800 placeholder:text-gray-400 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-colors"
         />
       </label>

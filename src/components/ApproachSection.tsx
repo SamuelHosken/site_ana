@@ -3,24 +3,9 @@
 import { ReactNode } from "react";
 import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
+import Tooltip from "./Tooltip";
 
-// Componente de Tooltip reutilizável
-function Tooltip({ term, explanation }: { term: string; explanation: string }) {
-  return (
-    <span className="relative inline-block group/tooltip">
-      <span className="text-gray-800 border-b-2 border-primary/40 cursor-help transition-colors group-hover/tooltip:border-primary">
-        {term}
-      </span>
-      <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-3 bg-white rounded-xl shadow-xl border border-stone-100 w-64 opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-300 transform group-hover/tooltip:-translate-y-0 translate-y-2 z-50 pointer-events-none">
-        <span className="block text-primary text-xs font-semibold mb-1">{term}</span>
-        <span className="block text-gray-600 text-xs leading-relaxed">{explanation}</span>
-        <span className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-white" />
-      </span>
-    </span>
-  );
-}
-
-export default function Section1() {
+export default function ApproachSection() {
   const features: { title: string; description: ReactNode }[] = [
     {
       title: "Investimento real em impulsionamento",
@@ -55,7 +40,7 @@ export default function Section1() {
   ];
 
   return (
-    <section className="relative z-10 lg:-mt-[40vh] py-16 px-4 md:px-6 bg-stone-50">
+    <section className="relative z-10 lg:-mt-[40vh] py-16 px-5 md:px-6 bg-stone-50">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <ScrollReveal className="flex flex-col md:flex-row justify-between items-start mb-10 gap-3">

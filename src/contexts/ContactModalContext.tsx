@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useCallback } from "react";
+import { USE_CONTACT_FORM, WHATSAPP_URL } from "@/config/contact";
 
 type ContactModalContextType = {
   isOpen: boolean;
@@ -17,7 +18,13 @@ const ContactModalContext = createContext<ContactModalContextType>({
 export function ContactModalProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const open = useCallback(() => setIsOpen(true), []);
+  const open = useCallback(() => {
+    if (USE_CONTACT_FORM) {
+      setIsOpen(true);
+    } else {
+      window.open(WHATSAPP_URL, "_blank");
+    }
+  }, []);
   const close = useCallback(() => setIsOpen(false), []);
 
   return (

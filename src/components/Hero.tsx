@@ -6,9 +6,17 @@ import Image from "next/image";
 export default function Hero() {
   const [parallaxY, setParallaxY] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number>(0);
 
+  // Trigger entrance animation
+  useEffect(() => {
+    const timer = setTimeout(() => setLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Parallax on scroll (mobile + desktop)
   useEffect(() => {
     const handleScroll = () => {
       if (rafRef.current) return;
@@ -36,48 +44,81 @@ export default function Hero() {
 
   return (
     <section id="inicio" className="relative z-10 bg-white pt-16">
-      {/* ========== MOBILE VERSION - Full image with centered text ========== */}
-      <div className="md:hidden px-4 pt-5 pb-0">
+      {/* ========== MOBILE VERSION - Cinematic entrance ========== */}
+      <div className="md:hidden px-5 pt-5 pb-0">
         <div ref={heroRef} className="relative h-[420px] rounded-[20px] overflow-hidden">
-          {/* Full screen image */}
-          <div className="absolute inset-0">
-            <Image
-              src="/hero.jpg"
-              alt="Later Nobilis Hero"
-              fill
-              priority
-              className="object-cover object-center scale-105"
-              sizes="100vw"
-            />
-            {/* Dark overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/30" />
+          {/* Image with zoom-out + parallax */}
+          <div
+            className="absolute inset-0 transition-transform duration-[2s] ease-out"
+            style={{ transform: `translateY(${parallaxY}px)` }}
+          >
+            <div
+              className={`absolute inset-0 transition-transform duration-[2.5s] ease-out ${
+                loaded ? "scale-105" : "scale-[1.2]"
+              }`}
+            >
+              <Image
+                src="/hero.jpg"
+                alt="Later Nobilis Hero"
+                fill
+                priority
+                className="object-cover object-center"
+                sizes="100vw"
+              />
+            </div>
           </div>
 
-          {/* Centered content */}
+          {/* Overlay that lightens slightly on load */}
+          <div
+            className={`absolute inset-0 transition-all duration-[2s] ease-out ${
+              loaded
+                ? "bg-gradient-to-t from-black/70 via-black/45 to-black/20"
+                : "bg-gradient-to-t from-black/80 via-black/60 to-black/40"
+            }`}
+          />
+
+          {/* Centered content — staggered entrance */}
           <div className="relative h-full flex flex-col items-center justify-center text-center px-5">
-            {/* Logo */}
+            {/* Logo — 0ms */}
             <Image
               src="/Tipografia com R.svg"
               alt="Later Nobilis"
               width={120}
               height={16}
-              className="h-4 w-auto mb-4 brightness-0 invert opacity-90"
+              className={`h-4 w-auto mb-3 brightness-0 invert transition-all duration-700 ease-out ${
+                loaded ? "opacity-90 translate-y-0 blur-0" : "opacity-0 translate-y-3 blur-sm"
+              }`}
               priority
             />
 
-            {/* Title */}
-            <h2 className="text-[22px] leading-[1.3] font-normal text-white mb-3">
+            {/* Decorative line — 300ms */}
+            <div
+              className={`h-px bg-white/40 mb-4 transition-all duration-700 ease-out delay-300 ${
+                loaded ? "w-16 opacity-100" : "w-0 opacity-0"
+              }`}
+            />
+
+            {/* Title — 500ms */}
+            <h1
+              className={`text-[22px] leading-[1.3] font-normal text-white mb-3 transition-all duration-700 ease-out delay-500 ${
+                loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+              }`}
+            >
               CONHEÇA A MELHOR{" "}
               <span className="font-semibold">IMOBILIÁRIA BOUTIQUE</span>{" "}
               DE BRASÍLIA
-            </h2>
+            </h1>
 
-            {/* Tagline */}
-            <p className="text-white/70 text-xs mb-6 max-w-[280px]">
+            {/* Tagline — 800ms */}
+            <p
+              className={`text-white/70 text-xs mb-6 max-w-[280px] transition-all duration-700 ease-out delay-[800ms] ${
+                loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+            >
               Exclusividade e estratégia para valorizar seu patrimônio
             </p>
 
-            {/* Button */}
+            {/* Button — 1100ms */}
             <button
               onClick={() => {
                 const element = document.getElementById("sobre");
@@ -85,7 +126,9 @@ export default function Hero() {
                   element.scrollIntoView({ behavior: "smooth" });
                 }
               }}
-              className="group flex items-center gap-2 px-6 py-3 bg-white text-gray-900 text-xs font-semibold tracking-wider uppercase hover:bg-white/90 transition-all duration-300 rounded-full shadow-lg"
+              className={`group flex items-center gap-2 px-6 py-3 bg-white text-gray-900 text-xs font-semibold tracking-wider uppercase hover:bg-white/90 transition-all duration-700 ease-out delay-[1100ms] rounded-full shadow-lg ${
+                loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
             >
               Explorar
               <svg
@@ -98,8 +141,12 @@ export default function Hero() {
               </svg>
             </button>
 
-            {/* Scroll indicator */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5">
+            {/* Scroll indicator — 1500ms */}
+            <div
+              className={`absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 transition-all duration-700 ease-out delay-[1500ms] ${
+                loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+              }`}
+            >
               <div className="w-5 h-7 border border-white/40 rounded-full flex justify-center pt-1.5">
                 <div className="w-0.5 h-2 bg-white/60 rounded-full animate-bounce" />
               </div>
@@ -109,7 +156,7 @@ export default function Hero() {
       </div>
 
       {/* ========== DESKTOP VERSION - Original layout ========== */}
-      <div className="hidden md:block max-w-7xl mx-auto px-4 pt-12 pb-0">
+      <div className="hidden md:block max-w-7xl mx-auto px-5 pt-12 pb-0">
         <div className="relative h-[380px] lg:h-[450px]">
           {/* Container da imagem com overflow hidden */}
           <div
@@ -156,11 +203,11 @@ export default function Hero() {
                 />
               </div>
 
-              <h2 className="text-xl lg:text-3xl font-normal text-gray-800 leading-tight">
+              <h1 className="text-xl lg:text-3xl font-normal text-gray-800 leading-tight">
                 CONHEÇA A MELHOR{" "}
                 <span className="font-semibold text-primary">IMOBILIÁRIA<br />BOUTIQUE</span>{" "}
                 DE BRASÍLIA
-              </h2>
+              </h1>
             </div>
           </div>
 

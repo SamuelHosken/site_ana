@@ -13,7 +13,8 @@ const features = [
     imageSrc: "/Fotos Site/visualizacao-3d-potencial.jpg",
     imagePosition: "object-left",
     imageHeight: "380px",
-    imageWidth: "120%"
+    imageWidth: "120%",
+    tallMobile: false,
   },
   {
     title: "Fotos e vídeos que vendem",
@@ -22,7 +23,8 @@ const features = [
     imageSrc: "/Fotos Site/fotos-videos-que-vendem.jpg",
     imagePosition: "object-center",
     imageHeight: "380px",
-    imageWidth: "120%"
+    imageWidth: "120%",
+    tallMobile: false,
   },
   {
     title: "Investimento relevante em tráfego pago",
@@ -30,7 +32,8 @@ const features = [
     image: "Tráfego Pago",
     imageSrc: "/Fotos Site/investimento-trafego-pago.jpg",
     imagePosition: "object-center",
-    imageHeight: "520px"
+    imageHeight: "520px",
+    tallMobile: "extra",
   },
   {
     title: "Anúncios que se destacam",
@@ -38,7 +41,8 @@ const features = [
     image: "Destaque",
     imageSrc: "/anuncios_que_atraem.jpg",
     imagePosition: "object-center",
-    imageHeight: "380px"
+    imageHeight: "380px",
+    tallMobile: true,
   }
 ];
 
@@ -63,124 +67,188 @@ const featureIcons = [
   </svg>
 ];
 
-// Componente Mobile - Accordion sem sticky scroll
+// Componente Mobile - Design original com scroll-driven animation
 function Section4Mobile() {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const { open: openContactModal } = useContactModal();
+  const rafRef = useRef<number>(0);
+
+  // Scroll-driven: muda o card ativo conforme rola
+  useEffect(() => {
+    const handleScroll = () => {
+      if (rafRef.current) return;
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = 0;
+        if (!sectionRef.current) return;
+
+        const rect = sectionRef.current.getBoundingClientRect();
+        const sectionHeight = sectionRef.current.offsetHeight;
+        const viewportHeight = window.innerHeight;
+
+        if (rect.top > viewportHeight || rect.top + sectionHeight < 0) return;
+
+        const scrolled = -rect.top;
+        const maxScroll = sectionHeight - viewportHeight;
+        const progress = Math.max(0, Math.min(1, scrolled / maxScroll));
+        const newIndex = Math.min(
+          Math.floor(progress * features.length),
+          features.length - 1
+        );
+
+        setActiveIndex(newIndex);
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-br from-stone-100 to-stone-200 lg:hidden">
-      <div className="max-w-lg mx-auto">
-        {/* Header */}
-        <ScrollReveal>
-          <div className="text-center mb-8">
-            <h2 className="text-xl text-gray-800 mb-3 leading-tight">
-              O que você só encontra nos anúncios de uma{" "}
-              <span className="font-bodoni text-primary">Imobiliária Boutique?</span>
-            </h2>
-            <div className="h-[2px] w-20 bg-primary/30 mx-auto rounded-full" />
+    <section
+      ref={sectionRef}
+      className="relative bg-gradient-to-br from-stone-100 to-stone-200 lg:hidden"
+      style={{ height: `${(features.length + 1) * 100}vh` }}
+    >
+      <div className="sticky top-0 h-screen flex items-center py-16 px-5" style={{ overflow: 'visible' }}>
+        <div className="max-w-lg mx-auto w-full">
+          {/* Header */}
+          <ScrollReveal>
+            <div className="text-center mb-6">
+              <h2 className="text-xl text-gray-800 mb-3 leading-tight">
+                O que você só encontra nos anúncios de uma{" "}
+                <span className="font-bodoni text-primary">Imobiliária Boutique?</span>
+              </h2>
+              <div className="h-[2px] w-20 bg-primary/30 mx-auto rounded-full" />
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={100}>
+            <p className="text-gray-600 text-sm mb-6 text-center leading-relaxed">
+              Seu imóvel ganha destaque imediato, atrai compradores certos e <strong className="text-gray-800">vende ou aluga</strong> pelo valor que merece.
+            </p>
+          </ScrollReveal>
+
+          {/* Progress bar */}
+          <div className="h-1 bg-white/60 rounded-full overflow-hidden mb-6">
+            <div
+              className="h-full bg-primary rounded-full transition-all duration-500 ease-out"
+              style={{ width: `${((activeIndex + 1) / features.length) * 100}%` }}
+            />
           </div>
-        </ScrollReveal>
 
-        <ScrollReveal delay={100}>
-          <p className="text-gray-600 text-sm mb-8 text-center leading-relaxed">
-            Seu imóvel ganha destaque imediato, atrai compradores certos e <strong className="text-gray-800">vende ou aluga</strong> pelo valor que merece.
-          </p>
-        </ScrollReveal>
-
-        {/* Accordion Features */}
-        <div className="space-y-3">
-          {features.map((feature, index) => (
-            <ScrollReveal key={index} delay={index * 80}>
-              <div
-                className={`bg-white rounded-xl overflow-hidden transition-all duration-300 ${
-                  openIndex === index ? "shadow-lg" : "shadow-sm"
-                }`}
-              >
-                {/* Header do accordion */}
-                <button
-                  onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
-                  className="w-full p-4 flex items-center gap-3 text-left"
+          {/* Feature Card — um card só, conteúdo faz crossfade */}
+          <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+            {/* Imagem — altura anima entre tamanhos */}
+            <div
+              className="relative bg-gradient-to-br from-stone-200 to-stone-300 transition-all duration-700 ease-out"
+              style={{
+                height: features[activeIndex]?.tallMobile === "extra"
+                  ? 384 : features[activeIndex]?.tallMobile ? 288 : 224,
+              }}
+            >
+              {/* Imagens empilhadas com crossfade */}
+              {features.map((feature, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-700 ${
+                    activeIndex === index ? "opacity-100" : "opacity-0"
+                  }`}
                 >
-                  {/* Ícone */}
-                  <span
-                    className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                      openIndex === index
-                        ? "bg-primary text-white"
-                        : "bg-stone-100 text-primary"
-                    }`}
-                  >
-                    {featureIcons[index]}
-                  </span>
+                  {feature.imageSrc && (
+                    <Image
+                      src={feature.imageSrc}
+                      alt={feature.title}
+                      fill
+                      className={`object-cover ${feature.imagePosition || "object-center"}`}
+                      sizes="100vw"
+                      loading={index === 0 ? "eager" : "lazy"}
+                    />
+                  )}
+                </div>
+              ))}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
 
-                  {/* Título */}
-                  <span
-                    className={`flex-1 text-sm font-semibold transition-colors duration-300 ${
-                      openIndex === index ? "text-primary" : "text-gray-800"
+              {/* Número — crossfade */}
+              <span className="absolute top-4 left-4 w-10 h-10 bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center text-xs font-bold text-primary shadow-md transition-all duration-500">
+                {String(activeIndex + 1).padStart(2, "0")}
+              </span>
+
+              {/* Título sobre a imagem — crossfade */}
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                {features.map((feature, index) => (
+                  <h3
+                    key={index}
+                    className={`text-white text-base font-semibold drop-shadow-md transition-all duration-500 ${
+                      activeIndex === index
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-2 absolute bottom-0 left-0"
                     }`}
                   >
                     {feature.title}
-                  </span>
+                  </h3>
+                ))}
+              </div>
+            </div>
 
-                  {/* Seta */}
-                  <svg
-                    className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${
-                      openIndex === index ? "rotate-180" : ""
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-
-                {/* Conteúdo expandido */}
-                <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    openIndex === index ? "max-h-48" : "max-h-0"
+            {/* Conteúdo — crossfade */}
+            <div className="p-5 relative">
+              {features.map((feature, index) => (
+                <p
+                  key={index}
+                  className={`text-gray-600 text-sm leading-relaxed transition-all duration-500 ${
+                    activeIndex === index
+                      ? "relative opacity-100"
+                      : "absolute top-5 left-5 right-5 opacity-0 pointer-events-none"
                   }`}
                 >
-                  <div className="px-4 pb-4">
-                    {/* Imagem */}
-                    <div className="relative h-24 bg-gradient-to-br from-stone-200 to-stone-300 rounded-lg mb-3 overflow-hidden">
-                      {feature.imageSrc ? (
-                        <Image
-                          src={feature.imageSrc}
-                          alt={feature.title}
-                          fill
-                          className="object-cover"
-                          sizes="(min-width: 768px) 50vw, 50vw"
-                          loading="lazy"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center">
-                          <span className="text-stone-500 text-xs">[ {feature.image} ]</span>
-                        </div>
-                      )}
-                    </div>
-                    <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
-                  </div>
+                  {feature.description}
+                </p>
+              ))}
+
+              {/* Dots */}
+              <div className="flex items-center justify-center gap-2 mt-5">
+                {features.map((_, i) => (
+                  <div
+                    key={i}
+                    className={`rounded-full transition-all duration-300 ${
+                      activeIndex === i
+                        ? "w-6 h-2 bg-primary"
+                        : "w-2 h-2 bg-stone-300"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Scroll hint / CTA */}
+          <div className="mt-6 text-center">
+            {activeIndex < features.length - 1 ? (
+              <div className="flex flex-col items-center gap-1.5 text-stone-500">
+                <span className="text-xs uppercase tracking-widest">Role para continuar</span>
+                <div className="w-5 h-8 border-2 border-stone-400 rounded-full flex justify-center pt-1.5">
+                  <div className="w-1 h-2.5 bg-stone-400 rounded-full animate-bounce" />
                 </div>
               </div>
-            </ScrollReveal>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <ScrollReveal delay={400}>
-          <div className="mt-8 text-center">
-            <button
-              onClick={openContactModal}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-all duration-300 cursor-pointer"
-            >
-              Quero impulsionar meu imóvel
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </button>
+            ) : (
+              <button
+                onClick={openContactModal}
+                className="group inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-all duration-300 cursor-pointer"
+              >
+                Quero impulsionar meu imóvel
+                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </button>
+            )}
           </div>
-        </ScrollReveal>
+        </div>
       </div>
     </section>
   );
@@ -257,7 +325,7 @@ function Section4Desktop() {
       style={{ height: `${(features.length + 1) * 100}vh` }}
     >
       <div className="sticky top-0 h-screen overflow-hidden flex items-start pt-24">
-        <div className="max-w-5xl mx-auto px-4 md:px-6 w-full">
+        <div className="max-w-5xl mx-auto px-5 md:px-6 w-full">
           {/* Header */}
           <div className="group mb-5 sm:mb-4 md:mb-6">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl mb-2 sm:mb-3 text-gray-800">
@@ -401,7 +469,7 @@ function Section4Desktop() {
 
           {/* Scroll indicator */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-stone-500">
-            <span className="text-[10px] uppercase tracking-widest">Role para continuar</span>
+            <span className="text-xs uppercase tracking-widest">Role para continuar</span>
             <div className="w-5 h-8 border-2 border-stone-400 rounded-full flex justify-center pt-1.5">
               <div className="w-1 h-2.5 bg-stone-400 rounded-full animate-bounce" />
             </div>
@@ -413,7 +481,7 @@ function Section4Desktop() {
 }
 
 // Componente principal que renderiza a versão correta
-export default function Section4() {
+export default function AdvertisingSection() {
   return (
     <>
       <Section4Mobile />
