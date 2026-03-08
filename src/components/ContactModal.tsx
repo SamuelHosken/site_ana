@@ -88,7 +88,7 @@ export default function ContactModal() {
         setSuccess(true);
         setTimeout(() => {
           close();
-          window.open(WHATSAPP_URL, "_blank");
+          window.location.href = WHATSAPP_URL;
         }, 2000);
       } else {
         setErrorMessage("Não foi possível enviar. Tente novamente.");

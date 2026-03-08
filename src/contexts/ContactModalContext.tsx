@@ -22,7 +22,7 @@ export function ContactModalProvider({ children }: { children: React.ReactNode }
     if (USE_CONTACT_FORM) {
       setIsOpen(true);
     } else {
-      window.open(WHATSAPP_URL, "_blank");
+      window.location.href = WHATSAPP_URL;
     }
   }, []);
   const close = useCallback(() => setIsOpen(false), []);
