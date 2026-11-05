@@ -56,14 +56,11 @@ export default function ContactModal() {
     return () => window.removeEventListener("keydown", handleEsc);
   }, [isOpen, close]);
 
-  // Lock body scroll
+  // Lock page scroll. No <html> (não no body): o html tem overflow-x-clip, então é ele quem rola a página.
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => { document.body.style.overflow = ""; };
+    const root = document.documentElement;
+    root.style.overflow = isOpen ? "hidden" : "";
+    return () => { root.style.overflow = ""; };
   }, [isOpen]);
 
   const goNext = () => {

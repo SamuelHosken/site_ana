@@ -63,7 +63,7 @@ export default function Footer() {
       {/* Copyright */}
       <div className="py-4 px-5 md:px-6 border-t border-gray-800">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2 text-center">
-          <p className="text-gray-500 text-xs">
+          <p className="text-gray-400 text-xs">
             © {new Date().getFullYear()} Later Nobilis. Todos os direitos reservados.
           </p>
           <p className="text-gray-600 text-xs hidden md:block">

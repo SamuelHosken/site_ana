@@ -29,10 +29,11 @@ export default function InternationalPreviewSection() {
         <ScrollReveal animation="reveal-scale" className="relative max-w-3xl mx-auto mb-8">
           <div className="relative rounded-xl overflow-hidden">
             <Image
-              src="/mapa.svg"
+              src="/mapa.png"
               alt="Mapa de atuação internacional"
-              width={800}
-              height={400}
+              width={1152}
+              height={572}
+              sizes="(min-width: 768px) 768px, 100vw"
               className="w-full h-auto"
               loading="lazy"
             />

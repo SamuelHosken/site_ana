@@ -198,10 +198,11 @@ export default function InternationalFlip() {
 
               <div className="relative">
                 <Image
-                  src="/mapa.svg"
+                  src="/mapa.png"
                   alt="Mapa de atuação internacional"
-                  width={1000}
-                  height={500}
+                  width={1152}
+                  height={572}
+                  sizes="(min-width: 1024px) 1024px, 100vw"
                   className="w-full h-auto drop-shadow-lg"
                   priority
                 />
